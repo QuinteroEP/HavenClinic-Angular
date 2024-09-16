@@ -1,0 +1,16 @@
+<h3>informacion de la mascota</h3>
+
+<ng-container *ngIf="mascota">
+    <ul>
+        <li>Nombre: {{mascota.nombre}}</li>
+        <li>Edad: {{ mascota.edad }}</li>
+        <li>Raza: {{ mascota.raza }}</li>
+        <li>Genero: {{ mascota.genero }}</li>
+        <li>Condicion medica: {{ mascota.condicion }}</li>
+        <li>Descripcion: {{ mascota.descripcion }}</li>
+    </ul>
+</ng-container>
+
+<ng-container *ngIf="!mascota">
+    <p>Seleccione una mascota para obtener más informacion</p>
+</ng-container>
