@@ -9,7 +9,7 @@ button{
     margin-left: 25%;
     margin-right: 25%;
     margin-bottom: 10px;
-    
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

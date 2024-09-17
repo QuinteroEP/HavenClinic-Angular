@@ -13,6 +13,7 @@ export class FormularioMascotaComponent {
   mascotaNueva!: Mascota;
 
   formularioMascota: Mascota ={
+    id:0,
     nombre:"",
     edad:0,
     raza:"",

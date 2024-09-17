@@ -9,6 +9,9 @@ import { TablaMascotaComponent } from './mascotas/tabla-mascota/tabla-mascota.co
 import { InformacionMascotaComponent } from './mascotas/informacion-mascota/informacion-mascota.component';
 import { FormularioMascotaComponent } from './mascotas/formulario-mascota/formulario-mascota.component';
 import { FormsModule } from '@angular/forms';
+import { LandingComponent } from './pagina/landing/landing.component';
+import { EdadPipe } from './pipes/edad.pipe';
+import { ActualizarMascotaComponent } from './mascotas/actualizar-mascota/actualizar-mascota.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     TablaMascotaComponent,
     InformacionMascotaComponent,
-    FormularioMascotaComponent
+    FormularioMascotaComponent,
+    LandingComponent,
+    EdadPipe,
+    ActualizarMascotaComponent
   ],
   imports: [
     BrowserModule,

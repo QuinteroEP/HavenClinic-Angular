@@ -1,4 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+/* debug 
+*{
+  border: solid red;
+}*/
 
 :root {
     --color-principal: #754b36;
@@ -75,9 +78,6 @@ h3{
 }
 .navbar{
     background-color: var(--color-principal);
-
-    position: fixed;
-    z-index: 2;
 
     top: 0;
     width: 100%;

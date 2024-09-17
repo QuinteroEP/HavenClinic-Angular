@@ -8,3 +8,22 @@ li{
     font-weight: 400;
     font-style: normal;
 }
+
+
+img{
+    height: 500px;
+    width: auto;
+    border: solid black 1px;
+    margin-left: 20px;
+}
+
+#container{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px;
+    padding: 5px;
+
+    border: solid black 1px;
+    background-color: #d7a68f;
+}
