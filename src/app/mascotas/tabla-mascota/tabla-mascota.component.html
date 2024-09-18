@@ -1,0 +1,35 @@
+<p>Mascotas Registradas</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Raza</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Condicion Medica</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pet of listaMascotas">
+            <td>{{ pet.nombre }}</td>
+            <td>{{ pet.edad | edad}}</td>
+            <td>{{ pet.raza }}</td>
+            <td>{{ pet.genero }}</td>
+            <td>{{ pet.condicion }}</td>
+            <td>
+                <a [routerLink]="['/Mascotas/informacion', pet.id]">
+                    <button class="btn btn-primary">Mas Informacion</button>
+                </a>
+
+                <a [routerLink]="['/Mascotas/actualizar', pet.id]">
+                <button>Actualizar</button>
+                </a>
+
+                <button (click)="eliminarMascota(pet)" >Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<app-formulario-mascota (agregarMascotaEvent)="agregarMascota($event)" ></app-formulario-mascota>

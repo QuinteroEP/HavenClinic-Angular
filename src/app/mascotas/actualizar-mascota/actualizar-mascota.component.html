@@ -1,0 +1,37 @@
+<p>Actualizar Informacion</p>
+<br>
+
+<div id="formulario">
+    <form>  
+        <label for="nombre">Nombre</label>
+        <br>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="informacionParaActualizar.nombre">
+        <br>
+
+        <label for="edad">Edad</label>
+        <br>
+        <input type="number" id="edad" name="edad" [(ngModel)]="informacionParaActualizar.edad">
+        <br>    
+        
+        <label for="genero">Genero</label>
+        <br>
+        <input type="text" id="genero" name="genero" [(ngModel)]="informacionParaActualizar.genero">
+        <br>
+        
+        <label for="raza">Raza</label>
+        <br>
+        <input type="text" id="raza" name="raza" [(ngModel)]="informacionParaActualizar.raza">
+        <br>
+        
+        <label for="condicion">Condicion medica</label>
+        <br>
+        <input type="text" id="condicion" name="condicion" [(ngModel)]="informacionParaActualizar.condicion">
+        <br>
+        
+        <label for="descripcion">Descripcion</label>
+        <br>
+        <textarea name="descripcion" rows="4" cols="50" [(ngModel)]="informacionParaActualizar.descripcion"></textarea>
+    </form>
+
+    <button (click)="actualizarMascota()" >Actualizar Informacion</button>
+</div>
