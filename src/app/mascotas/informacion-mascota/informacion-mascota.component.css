@@ -10,12 +10,7 @@ li{
 }
 
 
-img{
-    height: 500px;
-    width: auto;
-    border: solid black 1px;
-    margin-left: 20px;
-}
+
 
 #container{
     display: flex;
@@ -26,4 +21,36 @@ img{
 
     border: solid black 1px;
     background-color: #d7a68f;
+}
+
+/*Personalizacion de la tarjeta*/
+.custom-card {
+    background-color: var(--color-fondo); /* Color de fondo de la tarjeta */
+    border-color: #dee2e6; /* Color del borde de la tarjeta */
+}
+
+.custom-img {
+    width: 100%; /* La imagen ocupará todo el ancho del contenedor */
+    height: 360px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor sin distorsionarse */
+    border-color: #343a40; /* Color del borde de la imagen */
+}
+
+.custom-text {
+    color: #6c757d; /* Color del texto */
+}
+
+.custom-header {
+    background-color: var(--color-terciario); /* Color de fondo del encabezado */
+    color: #ffffff; /* Color del texto del encabezado */
+}
+
+.custom-body {
+    background-color: var(--color-fondo); /* Color de fondo del cuerpo */
+    color: #212529; /* Color del texto del cuerpo */
+}
+
+.mt-5 {
+    margin-top: 10.4rem !important;
+  margin-bottom: 11rem !important;
 }

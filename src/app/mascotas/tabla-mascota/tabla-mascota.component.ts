@@ -24,8 +24,9 @@ export class TablaMascotaComponent {
       this.mascotaSelec = mascota;
     }
 
-    agregarMascota(mascota: Mascota){
+    onAgregarMascota(mascota: Mascota){
       this.listaMascotas.push(mascota);
+      console.log('Mascota agregada:', mascota);
     }
 
     eliminarMascota(mascota: Mascota){

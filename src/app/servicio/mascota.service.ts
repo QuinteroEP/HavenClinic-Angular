@@ -19,7 +19,7 @@ export class MascotaService {
       descripcion: "Animal de edad mayor; su condicion le causa dolor en la pata trazera derecha",
       url: "/assets/images/pets/perroMoira.jpg"
     },
-    
+
     {
       id: 2,
       nombre: "Bill",
@@ -81,5 +81,8 @@ export class MascotaService {
   findById(id:number):Mascota{
     const mascota:Mascota = this.listaMascotas.find(o => o.id === id)!;
     return mascota;
+  }
+    addMascota(mascota: Mascota): void {
+    this.listaMascotas.push(mascota);
   }
 }

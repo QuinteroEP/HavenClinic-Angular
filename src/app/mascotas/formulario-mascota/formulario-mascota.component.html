@@ -1,37 +1,39 @@
-<p>Registrar Una Mascota</p>
-<br>
-
-<div id="formulario">
-    <form>
-        <label for="nombre">Nombre</label>
-        <br>
-        <input type="text" id="nombre" name="nombre" [(ngModel)]="formularioMascota.nombre">
-        <br>
-
-        <label for="edad">Edad</label>
-        <br>
-        <input type="number" id="edad" name="edad" [(ngModel)]="formularioMascota.edad">
-        <br>
-
-        <label for="genero">Genero</label>
-        <br>
-        <input type="text" id="genero" name="genero" [(ngModel)]="formularioMascota.genero">
-        <br>
-
-        <label for="raza">Raza</label>
-        <br>
-        <input type="text" id="raza" name="raza" [(ngModel)]="formularioMascota.raza">
-        <br>
-
-        <label for="condicion">Condicion medica</label>
-        <br>
-        <input type="text" id="condicion" name="condicion" [(ngModel)]="formularioMascota.condicion">
-        <br>
-
-        <label for="descripcion">Descripcion</label>
-        <br>
-        <textarea name="descripcion" rows="4" cols="50" [(ngModel)]="formularioMascota.descripcion"></textarea>
-    </form>
-
-    <button (click)="agregarMascota()" >Registrar</button>
-</div>
+<form class="form" (ngSubmit)="agregarMascota()">
+  <p class="title">Añadir Mascota</p>
+  <p class="message">Complete el formulario para añadir una nueva mascota.</p>
+  <div class="form-columns">
+    <div class="column">
+      <label>
+        <input class="input" type="text" id="name" name="name" [(ngModel)]="formularioMascota.nombre" required>
+        <span>Nombre de la Mascota</span>
+      </label>
+      <label>
+        <input class="input" type="number" id="age" name="edad" [(ngModel)]="formularioMascota.edad" required>
+        <span>Edad</span>
+      </label>
+      <label>
+        <input class="input" type="text" id="breed" name="raza" [(ngModel)]="formularioMascota.raza" required>
+        <span>Raza</span>
+      </label>
+    </div>
+    <div class="column">
+      <label>
+        <input class="input" type="text" id="gender" name="genero" [(ngModel)]="formularioMascota.genero" required>
+        <span>Género</span>
+      </label>
+      <label>
+        <input class="input" type="text" id="condition" name="condicion" [(ngModel)]="formularioMascota.condicion" required>
+        <span>Condición Médica</span>
+      </label>
+      <label>
+        <input class="input" type="text" id="description" name="descripcion" [(ngModel)]="formularioMascota.descripcion">
+        <span>Descripción</span>
+      </label>
+    </div>
+  </div>
+  <label>
+    <input class="input" type="text" id="url" name="image" [(ngModel)]="formularioMascota.url">
+    <span>URL de la Imagen</span>
+  </label>
+  <button class="submit" type="submit">Añadir</button>
+</form>

@@ -1,24 +1,33 @@
-<h3>informacion de la mascota</h3>
-
-<div id="container">
-    <div id="informacion">
-        <ng-container *ngIf="mascota">
-            <ul>
-                <li>Nombre: {{mascota.nombre}}</li>
-                <li>Edad: {{ mascota.edad }}</li>
-                <li>Raza: {{ mascota.raza }}</li>
-                <li>Genero: {{ mascota.genero }}</li>
-                <li>Condicion medica: {{ mascota.condicion }}</li>
-                <li>Descripcion: {{ mascota.descripcion }}</li>
-            </ul>
-        </ng-container>
-        
-        <ng-container *ngIf="!mascota">
-            <p>Seleccione una mascota para obtener más informacion</p>
-        </ng-container>
+<main>
+    <div class="container mt-5">
+        <div class="card shadow-lg custom-card">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <ng-container *ngIf="mascota">
+                        <img [src]="mascota.url" alt="Mascot Image" id="imagenMascota" class="card-img-top rounded-start custom-img">
+                    </ng-container>
+                    <ng-container *ngIf="!mascota">
+                        <p class="text-center p-3 custom-text">Seleccione una mascota para obtener más información</p>
+                    </ng-container>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-header custom-header">
+                        <ng-container *ngIf="mascota">
+                            <h3>{{mascota.nombre}}</h3>
+                        </ng-container>
+                    </div>
+                    <div class="card-body custom-body">
+                        <ng-container *ngIf="mascota">
+                            <p class="card-text">Edad: <span>{{mascota.edad}}</span> años</p>
+                            <p class="card-text">Raza: <span>{{mascota.raza}}</span></p>
+                            <p class="card-text">Condición médica: <span>{{mascota.condicion}}</span></p>
+                            <br>
+                            <p class="card-text">Descripción:</p>
+                            <p class="card-text"><span>{{mascota.descripcion}}</span></p>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div id="foto">
-        <img [src]="mascota.url" alt="Foto no registrada">
-    </div>
-</div>
+</main>

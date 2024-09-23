@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Mascota } from '../mascotas';
 import { Router } from '@angular/router';
+import {MascotaService} from "../../servicio/mascota.service";
 
 @Component({
   selector: 'app-formulario-mascota',
@@ -23,11 +24,16 @@ export class FormularioMascotaComponent {
     condicion:"",
     descripcion:"",
   }
-  constructor(private router: Router) {}
+
+  constructor(private router: Router, private mascotaService: MascotaService ) {}
 
   agregarMascota(){
+    console.log('Agregando mascota:', this.formularioMascota);
+    this.mascotaNueva = Object.assign({}, this.formularioMascota);
+      this.mascotaService.addMascota(this.formularioMascota);
+
     this.agregarMascotaEvent.emit(this.formularioMascota);
-    this.router.navigate(['/Mascotas']);
+    this.router.navigate(['/Mascotas', this.formularioMascota]);
 
   }
 }
