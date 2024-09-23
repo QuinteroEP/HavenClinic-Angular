@@ -1,24 +1,78 @@
-.table{
-    margin: 20px 0; /* Add margin to the table */
-    padding: 10px; /* Add padding to the table */
-    width: 100%; /* Ensure the table takes full width */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    border: 1px solid black;
-    background-color: #fbf2e4;
+.container {
+  margin: 0 auto; /* Center the container */
+  padding: 20px; /* Add padding to the container */
 }
 
-.table td{
-    border: 1px solid black;
-    text-align: center;
-    padding: 10px;
-    font-family: "Rozha One", serif;
-    font-weight: 400;
-    font-style: normal;
+/* Estilo de la tabla */
+.table {
+  margin: 20px 0; /* Add margin to the table */
+  padding: 10px; /* Add padding to the table */
+  width: 100%; /* Ensure the table takes full width */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
-button{
-    margin-left: 10px;
-    margin-right: 10px;
-
-    font-size: 15px;
+.table img {
+  height: auto;
+  width: 50px;
 }
+
+.table tr:nth-child(odd) {
+  background-color: lightgrey;
+}
+
+.table-hover tbody tr:hover {
+  transform: translateY(-5px);
+}
+
+.table td {
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+#tableTitle {
+  font-weight: bold;
+  color: #754b36;
+}
+
+.table a {
+  text-align: center;
+}
+
+.btn-info {
+  background-color: #E3CAA5;
+  border-color: #E3CAA5;
+}
+
+.btn-danger {
+  background-color: #754b36;
+  border-color: #754b36;
+}
+.btn-warning {
+  background-color: #d7a68f;
+  border-color: #d7a68f;
+  color: #000;
+}
+
+/* Estilos específicos para tabla-mascota.component.html */
+button {
+  font-size: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.my-4 {
+    margin-top: 3rem !important;
+    margin-bottom: 0rem !important;
+}
+.animate-btn {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.btn-lg {
+  background-color: #754b36;
+  border-color: #754b36;
+}
+.animate-btn:hover {
+  transform: scale(1.1);
+  background-color: var(--color-terciario);
+  border-color: var(--color-terciario);
+}
+

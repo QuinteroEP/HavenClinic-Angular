@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Mascota } from '../mascotas';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario-mascota',
@@ -22,10 +23,11 @@ export class FormularioMascotaComponent {
     condicion:"",
     descripcion:"",
   }
+  constructor(private router: Router) {}
 
   agregarMascota(){
-    this.mascotaNueva = Object.assign({}, this.formularioMascota);
-
     this.agregarMascotaEvent.emit(this.formularioMascota);
+    this.router.navigate(['/Mascotas']);
+
   }
 }

@@ -35,13 +35,14 @@ h3{
 }
 .navbar{
     background-color: var(--color-principal);
-
+   z-index: 3;
     top: 0;
     width: 100%;
+  padding: .5rem 1rem;
 }
 
 .navbar a{
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .navbar-brand {
@@ -55,6 +56,5 @@ h3{
 
   .navbar a:hover{
     font-size: 25px;
-    text-decoration: underline;
   }
 

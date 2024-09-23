@@ -9,7 +9,6 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
 })
 export class TablaMascotaComponent {
   mascotaSelec!: Mascota;
-
   listaMascotas!: Mascota[];
 
     //injecciones

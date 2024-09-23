@@ -42,6 +42,14 @@ html{
   font-size: 25px;
   border-radius: 2px;
 }
+/* CSS para modificar el tamaño de la letra en el carrusel */
+.carousel-caption h5 {
+  font-size: 1.8rem;
+}
+
+.carousel-caption p {
+  font-size: 1.3rem;
+}
 
 
 body {
@@ -50,6 +58,7 @@ body {
     color: var(--color-texto);
     margin: 0;
     padding: 0;
+
 }
 
 #logo {
@@ -282,6 +291,9 @@ main {
 .service-box h3 {
     font-size: 1.5rem;
 }
+.service-box p {
+    font-size: 1.3rem;
+}
 
 
 
@@ -312,15 +324,15 @@ main {
   min-width: 120px; /* Ensure labels have consistent width */
 }
 
- button{
+ #Botones button{
   font-weight: bold;
   background-color: var(--color-terciario);
   padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-
+  margin: 10px;
  }
- button:hover{
+ #Botones button:hover{
   background-color: var(--color-principal)
  }
 
@@ -373,6 +385,7 @@ main {
     background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el texto */
     padding: 20px; /* Espaciado interno */
     border-radius: 10px; /* Bordes redondeados */
+
 
 }
 
@@ -541,8 +554,9 @@ main {
       top: 0;
       left: 0;
       overflow: hidden;
-      z-index: 0; /* Ensure stars are behind the logo */
+      z-index: 0;
   }
+
 
   .star {
       position: absolute;
@@ -587,12 +601,12 @@ main {
     border: 1px solid #ccc;
 }
 #QuienesSomos h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   color:var(--color-principal);
   margin-bottom: 20px;
 }
   #QuienesSomos .img-fluid {
-   width: 300px;
+   width: 500px;
     height: auto;
     margin-left: 20px;
 
@@ -604,6 +618,7 @@ main {
   color: var(--color-texto);
   text-align: justify;
   margin-top: 0px;
+  font-size: 22px;
 }
 
 #QuienesSomos .row {
