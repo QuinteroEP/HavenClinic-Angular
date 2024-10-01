@@ -1,6 +1,7 @@
  <!-- Hero Section -->
 
 
+
     <div id="home" class="hero-section text-center text-light">
        <!-- Estrellas animadas -->
        <div #starContainer class="stars"></div>
@@ -12,23 +13,25 @@
             </div>
             <br>
             <div id="Botones">
-                <button id="SignUp">Registrarse</button>
-                <button id="LogIn">Iniciar Sesion</button>
+                <button #SignUp id="SignUp">Registrarse</button>
+              <!-- Botón Iniciar Sesión -->
+              <button #LogIn id="LogIn">Iniciar Sesión</button>
             </div>
         </div>
 
 
 
     <!-- Pop Up de login-->
-    <!-- <div class="form-popup" id="loginForm">
-      <form id="popUp" class="form-container" (submit)="onSubmit()">
+
+     <div #loginForm class="form-popup" id="loginForm">
+      <form id="popUp" class="form-container" >
         <h1>Iniciar Sesion</h1>
         <label for="Loginemail"><b>Email</b></label>
         <input type="text" placeholder="Email" name="email" id="Loginemail" required>
         <label for="Loginpsw"><b>Contraseña</b></label>
         <input type="password" placeholder="Contraseña" name="psw" id="Loginpsw" required>
-        <label class="check-container" for="check-box">
-          <input class="check" id="check-box" name="check-box" type="checkbox" />
+        <label  class="check-container" for="check-box">
+          <input #checkBox class="check" id="check-box" name="check-box" type="checkbox" />
           <span class="check-toggle"></span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 180 161" height="93" width="72" class="check-svg">
             <defs>
@@ -42,16 +45,15 @@
           <p class="check-label">Veterinario</p>
         </label>
         <input type="hidden" name="userType" id="userType" value="client">
-        <button type="submit" class="btn">Iniciar Sesion</button>
-        <button id="cancel" class="btn cancel">Cancelar</button>
-      </form>
+        <button  type="submit" class="btn" (click)="onSubmit()">Iniciar Sesion</button>
+        <button #cancel id="cancel" class="btn cancel" (click)="closePopUp()">Cancelar</button>      </form>
     </div>
--->
+
     <!-- Pop Up Registro -->
-          <!--
+
     <div class="darker">
-      <div class="form-popup" id="registerForm">
-        <form id="popUpRegister" (submit)="onRegister()">
+      <div #registerForm class="form-popup" id="registerForm">
+        <form id="popUpRegister" class="form-container">  <!-- (submit)="onRegister()"> -->
           <h1>Registrarse</h1>
           <div class="form-row">
             <div class="form-column">
@@ -73,7 +75,7 @@
           <a href="#" id="cancelRegister" class="btn cancel" (click)="handleCancel()">Cancelar</a>
         </form>
       </div>
-    </div>-->
+    </div>
       </div>
     </div>
 

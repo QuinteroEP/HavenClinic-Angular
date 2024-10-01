@@ -10,6 +10,14 @@
     --color-fondo: #fbf2e4;
       --color-texto: #000;
   }
+:root {
+  --primary-color: #754b36; /* Update to match project palette */
+  --primary-dark: #d7a68f;  /* Update to match project palette */
+  --background-color: #fbf2e4; /* Update to match project palette */
+  --text-color: #000000; /* Update to match project palette */
+  --secondary-color: #d7a68f; /* Update to match project palette */
+}
+
 html, body {
   height: 100%;
   margin: 0;

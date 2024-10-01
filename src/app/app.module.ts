@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { LandingComponent } from './pagina/landing/landing.component';
 import { EdadPipe } from './pipes/edad.pipe';
 import { ActualizarMascotaComponent } from './mascotas/actualizar-mascota/actualizar-mascota.component';
-
+import { MainMenuComponent } from './pagina/main-menu/main-menu.component';
+import { NavbarAuxComponent } from './pagina/navbar-aux/navbar-aux.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,9 @@ import { ActualizarMascotaComponent } from './mascotas/actualizar-mascota/actual
     FormularioMascotaComponent,
     LandingComponent,
     EdadPipe,
-    ActualizarMascotaComponent
+    ActualizarMascotaComponent,
+    MainMenuComponent,
+    NavbarAuxComponent,
   ],
   imports: [
     BrowserModule,

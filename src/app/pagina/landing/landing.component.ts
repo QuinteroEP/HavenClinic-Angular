@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 import * as $ from 'jquery';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-landing',
@@ -9,16 +10,21 @@ import * as $ from 'jquery';
 export class LandingComponent implements AfterViewInit {
   @ViewChild('loginForm') loginForm!: ElementRef;
   @ViewChild('registerForm') registerForm!: ElementRef;
-  @ViewChild('darkOverlay') darkOverlay!: ElementRef;
   @ViewChild('starContainer') starContainer!: ElementRef;
   @ViewChild('LogIn') botonLogin!: ElementRef;
   @ViewChild('cancel') botonCancelLogin!: ElementRef;
   @ViewChild('SignUp') botonSignUp!: ElementRef;
   @ViewChild('cancelRegister') botonCancelRegister!: ElementRef
+  @ViewChild('checkBox') checkBox!: ElementRef;
 
+  constructor(private router: Router) { }
+
+  private darkOverlay: HTMLElement | null = null;
 
   ngAfterViewInit() {
     console.log("Script loaded");
+
+    this.darkOverlay = document.querySelector(".darker");
 
     if (this.botonLogin) {
       this.botonLogin.nativeElement.addEventListener("click", this.loginPopUp.bind(this));
@@ -41,27 +47,43 @@ export class LandingComponent implements AfterViewInit {
   loginPopUp() {
     console.log("Log in");
     this.loginForm.nativeElement.style.display = "block";
-    this.darkOverlay.nativeElement.style.display = "block";
-  }
-
-  handleCancel() {
-    window.location.href = '/';
+    if (this.darkOverlay) {
+      this.darkOverlay.style.display = "block";
+    }
   }
 
   closePopUp() {
+    console.log("cancel");
+
     this.loginForm.nativeElement.style.display = "none";
-    this.darkOverlay.nativeElement.style.display = "none";
+    if (this.darkOverlay) {
+      this.darkOverlay.style.display = "none";
+    }
   }
 
   showRegisterForm() {
     console.log("Show register form");
     this.registerForm.nativeElement.style.display = "block";
-    this.darkOverlay.nativeElement.style.display = "block";
+    if (this.darkOverlay) {
+      this.darkOverlay.style.display = "block";
+    }
   }
 
   hideRegisterForm() {
     this.registerForm.nativeElement.style.display = "none";
-    this.darkOverlay.nativeElement.style.display = "none";
+    if (this.darkOverlay) {
+      this.darkOverlay.style.display = "none";
+    }
+  }
+
+   handleCancel() {
+    window.location.href = '/'; // Cambia '/otraPagina' por la URL a la que deseas redirigir
+  }
+
+  onSubmit(): void {
+    const isVeterinario = this.checkBox.nativeElement.checked;
+    const userType = isVeterinario ? 'veterinario' : 'cliente';
+    this.router.navigate(['/main-menu'], { queryParams: { userType } });
   }
 
   createStars() {
