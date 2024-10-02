@@ -14,6 +14,7 @@ import { EdadPipe } from './pipes/edad.pipe';
 import { ActualizarMascotaComponent } from './mascotas/actualizar-mascota/actualizar-mascota.component';
 import { MainMenuComponent } from './pagina/main-menu/main-menu.component';
 import { NavbarAuxComponent } from './pagina/navbar-aux/navbar-aux.component';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { NavbarAuxComponent } from './pagina/navbar-aux/navbar-aux.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -27,13 +27,19 @@ export class FormularioMascotaComponent {
 
   constructor(private router: Router, private mascotaService: MascotaService ) {}
 
-  agregarMascota(){
+  agregarMascota(): void {
     console.log('Agregando mascota:', this.formularioMascota);
     this.mascotaNueva = Object.assign({}, this.formularioMascota);
-      this.mascotaService.addMascota(this.formularioMascota);
-
-    this.agregarMascotaEvent.emit(this.formularioMascota);
-    this.router.navigate(['/Mascotas', this.formularioMascota]);
-
+    
+    this.mascotaService.addMascota(this.mascotaNueva.id, this.mascotaNueva).subscribe(
+      (response) => {
+        console.log('Mascota agregada con éxito', response);
+        this.agregarMascotaEvent.emit(this.formularioMascota);
+        this.router.navigate(['/Mascotas']);
+      },
+      (error) => {
+        console.error('Error al agregar la mascota', error);
+      }
+    );
   }
 }

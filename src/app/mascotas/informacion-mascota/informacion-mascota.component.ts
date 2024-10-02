@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Mascota } from '../mascotas';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { MascotaService } from 'src/app/servicio/mascota.service';
+import { mergeMap } from 'rxjs';
 
 @Component({
   selector: 'app-informacion-mascota',
@@ -15,12 +16,20 @@ export class InformacionMascotaComponent {
   constructor(
     private MascotaService:MascotaService,
     private route: ActivatedRoute,
-    private router: Router){}
-
-  ngOnInit(){
+    private router: Router,
+    
+  ){}
+  ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
       const id = Number(param.get('id'));
-      this.mascota = this.MascotaService.findById(id);
-    })
+      this.MascotaService.findById(id).subscribe(
+        (MascotaInfo) => {
+          this.mascota = MascotaInfo;
+        },
+        (error) => {
+          console.error('Error fetching Mascota info:', error);
+        }
+      );
+    });
   }
 }

@@ -12,10 +12,14 @@ export class TablaMascotaComponent {
   listaMascotas!: Mascota[];
 
     //injecciones
-    constructor(private petService: MascotaService){}
+    constructor(private mascotaService: MascotaService){}
 
     ngOnInit(): void{
-      this.listaMascotas = this.petService.findAll();
+      this.mascotaService.findAll().subscribe(
+        (mascotas) => {
+          this.listaMascotas = mascotas;
+        })
+
     }
 
     //metodos
@@ -26,11 +30,12 @@ export class TablaMascotaComponent {
 
     onAgregarMascota(mascota: Mascota){
       this.listaMascotas.push(mascota);
-      console.log('Mascota agregada:', mascota);
+      this.mascotaService.addMascota(mascota.id, mascota);
     }
 
     eliminarMascota(mascota: Mascota){
       var index = this.listaMascotas.indexOf(mascota);
       this.listaMascotas.splice(index, 1);
+      this.mascotaService.deletebyId(mascota.id); 
     }
 }

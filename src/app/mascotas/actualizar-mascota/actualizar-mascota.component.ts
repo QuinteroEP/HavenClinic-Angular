@@ -24,12 +24,20 @@ export class ActualizarMascotaComponent {
     private route: ActivatedRoute,
     private router: Router){}
 
-  ngOnInit(){
-    this.route.paramMap.subscribe(param => {
-      const id = Number(param.get('id'));
-      this.informacionParaActualizar = this.MascotaService.findById(id);
-    })
-  }
+    ngOnInit(): void {
+      this.route.paramMap.subscribe(param => {
+        const id = Number(param.get('id'));
+        this.MascotaService.findById(id).subscribe(
+          (MascotaInfo) => {
+            this.informacionParaActualizar = MascotaInfo;
+          },
+          (error) => {
+            console.error('Error fetching Mascota info:', error);
+          }
+        );
+      });
+    }
+  
 
   actualizarMascota(){
     this.router.navigate(['/Mascotas']);
