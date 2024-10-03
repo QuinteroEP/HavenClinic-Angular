@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Mascota } from '../mascotas/mascotas';
+import { Mascota } from '../entity/mascotas';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -26,5 +26,9 @@ export class MascotaService {
   }
   addMascota(id: number, mascota: Mascota): Observable<any> {
     return this.http.post('http://localhost:8090/actualizar_mascota/' + id, mascota);
+  }
+
+  findByDueñoId(id: number): Observable<Mascota[]> {
+    return this.http.get<Mascota[]>('http://localhost:8090/mascotas/mis_mascotas/' +id);
   }
 }

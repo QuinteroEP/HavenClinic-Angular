@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Mascota } from '../mascotas';
+import { Mascota } from '../../entity/mascotas';
 import { Router } from '@angular/router';
 import {MascotaService} from "../../servicio/mascota.service";
 

@@ -8,7 +8,8 @@ import {FormularioMascotaComponent} from "./mascotas/formulario-mascota/formular
 import {MainMenuComponent} from "./pagina/main-menu/main-menu.component";
 
 const routes: Routes = [
-  {path: 'Mascotas', component: TablaMascotaComponent},
+  {path: 'Mascotas/mis_mascotas', component: TablaMascotaComponent},
+  {path: 'Mascotas/all', component: TablaMascotaComponent},
   {path: '', component: LandingComponent},
   {path: 'Mascotas/informacion/:id', component: InformacionMascotaComponent},
   {path: 'Mascotas/actualizar/:id', component: ActualizarMascotaComponent},

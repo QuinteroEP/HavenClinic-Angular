@@ -7,11 +7,19 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./navbar-aux.component.css']
 })
 export class NavbarAuxComponent {
-  userType: string = 'veterinario'; // variable para almacenar el tipo de usuario
+  //userType: string = 'veterinario'; // variable para almacenar el tipo de usuario
+
+  userType: string | null = null;
 
   constructor(private router: Router, private route: ActivatedRoute, private cdr: ChangeDetectorRef ) {}
 
   navigateToMainMenu() {
     this.router.navigate(['/main-menu'], { queryParams: { userType: this.userType } });
+  }
+
+  ngOnInit(): void{
+    this.route.queryParams.subscribe(params => {
+      this.userType = params['userType'];
+    });
   }
 }

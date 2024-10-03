@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Mascota } from '../mascotas';
+import { Mascota } from '../../entity/mascotas';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { MascotaService } from 'src/app/servicio/mascota.service';
 import { mergeMap } from 'rxjs';

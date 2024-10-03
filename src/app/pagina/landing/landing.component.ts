@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 import * as $ from 'jquery';
 import {Router} from "@angular/router";
+import { Cliente } from 'src/app/entity/clientes';
 
 @Component({
   selector: 'app-landing',
@@ -20,6 +21,8 @@ export class LandingComponent implements AfterViewInit {
   constructor(private router: Router) { }
 
   private darkOverlay: HTMLElement | null = null;
+
+  public correoUsuario: String | null = null;
 
   ngAfterViewInit() {
     console.log("Script loaded");
@@ -84,6 +87,8 @@ export class LandingComponent implements AfterViewInit {
     const isVeterinario = this.checkBox.nativeElement.checked;
     const userType = isVeterinario ? 'veterinario' : 'cliente';
     this.router.navigate(['/main-menu'], { queryParams: { userType } });
+
+    console.log("Usuario: " + this.correoUsuario)
   }
 
   createStars() {

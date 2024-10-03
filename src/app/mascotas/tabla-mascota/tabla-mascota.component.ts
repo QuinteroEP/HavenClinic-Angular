@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Mascota } from '../mascotas';
+import { Mascota } from '../../entity/mascotas';
 import { MascotaService } from 'src/app/servicio/mascota.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
 export class TablaMascotaComponent {
   mascotaSelec!: Mascota;
   listaMascotas!: Mascota[];
+  userType: string = '';
 
     //injecciones
     constructor(private mascotaService: MascotaService){}
@@ -19,7 +20,6 @@ export class TablaMascotaComponent {
         (mascotas) => {
           this.listaMascotas = mascotas;
         })
-
     }
 
     //metodos

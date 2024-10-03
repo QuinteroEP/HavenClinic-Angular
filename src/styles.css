@@ -30,5 +30,9 @@ main {
   flex: 1; /* Esto asegura que el contenido principal ocupe el espacio disponible */
 }
 
+.center{
+  text-align: center;
+}
+
 
 

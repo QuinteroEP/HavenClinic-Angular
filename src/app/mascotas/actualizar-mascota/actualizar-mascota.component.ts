@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MascotaService } from 'src/app/servicio/mascota.service';
-import { Mascota } from '../mascotas';
+import { Mascota } from '../../entity/mascotas';
 
 @Component({
   selector: 'app-actualizar-mascota',
