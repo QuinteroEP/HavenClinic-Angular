@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 import * as $ from 'jquery';
 import {Router} from "@angular/router";
 import { Cliente } from 'src/app/entity/clientes';
+import { ClienteService } from 'src/app/servicio/cliente.service';
 
 @Component({
   selector: 'app-landing',
@@ -18,7 +19,9 @@ export class LandingComponent implements AfterViewInit {
   @ViewChild('cancelRegister') botonCancelRegister!: ElementRef
   @ViewChild('checkBox') checkBox!: ElementRef;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private ClienteService: ClienteService) { }
 
   private darkOverlay: HTMLElement | null = null;
 
@@ -45,6 +48,16 @@ export class LandingComponent implements AfterViewInit {
     if (this.starContainer) {
       this.createStars();
     }
+  }
+
+  onSubmit(): void {
+    const isVeterinario = this.checkBox.nativeElement.checked;
+    const userType = isVeterinario ? 'veterinario' : 'cliente';
+    this.router.navigate(['/main-menu'], { queryParams: { userType , correo: this.correoUsuario} });
+
+    this.ClienteService.findByEmail(this.correoUsuario!).subscribe(cliente =>{
+      console.log("Landing - informacion: ", cliente);
+    })
   }
 
   loginPopUp() {
@@ -80,15 +93,7 @@ export class LandingComponent implements AfterViewInit {
   }
 
    handleCancel() {
-    window.location.href = '/'; // Cambia '/otraPagina' por la URL a la que deseas redirigir
-  }
-
-  onSubmit(): void {
-    const isVeterinario = this.checkBox.nativeElement.checked;
-    const userType = isVeterinario ? 'veterinario' : 'cliente';
-    this.router.navigate(['/main-menu'], { queryParams: { userType } });
-
-    console.log("Usuario: " + this.correoUsuario)
+    window.location.href = '/';
   }
 
   createStars() {

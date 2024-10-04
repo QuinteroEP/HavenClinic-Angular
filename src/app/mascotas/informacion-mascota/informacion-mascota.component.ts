@@ -24,7 +24,8 @@ export class InformacionMascotaComponent {
       const id = Number(param.get('id'));
       this.MascotaService.findById(id).subscribe(
         (MascotaInfo) => {
-          this.mascota = MascotaInfo;
+          this.mascota = MascotaInfo
+          console.log("Foto: " + MascotaInfo.url);
         },
         (error) => {
           console.error('Error fetching Mascota info:', error);

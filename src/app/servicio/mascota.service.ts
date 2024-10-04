@@ -18,7 +18,7 @@ export class MascotaService {
   }
 
   findById(id:number):Observable<Mascota>{
-    return this.http.get<Mascota>('http://localhost:8090/mascotas/mascotascliente/'+id);
+    return this.http.get<Mascota>('http://localhost:8090/mascotas/petInfo/'+id);
   }
   deletebyId(id:number){
     console.log(id);
@@ -29,6 +29,6 @@ export class MascotaService {
   }
 
   findByDueñoId(id: number): Observable<Mascota[]> {
-    return this.http.get<Mascota[]>('http://localhost:8090/mascotas/mis_mascotas/' +id);
+    return this.http.get<Mascota[]>('http://localhost:8090/mascotas/mascotascliente/' +id);
   }
 }

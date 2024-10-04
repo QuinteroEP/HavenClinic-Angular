@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
+import { Cliente } from './entity/clientes';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,8 @@ import {Router} from "@angular/router";
 export class AppComponent {
   title = "Haven";
   constructor(private router: Router) {}
+
+  public clienteInfo: Cliente | null = null;
 
   isLandingPage(): boolean {
     return this.router.url === '/';

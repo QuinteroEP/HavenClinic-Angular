@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Mascota } from '../../entity/mascotas';
 import { MascotaService } from 'src/app/servicio/mascota.service';
+import { ActivatedRoute } from '@angular/router';
+import { param } from 'jquery';
 
 @Component({
   selector: 'app-tabla-mascota',
@@ -8,22 +10,35 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
   styleUrls: ['./tabla-mascota.component.css']
 })
 export class TablaMascotaComponent {
+  id: number = 0;
   mascotaSelec!: Mascota;
   listaMascotas!: Mascota[];
-  userType: string = '';
+  userType: string = ' ';
 
-    //injecciones
-    constructor(private mascotaService: MascotaService){}
+  //injecciones
+  constructor(
+    private route: ActivatedRoute,
+    private mascotaService: MascotaService){ this.route.queryParams.subscribe(params =>{
+      this.id = params['id'],
+      this.userType = params['userType']})
+    }
 
     ngOnInit(): void{
-      this.mascotaService.findAll().subscribe(
-        (mascotas) => {
-          this.listaMascotas = mascotas;
-        })
+      if(this.userType === 'Cliente'){
+        this.mascotaService.findByDueñoId(this.id).subscribe(
+          (mascotas) => {
+            this.listaMascotas = mascotas;
+          })
+      }
+      else if(this.userType === 'veterinario'){
+        this.mascotaService.findAll().subscribe(
+          (mascotas) => {
+            this.listaMascotas = mascotas;
+          })
+      }
     }
 
     //metodos
-
     mostrarMascota(mascota: Mascota){
       this.mascotaSelec = mascota;
     }

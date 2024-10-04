@@ -4,7 +4,7 @@
             <div class="row g-0">
                 <div class="col-md-4">
                     <ng-container *ngIf="mascota">
-                        <img [src]="mascota.url" alt="Mascot Image" id="imagenMascota" class="card-img-top rounded-start custom-img">
+                        <img [src]="mascota.url" alt="Pet Image" id={{mascota.url}} class="card-img-top rounded-start custom-img">
                     </ng-container>
                     <ng-container *ngIf="!mascota">
                         <p class="text-center p-3 custom-text">Seleccione una mascota para obtener más información</p>

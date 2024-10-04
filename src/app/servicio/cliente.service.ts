@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Cliente } from '../clientes/clientes';
+import { Cliente } from '../entity/clientes';
 
 @Injectable({
   providedIn: 'root'
@@ -37,8 +37,9 @@ export class ClienteService {
     );
   }
 
-
-
+  findByEmail(correo:String): Observable<Cliente>{
+    return this.http.get<Cliente>('http://localhost:8090/cliente/findEmail/' + encodeURIComponent(correo.toString()))
+    }
   }
 
 
