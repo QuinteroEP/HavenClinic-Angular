@@ -37,10 +37,11 @@ export class ActualizarMascotaComponent {
         );
       });
     }
-  
+
 
   actualizarMascota(){
-    this.router.navigate(['/Mascotas']);
+    console.log("Actualizando informacion: " + this.informacionParaActualizar.id)
+    this.MascotaService.actualizar(this.informacionParaActualizar).subscribe()
   }
 
 }

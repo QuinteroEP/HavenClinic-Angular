@@ -25,17 +25,17 @@ export class FormularioMascotaComponent {
     descripcion:"",
   }
 
-  constructor(private router: Router, private mascotaService: MascotaService ) {}
+  constructor(private router: Router, private mascotaService: MascotaService ) { }
 
   agregarMascota(): void {
     console.log('Agregando mascota:', this.formularioMascota);
     this.mascotaNueva = Object.assign({}, this.formularioMascota);
-    
+
     this.mascotaService.addMascota(this.mascotaNueva.id, this.mascotaNueva).subscribe(
       (response) => {
         console.log('Mascota agregada con éxito', response);
         this.agregarMascotaEvent.emit(this.formularioMascota);
-        this.router.navigate(['/Mascotas']);
+        this.router.navigate(['/Mascotas/all'], { queryParams: { userType: "veterinario" }});
       },
       (error) => {
         console.error('Error al agregar la mascota', error);

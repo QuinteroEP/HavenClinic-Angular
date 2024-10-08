@@ -24,7 +24,7 @@ export class TablaMascotaComponent {
     }
 
     ngOnInit(): void{
-      if(this.userType === 'Cliente'){
+      if(this.userType === 'cliente'){
         this.mascotaService.findByDueñoId(this.id).subscribe(
           (mascotas) => {
             this.listaMascotas = mascotas;
@@ -51,6 +51,6 @@ export class TablaMascotaComponent {
     eliminarMascota(mascota: Mascota){
       var index = this.listaMascotas.indexOf(mascota);
       this.listaMascotas.splice(index, 1);
-      this.mascotaService.deletebyId(mascota.id); 
+      this.mascotaService.deletebyId(mascota.id);
     }
 }
