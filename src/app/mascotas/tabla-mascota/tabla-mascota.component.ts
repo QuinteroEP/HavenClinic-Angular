@@ -24,7 +24,7 @@ export class TablaMascotaComponent {
     }
 
     ngOnInit(): void{
-      if(this.userType === 'Cliente'){
+      if(this.userType === 'cliente'){
         this.mascotaService.findByDueñoId(this.id).subscribe(
           (mascotas) => {
             this.listaMascotas = mascotas;
