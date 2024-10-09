@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MascotaService } from 'src/app/servicio/mascota.service';
-import { Mascota } from '../mascotas';
+import { Mascota } from '../../entity/mascotas';
 
 @Component({
   selector: 'app-actualizar-mascota',
@@ -24,15 +24,29 @@ export class ActualizarMascotaComponent {
     private route: ActivatedRoute,
     private router: Router){}
 
-  ngOnInit(){
-    this.route.paramMap.subscribe(param => {
-      const id = Number(param.get('id'));
-      this.informacionParaActualizar = this.MascotaService.findById(id);
-    })
-  }
+    ngOnInit(): void {
+      this.route.paramMap.subscribe(param => {
+        const id = Number(param.get('id'));
+        this.MascotaService.findById(id).subscribe(
+          (MascotaInfo) => {
+            this.informacionParaActualizar = MascotaInfo;
+          },
+          (error) => {
+            console.error('Error fetching Mascota info:', error);
+          }
+        );
+      });
+    }
 
-  actualizarMascota(){
-    this.router.navigate(['/Mascotas']);
+
+  actualizarMascota():void{
+    console.log("Actualizando informacion: " + this.informacionParaActualizar.id)
+    this.MascotaService.actualizar(this.informacionParaActualizar).subscribe(
+      (response)=>{
+        console.log("Mascota actualizada con exito", response);
+        this.router.navigate(['/Mascotas/all'], { queryParams: { userType: "veterinario" }});
+      },
+    )
   }
 
 }

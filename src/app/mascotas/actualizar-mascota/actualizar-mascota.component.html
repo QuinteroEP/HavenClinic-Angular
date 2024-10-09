@@ -1,37 +1,47 @@
-<p>Actualizar Informacion</p>
-<br>
+<section class="container">
+  <div class="main">
+    <div class="detail">
+      <h1>Actualizar Información</h1>
+      <form class="form">
+        <p class="title">Actualizar Mascota</p>
+        <p class="message">Complete el formulario para actualizar la información de la mascota.</p>
+        <div class="form-columns">
+          <div class="column">
+            <label>
+              <input class="input" type="text" id="nombre" name="nombre" [(ngModel)]="informacionParaActualizar.nombre" required>
+              <span>Nombre de la Mascota</span>
+            </label>
+            <label>
+              <input class="input" type="number" id="edad" name="edad" [(ngModel)]="informacionParaActualizar.edad" required>
+              <span>Edad</span>
+            </label>
+            <label>
+              <input class="input" type="text" id="raza" name="raza" [(ngModel)]="informacionParaActualizar.raza" required>
+              <span>Raza</span>
+            </label>
 
-<div id="formulario">
-    <form>  
-        <label for="nombre">Nombre</label>
-        <br>
-        <input type="text" id="nombre" name="nombre" [(ngModel)]="informacionParaActualizar.nombre">
-        <br>
-
-        <label for="edad">Edad</label>
-        <br>
-        <input type="number" id="edad" name="edad" [(ngModel)]="informacionParaActualizar.edad">
-        <br>    
-        
-        <label for="genero">Genero</label>
-        <br>
-        <input type="text" id="genero" name="genero" [(ngModel)]="informacionParaActualizar.genero">
-        <br>
-        
-        <label for="raza">Raza</label>
-        <br>
-        <input type="text" id="raza" name="raza" [(ngModel)]="informacionParaActualizar.raza">
-        <br>
-        
-        <label for="condicion">Condicion medica</label>
-        <br>
-        <input type="text" id="condicion" name="condicion" [(ngModel)]="informacionParaActualizar.condicion">
-        <br>
-        
-        <label for="descripcion">Descripcion</label>
-        <br>
-        <textarea name="descripcion" rows="4" cols="50" [(ngModel)]="informacionParaActualizar.descripcion"></textarea>
-    </form>
-
-    <button (click)="actualizarMascota()" >Actualizar Informacion</button>
-</div>
+          </div>
+          <div class="column">
+            <label>
+              <input class="input" type="text" id="genero" name="genero" [(ngModel)]="informacionParaActualizar.genero" required>
+              <span>Género</span>
+            </label>
+            <label>
+              <input class="input" type="text" id="condicion" name="condicion" [(ngModel)]="informacionParaActualizar.condicion" required>
+              <span>Condición Médica</span>
+            </label>
+            <label>
+              <input class="input" type="text" id="descripcion" name="descripcion" [(ngModel)]="informacionParaActualizar.descripcion" required>
+              <span>Descripción</span>
+            </label>
+          </div>
+        </div>
+         <label>
+              <input class="input" type="text" id="url" name="url" [(ngModel)]="informacionParaActualizar.url">
+              <span>URL de la Imagen</span>
+            </label>
+        <button class="submit" (click)="actualizarMascota()">Actualizar Información</button>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,35 +1,32 @@
-<p>Mascotas Registradas</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Edad</th>
-            <th scope="col">Raza</th>
-            <th scope="col">Genero</th>
-            <th scope="col">Condicion Medica</th>
-            <th scope="col"></th>
-        </tr>
+<p class="h4 text-center my-4">Mascotas Registradas</p>
+<div class="container">
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th class="center"scope="col">Nombre</th>
+        <th class="center"scope="col">Edad</th>
+        <th class="center"scope="col">Raza</th>
+        <th class="center"scope="col">Género</th>
+        <th class="center"scope="col">Condición Médica</th>
+        <th scope="col">Acciones</th>
+      </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let pet of listaMascotas">
-            <td>{{ pet.nombre }}</td>
-            <td>{{ pet.edad | edad}}</td>
-            <td>{{ pet.raza }}</td>
-            <td>{{ pet.genero }}</td>
-            <td>{{ pet.condicion }}</td>
-            <td>
-                <a [routerLink]="['/Mascotas/informacion', pet.id]">
-                    <button class="btn btn-primary">Mas Informacion</button>
-                </a>
-
-                <a [routerLink]="['/Mascotas/actualizar', pet.id]">
-                <button>Actualizar</button>
-                </a>
-
-                <button (click)="eliminarMascota(pet)" >Eliminar</button>
-            </td>
-        </tr>
+      <tr *ngFor="let pet of listaMascotas">
+        <td class="center">{{ pet.nombre }}</td>
+        <td class="center">{{ pet.edad | edad }}</td>
+        <td class="center">{{ pet.raza }}</td>
+        <td class="center">{{ pet.genero }}</td>
+        <td class="center">{{ pet.condicion }}</td>
+        <td>
+          <a [routerLink]="['/Mascotas/informacion', pet.id]" class="btn btn-info btn-sm me-2">Más Información</a>
+          <a *ngIf="userType === 'veterinario'" [routerLink]="['/Mascotas/actualizar', pet.id]" class="btn btn-warning btn-sm me-2">Actualizar</a>
+          <button *ngIf="userType === 'veterinario'" (click)="eliminarMascota(pet)" class="btn btn-danger btn-sm">Eliminar</button>
+        </td>
+      </tr>
     </tbody>
-</table>
-
-<app-formulario-mascota (agregarMascotaEvent)="agregarMascota($event)" ></app-formulario-mascota>
+  </table>
+</div>
+<div class="container text-center mb-4">
+  <a *ngIf="userType === 'veterinario'" [routerLink]="['/Mascotas/agregar']" class="btn btn-success btn-lg animate-btn">Registrar Nueva Mascota</a>
+</div>

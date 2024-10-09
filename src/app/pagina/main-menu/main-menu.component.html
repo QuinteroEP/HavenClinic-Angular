@@ -1,0 +1,52 @@
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<section class="container">
+  <div class="main">
+    <div class="images">
+      <img src="assets/images/LogoTrans.png" alt="" class="img-w">
+      <span class="bg-effect-1">
+                <span class="bg-effect-1"></span>
+            </span>
+    </div>
+    <div class="detail">
+
+
+      <div *ngIf="userType === 'veterinario'">
+        <h3>Hola, soy</h3>
+        <h1><span style="color:#754b36;">{{vetInfo?.nombre}}</span></h1>
+        <p> Soy un veterinario profesional y con mucha experiencia. Hago parte del equipo de Haven y me encanta cuidar a los animales. </p>
+
+      </div>
+      <div *ngIf="userType === 'cliente'">
+        <h3>Bienvenido</h3>
+        <h1><span style="color:#754b36;">{{clienteInfo?.nombre}}</span></h1>
+        <p> Sus mascotas está en buenas manos con nuestro equipo de veterinarios profesionales. En la clinica veterinaria Haven, ofrecemos solo un servicio de alta calidad. </p>
+      </div>
+    <div class="social">
+        <a href="https://www.linkedin.com/in/vikash-web-dev/" style="--socialAni:1"><i class='bx bxl-linkedin'></i></a>
+        <a href="https://www.instagram.com/web_devs__/" style="--socialAni:2"><i class='bx bxl-instagram'></i></a>
+        <a href="https://github.com/QuinteroEP/HavenClinic" style="--socialAni:3"><i class='bx bxl-github'></i></a>
+        <a href="https://www.youtube.com/@Web_Devs__" style="--socialAni:4"><i class='bx bxl-youtube'></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const body = document.body;
+  const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+  if (isDarkMode) {
+    body.classList.add('dark-mode');
+    darkModeToggle.checked = true;
+  }
+  darkModeToggle.addEventListener('change', () => {
+    if (darkModeToggle.checked) {
+      body.classList.add('dark-mode');
+      localStorage.setItem('darkMode', 'enabled');
+    } else {
+      body.classList.remove('dark-mode');
+      localStorage.setItem('darkMode', 'disabled');
+    }
+  });
+</script>

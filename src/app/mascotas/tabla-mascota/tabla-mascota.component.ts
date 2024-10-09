@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { Mascota } from '../mascotas';
+import { Mascota } from '../../entity/mascotas';
 import { MascotaService } from 'src/app/servicio/mascota.service';
+import { ActivatedRoute } from '@angular/router';
+import { param } from 'jquery';
 
 @Component({
   selector: 'app-tabla-mascota',
@@ -8,29 +10,47 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
   styleUrls: ['./tabla-mascota.component.css']
 })
 export class TablaMascotaComponent {
+  id: number = 0;
   mascotaSelec!: Mascota;
-
   listaMascotas!: Mascota[];
+  userType: string = ' ';
 
-    //injecciones
-    constructor(private petService: MascotaService){}
+  //injecciones
+  constructor(
+    private route: ActivatedRoute,
+    private mascotaService: MascotaService){ this.route.queryParams.subscribe(params =>{
+      this.id = params['id'],
+      this.userType = params['userType']})
+    }
 
     ngOnInit(): void{
-      this.listaMascotas = this.petService.findAll();
+      if(this.userType === 'cliente'){
+        this.mascotaService.findByDueñoId(this.id).subscribe(
+          (mascotas) => {
+            this.listaMascotas = mascotas;
+          })
+      }
+      else if(this.userType === 'veterinario'){
+        this.mascotaService.findAll().subscribe(
+          (mascotas) => {
+            this.listaMascotas = mascotas;
+          })
+      }
     }
 
     //metodos
-
     mostrarMascota(mascota: Mascota){
       this.mascotaSelec = mascota;
     }
 
-    agregarMascota(mascota: Mascota){
+    onAgregarMascota(mascota: Mascota){
       this.listaMascotas.push(mascota);
+      this.mascotaService.addMascota(mascota.id, mascota);
     }
 
     eliminarMascota(mascota: Mascota){
       var index = this.listaMascotas.indexOf(mascota);
       this.listaMascotas.splice(index, 1);
+      this.mascotaService.deletebyId(mascota.id);
     }
 }

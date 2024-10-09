@@ -1,5 +1,7 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="isLandingPage()"></app-navbar>
+<app-navbar-aux [clienteInfo]="clienteInfo" *ngIf="!isLandingPage()"></app-navbar-aux>
 
 <router-outlet></router-outlet>
 
-<app-footer></app-footer>
+<app-footer *ngIf="isLandingPage()"></app-footer>
+
