@@ -18,18 +18,29 @@ export class TablaClienteComponent {
     listaClientes!: Cliente[]
 
     ngOnInit(): void{
-      /*
-      if(this.userType === 'cliente'){
-        this.mascotaService.findByDueñoId(this.id).subscribe(
-          (mascotas) => {
-            this.listaMascotas = mascotas;
-          })
-      }*/
-
+  
           this.clienteService.findAll().subscribe(
             (clientes) => {
               this.listaClientes = clientes;
             }
           )
     }
+
+    //metodos
+    eliminarCliente(cliente:Cliente){
+      var index = this.listaClientes.indexOf(cliente);
+      this.listaClientes.splice(index, 1);
+      console.log("cedula cliente eliminado: " + cliente.cedula);
+      this.clienteService.deleteByCedula(cliente.cedula);
+    }
+
+
+
+
+
+
+
+
+
+
 }

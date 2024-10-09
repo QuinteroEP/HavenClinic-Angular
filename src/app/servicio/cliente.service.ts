@@ -20,9 +20,9 @@ export class ClienteService {
     return this.http.get<Cliente>('http://localhost:8090/cliente/find/'+ cedula);
   }
 
-  deletebyId(cedula:number){
+  deleteByCedula(cedula:number){
     console.log(cedula);
-    this.http.delete( 'http://localhost:8090/eliminarCliente/'+ cedula).subscribe();
+    this.http.delete( 'http://localhost:8090/cliente/eliminarCliente/'+ cedula).subscribe();
   }
 
   addCliente(id:number, cliente:Cliente){
