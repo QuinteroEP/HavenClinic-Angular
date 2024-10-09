@@ -10,6 +10,7 @@ export class MascotaService {
 
   constructor(
     private http: HttpClient
+
   ) { }
 
 
@@ -20,9 +21,9 @@ export class MascotaService {
   findById(id:number):Observable<Mascota>{
     return this.http.get<Mascota>('http://localhost:8090/mascotas/petInfo/'+id);
   }
-  deletebyId(id:number){
+  deleteById(id:number){
     console.log(id);
-    this.http.delete( 'http://localhost:8090/delete/'+id).subscribe();
+   this.http.delete('http://localhost:8090/mascotas/deletePet/'+id).subscribe();
   }
   addMascota(id: number, mascota: Mascota): Observable<any> {
     return this.http.post('http://localhost:8090/mascotas/addPet/'+2, mascota);
