@@ -14,7 +14,9 @@ import { EdadPipe } from './pipes/edad.pipe';
 import { ActualizarMascotaComponent } from './mascotas/actualizar-mascota/actualizar-mascota.component';
 import { MainMenuComponent } from './pagina/main-menu/main-menu.component';
 import { NavbarAuxComponent } from './pagina/navbar-aux/navbar-aux.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { TablaClienteComponent } from './clientes/tabla-cliente/tabla-cliente.component';
+import { InformacionClienteComponent } from './clientes/informacion-cliente/informacion-cliente.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +30,8 @@ import {HttpClientModule} from '@angular/common/http';
     ActualizarMascotaComponent,
     MainMenuComponent,
     NavbarAuxComponent,
+    TablaClienteComponent,
+    InformacionClienteComponent,
   ],
   imports: [
     BrowserModule,

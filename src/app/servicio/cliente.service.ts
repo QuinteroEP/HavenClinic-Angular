@@ -17,7 +17,7 @@ export class ClienteService {
 
   }
   findById(cedula:number): Observable<Cliente>{
-    return this.http.get<Cliente>('http://localhost:8090/find/'+ cedula);
+    return this.http.get<Cliente>('http://localhost:8090/cliente/find/'+ cedula);
   }
 
   deletebyId(cedula:number){

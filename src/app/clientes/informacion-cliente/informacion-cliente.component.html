@@ -1,0 +1,27 @@
+<main>
+    <div class="container mt-5">
+        <div class="card shadow-lg custom-card">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <ng-container *ngIf="!cliente">
+                        <p class="text-center p-3 custom-text">Seleccione un cliente para obtener más información</p>
+                    </ng-container>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-header custom-header">
+                        <ng-container *ngIf="cliente">
+                            <h3>{{cliente.nombre}}</h3>
+                        </ng-container>
+                    </div>
+                    <div class="card-body custom-body">
+                        <ng-container *ngIf="cliente">
+                            <p class="card-text">Correo: <span>{{cliente.correo}}</span></p>
+                            <p class="card-text">Celular: <span>{{cliente.celular}}</span></p>
+                            <p class="card-text">Cedula: <span>{{cliente.cedula}}</span></p>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
