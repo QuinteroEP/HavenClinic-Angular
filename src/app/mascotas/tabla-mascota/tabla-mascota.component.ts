@@ -51,6 +51,7 @@ export class TablaMascotaComponent {
     eliminarMascota(mascota: Mascota){
       var index = this.listaMascotas.indexOf(mascota);
       this.listaMascotas.splice(index, 1);
-      this.mascotaService.deletebyId(mascota.id);
+      console.log("Id mascota eliminada: " + mascota.id);
+      this.mascotaService.deleteById(mascota.id);
     }
 }
