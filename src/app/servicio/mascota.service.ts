@@ -32,7 +32,7 @@ export class MascotaService {
     return this.http.get<Mascota[]>('http://localhost:8090/mascotas/mascotascliente/' +id);
   }
 
-  actualizar(MascotaAct: Mascota): Observable<any> {
-    return this.http.put('http://localhost:8090/mascotas/actualizar_mascota/'+MascotaAct.id, MascotaAct);
+  actualizar(MascotaAct: Mascota): Observable<Mascota> {
+    return this.http.put<Mascota>('http://localhost:8090/mascotas/actualizar_mascota/'+MascotaAct.id, MascotaAct);
   }
 }

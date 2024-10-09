@@ -39,9 +39,14 @@ export class ActualizarMascotaComponent {
     }
 
 
-  actualizarMascota(){
+  actualizarMascota():void{
     console.log("Actualizando informacion: " + this.informacionParaActualizar.id)
-    this.MascotaService.actualizar(this.informacionParaActualizar).subscribe()
+    this.MascotaService.actualizar(this.informacionParaActualizar).subscribe(
+      (response)=>{
+        console.log("Mascota actualizada con exito", response);
+        this.router.navigate(['/Mascotas/all'], { queryParams: { userType: "veterinario" }});
+      },
+    )
   }
 
 }
