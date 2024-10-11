@@ -20,7 +20,7 @@ export class InformacionClienteComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
       const cedula = Number(param.get('cedula'));
-      this.ClienteService.findById(cedula).subscribe(
+      this.ClienteService.findByCedula(cedula).subscribe(
         (clienteInfo) => {
           this.cliente = clienteInfo
         },

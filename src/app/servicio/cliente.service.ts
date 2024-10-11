@@ -16,7 +16,7 @@ export class ClienteService {
     return this.http.get<Cliente[]>('http://localhost:8090/cliente/all');
 
   }
-  findById(cedula:number): Observable<Cliente>{
+  findByCedula(cedula:number): Observable<Cliente>{
     return this.http.get<Cliente>('http://localhost:8090/cliente/find/'+ cedula);
   }
 
@@ -38,7 +38,11 @@ export class ClienteService {
   }
 
   findByEmail(correo:String): Observable<Cliente>{
-    return this.http.get<Cliente>('http://localhost:8090/cliente/findEmail/' + encodeURIComponent(correo.toString()))
+    return this.http.get<Cliente>('http://localhost:8090/cliente/findEmail/' + correo.toString());
+    }
+
+    actualizarCliente(clienteAct: Cliente):Observable<Cliente>{
+      return this.http.put<Cliente>('http://localhost:8090/cliente/update', clienteAct);
     }
   }
 

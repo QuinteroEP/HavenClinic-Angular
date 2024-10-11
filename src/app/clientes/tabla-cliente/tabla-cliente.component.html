@@ -18,7 +18,7 @@
         <td class="center">{{ cliente.cedula }}</td>
         <td>
           <a [routerLink]="['/cliente/informacion', cliente.cedula]" class="btn btn-info btn-sm me-2">Más Información</a>
-          <a [routerLink]="['/cliente/actualizar', cliente.id]" class="btn btn-warning btn-sm me-2">Actualizar</a>
+          <a [routerLink]="['/cliente/actualizar', cliente.cedula]" class="btn btn-warning btn-sm me-2">Actualizar</a>
           <button  (click)="eliminarCliente(cliente)" class="btn btn-danger btn-sm">Eliminar</button>
      
         </td>

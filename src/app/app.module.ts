@@ -17,6 +17,7 @@ import { NavbarAuxComponent } from './pagina/navbar-aux/navbar-aux.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TablaClienteComponent } from './clientes/tabla-cliente/tabla-cliente.component';
 import { InformacionClienteComponent } from './clientes/informacion-cliente/informacion-cliente.component';
+import { ActualizarClienteComponent } from './clientes/actualizar-cliente/actualizar-cliente.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { InformacionClienteComponent } from './clientes/informacion-cliente/info
     NavbarAuxComponent,
     TablaClienteComponent,
     InformacionClienteComponent,
+    ActualizarClienteComponent,
   ],
   imports: [
     BrowserModule,

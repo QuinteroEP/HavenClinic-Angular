@@ -4,5 +4,5 @@ export interface Cliente{
     cedula:number;
     celular:number;
     correo:string;
-    contraseña:string;
+    contrasena:string;
 }
