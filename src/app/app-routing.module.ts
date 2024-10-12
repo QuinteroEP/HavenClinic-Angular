@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'cliente/informacion/:cedula', component: InformacionClienteComponent},
   {path: 'Mascotas/informacion/:id', component: InformacionMascotaComponent},
   {path: 'Mascotas/actualizar/:id', component: ActualizarMascotaComponent},
-  {path: 'cliente/actualizar/:id', component: ActualizarClienteComponent},
+  {path: 'cliente/actualizar/:cedula', component: ActualizarClienteComponent},
   {path: 'Mascotas/agregar', component: FormularioMascotaComponent},
   {path: 'main-menu', component: MainMenuComponent },
 

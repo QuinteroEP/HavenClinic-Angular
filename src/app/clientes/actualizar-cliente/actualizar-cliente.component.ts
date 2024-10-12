@@ -15,8 +15,10 @@ export class ActualizarClienteComponent {
     cedula: 0,
     celular: 0,
     correo: '',
-    contrasena: '',
+    contraseña: '',
   };
+
+  pass: string = '';
 
   constructor(
     private clienteService: ClienteService,
@@ -25,11 +27,13 @@ export class ActualizarClienteComponent {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((param) => {
+    this.route.paramMap.subscribe(param => {
       const cedula = Number(param.get('cedula'));
       this.clienteService.findByCedula(cedula).subscribe(
         (ClienteInfo) => {
           this.informacionClienteParaActualizar = ClienteInfo;
+          this.pass = ClienteInfo.contraseña
+          //Se debe guardar la contraseña en la variable pass porque Angular no reconoce la Ñ
         },
         (error) => {
           console.error('Error fetching Cliente info:', error);
@@ -40,7 +44,9 @@ export class ActualizarClienteComponent {
 
   actualizarCliente(): void {
     console.log('Actualizando informacion: ' + this.informacionClienteParaActualizar.id);
-    this.clienteService.actualizarCliente(this.informacionClienteParaActualizar).subscribe(
+    this.informacionClienteParaActualizar.contraseña = this.pass;
+    //se regresa de pass a contraseña
+    this.clienteService.actualizarCliente(this.informacionClienteParaActualizar.id ,this.informacionClienteParaActualizar).subscribe(
       (response) => {
         console.log('Cliente actualizado con exito', response);
         this.router.navigate(['/cliente/all'], { queryParams: { userType: 'veterinario' } });

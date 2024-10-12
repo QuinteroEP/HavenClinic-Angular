@@ -34,5 +34,15 @@ main {
   text-align: center;
 }
 
+.outline{
+  border: solid black 1px;
+}
 
+.smooth-outline{
+  border: solid darkgrey 1px;
+  border-radius: 10px;
+}
 
+.bold{
+  font-weight: bold;
+}

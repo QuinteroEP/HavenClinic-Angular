@@ -24,8 +24,6 @@ export class TablaClienteComponent {
       this.userType = params['userType']})
     }
 
-    
-
     ngOnInit(): void{
   
           this.clienteService.findAll().subscribe(

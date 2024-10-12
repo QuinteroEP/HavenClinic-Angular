@@ -41,8 +41,8 @@ export class ClienteService {
     return this.http.get<Cliente>('http://localhost:8090/cliente/findEmail/' + correo.toString());
     }
 
-    actualizarCliente(clienteAct: Cliente):Observable<Cliente>{
-      return this.http.put<Cliente>('http://localhost:8090/cliente/update', clienteAct);
+    actualizarCliente(id: number, clienteAct: Cliente):Observable<Cliente>{
+      return this.http.put<Cliente>('http://localhost:8090/cliente/update/' + id, clienteAct);
     }
   }
 
