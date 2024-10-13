@@ -19,10 +19,13 @@
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
     "@popperjs/core": "^2.11.8",
+    "@types/chart.js": "^2.9.41",
     "bootstrap": "^5.3.3",
+    "chart.js": "^4.4.4",
     "haven-angular": "file:",
     "jquery": "^3.7.1",
     "rxjs": "~7.8.0",
+    "simple-datatables": "^9.2.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

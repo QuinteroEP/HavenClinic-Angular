@@ -18,6 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { TablaClienteComponent } from './clientes/tabla-cliente/tabla-cliente.component';
 import { InformacionClienteComponent } from './clientes/informacion-cliente/informacion-cliente.component';
 import { ActualizarClienteComponent } from './clientes/actualizar-cliente/actualizar-cliente.component';
+import { AdminFooterComponent } from './adminHome/admin-footer/admin-footer.component';
+import { AdminHeaderComponent } from './adminHome/admin-header/admin-header.component';
+import { AdminMainComponent } from './adminHome/admin-main/admin-main.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +37,10 @@ import { ActualizarClienteComponent } from './clientes/actualizar-cliente/actual
     TablaClienteComponent,
     InformacionClienteComponent,
     ActualizarClienteComponent,
+    AdminFooterComponent,
+    AdminHeaderComponent,
+    AdminMainComponent,
+
   ],
   imports: [
     BrowserModule,

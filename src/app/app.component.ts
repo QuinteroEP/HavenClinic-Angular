@@ -16,4 +16,7 @@ export class AppComponent {
   isLandingPage(): boolean {
     return this.router.url === '/';
   }
+  isAdminPage(): boolean {
+    return this.router.url === '/admin';
+  }
 }
