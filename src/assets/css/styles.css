@@ -10891,7 +10891,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #000;
+  background: #000000;
   z-index: 1037;
   opacity: 0.5;
   transition: opacity 0.3s ease-in-out;
@@ -11046,6 +11046,35 @@ body {
 .sb-sidenav-dark .sb-sidenav-footer {
   background-color: #343a40;
 }
+/*
+.sb-sidenav-dark {
+  background-color: var(--color-principal);
+  color: rgba(255, 255, 255, 0.5);
+}
+.sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
+  color: rgba(255, 255, 255, 0.25);
+}
+.sb-sidenav-dark .sb-sidenav-menu .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+}
+.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-nav-link-icon {
+  color: rgba(255, 255, 255, 0.25);
+}
+.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
+  color: rgba(255, 255, 255, 0.25);
+}
+.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
+  color: var(--color-texto);
+}
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
+  color: var(--color-texto);
+}
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
+  color: var(--color-texto);
+}
+.sb-sidenav-dark .sb-sidenav-footer {
+  background-color: var(--color-secundario);
+}*/
 
 .sb-sidenav-light {
   background-color: #f8f9fa;

@@ -7,6 +7,11 @@ import { Component, AfterViewInit } from '@angular/core';
 })
 export class AdminHeaderComponent implements AfterViewInit {
 
+  /**
+   * Hook del ciclo de vida que se llama después de que la vista de un componente ha sido completamente inicializada.
+   * Este método verifica si la ruta actual es '/admin' y agrega un listener de evento de clic
+   * al botón de toggle de la barra lateral para manejar el estado de toggle de la barra lateral.
+   */
   ngAfterViewInit() {
     if (window.location.pathname === '/admin') {
       const sidebarToggle = document.body.querySelector('#sidebarToggle') as HTMLElement;

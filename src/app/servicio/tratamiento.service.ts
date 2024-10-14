@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Tratamiento } from '../tratamientos/tratamientos';
+import { Tratamiento } from '../entity/tratamientos';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +19,5 @@ export class TratamientoService {
     return tratamiento;
   }
 
-  
+
 }
