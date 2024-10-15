@@ -26,11 +26,31 @@ export class InformacionMascotaComponent {
         (MascotaInfo) => {
           this.mascota = MascotaInfo
           console.log("Foto: " + MascotaInfo.url);
+          console.log(this.mascota)
         },
         (error) => {
           console.error('Error fetching Mascota info:', error);
         }
       );
     });
+  }
+
+  administrarTratamiento(mascota: Mascota){
+    this.MascotaService.switchTratamiento(mascota.id).subscribe(
+      (updatedMascota: Mascota) => {
+          mascota.enTratamiento = updatedMascota.enTratamiento;
+      },
+      (error) => {
+          console.error('Error updating Mascota:', error);
+      }
+    );
+  }
+
+  modificarTratamiento(mascota: Mascota){
+    console.log("Modificar")
+  }
+
+  generarTratamiento(mascota: Mascota){
+    console.log("Generar")
   }
 }

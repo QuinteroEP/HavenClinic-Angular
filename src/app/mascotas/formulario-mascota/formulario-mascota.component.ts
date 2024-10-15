@@ -23,6 +23,7 @@ export class FormularioMascotaComponent {
     genero:"",
     condicion:"",
     descripcion:"",
+    enTratamiento: false,
   }
 
   constructor(private router: Router, private mascotaService: MascotaService ) { }

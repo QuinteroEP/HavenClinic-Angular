@@ -21,6 +21,7 @@ import { ActualizarClienteComponent } from './clientes/actualizar-cliente/actual
 import { AdminFooterComponent } from './adminHome/admin-footer/admin-footer.component';
 import { AdminHeaderComponent } from './adminHome/admin-header/admin-header.component';
 import { AdminMainComponent } from './adminHome/admin-main/admin-main.component';
+import { FormularioTratamientoComponent } from './tratamientos/formulario-tratamiento/formulario-tratamiento.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { AdminMainComponent } from './adminHome/admin-main/admin-main.component'
     AdminFooterComponent,
     AdminHeaderComponent,
     AdminMainComponent,
+    FormularioTratamientoComponent,
 
   ],
   imports: [

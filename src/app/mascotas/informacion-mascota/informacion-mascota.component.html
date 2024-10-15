@@ -24,6 +24,19 @@
                             <br>
                             <p class="card-text">Descripción:</p>
                             <p class="card-text"><span>{{mascota.descripcion}}</span></p>
+                            <br>
+                            <div>
+                                <ng-container *ngIf='mascota.enTratamiento'> 
+                                    <p class="center, bold">Estado: En Tratamiento</p>
+                                    <button class="btn btn-success btn-lg animate-btn" (click)="administrarTratamiento(mascota)">Administar Tratamiento</button>
+                                    <a [routerLink]="['/Mascotas/tratamiento/modificar', mascota.id]" class="btn btn-info animate-btn">Modificar Tratamiento</a>
+                                </ng-container>
+                                
+                                <ng-container *ngIf='!mascota.enTratamiento'> 
+                                    <p class="center, bold">Estado: No En Tratamiento</p>
+                                    <button class="btn btn-success btn-lg animate-btn" (click)="generarTratamiento(mascota)">Generar Tratamiento</button>
+                                </ng-container>
+                            </div>
                         </ng-container>
                     </div>
                 </div>

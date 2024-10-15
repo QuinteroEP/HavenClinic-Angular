@@ -9,7 +9,8 @@ import { ActualizarMascotaComponent } from './mascotas/actualizar-mascota/actual
 import { ActualizarClienteComponent } from './clientes/actualizar-cliente/actualizar-cliente.component';
 import { FormularioMascotaComponent } from "./mascotas/formulario-mascota/formulario-mascota.component";
 import { MainMenuComponent } from "./pagina/main-menu/main-menu.component";
-import {AdminMainComponent} from "./adminHome/admin-main/admin-main.component";
+import { AdminMainComponent } from "./adminHome/admin-main/admin-main.component";
+import { FormularioTratamientoComponent } from './tratamientos/formulario-tratamiento/formulario-tratamiento.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
@@ -21,9 +22,9 @@ const routes: Routes = [
   {path: 'Mascotas/actualizar/:id', component: ActualizarMascotaComponent},
   {path: 'cliente/actualizar/:cedula', component: ActualizarClienteComponent},
   {path: 'Mascotas/agregar', component: FormularioMascotaComponent},
+  {path: 'Mascotas/tratamiento/modificar/:id', component: FormularioTratamientoComponent},
   {path: 'main-menu', component: MainMenuComponent },
   {path: "admin", component: AdminMainComponent}
-
 ];
 
 @NgModule({

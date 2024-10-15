@@ -16,7 +16,7 @@ export class ActualizarMascotaComponent {
     raza: '',
     genero: '',
     condicion: '',
-    descripcion: ''
+    descripcion: '',
   };
 
   constructor(

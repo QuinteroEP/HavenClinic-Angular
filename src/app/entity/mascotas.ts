@@ -1,3 +1,5 @@
+import { Tratamiento } from "./tratamientos";
+
 export interface Mascota{
     id:number;
     nombre:string;
@@ -7,4 +9,6 @@ export interface Mascota{
     genero:string;
     condicion:string;
     descripcion?:string;
+    enTratamiento?:boolean;
+    tratamiento?: Tratamiento;
 }
