@@ -39,15 +39,18 @@ export class TablaMascotaComponent {
     }
 
     //metodos
+    //no se usa
     mostrarMascota(mascota: Mascota){
       this.mascotaSelec = mascota;
     }
 
+    //no se usa
     onAgregarMascota(mascota: Mascota){
       this.listaMascotas.push(mascota);
       this.mascotaService.addMascota(mascota.id, mascota);
     }
 
+    //funcion para eliminar el cliente en el service
     eliminarMascota(mascota: Mascota){
       var index = this.listaMascotas.indexOf(mascota);
       this.listaMascotas.splice(index, 1);

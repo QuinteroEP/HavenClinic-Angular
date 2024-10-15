@@ -17,6 +17,20 @@ import { NavbarAuxComponent } from './pagina/navbar-aux/navbar-aux.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TablaClienteComponent } from './clientes/tabla-cliente/tabla-cliente.component';
 import { InformacionClienteComponent } from './clientes/informacion-cliente/informacion-cliente.component';
+<<<<<<< Updated upstream
+=======
+import { ActualizarClienteComponent } from './clientes/actualizar-cliente/actualizar-cliente.component';
+import { AdminFooterComponent } from './adminHome/admin-footer/admin-footer.component';
+import { AdminHeaderComponent } from './adminHome/admin-header/admin-header.component';
+import { AdminMainComponent } from './adminHome/admin-main/admin-main.component';
+import { FormularioClienteComponent } from './clientes/formulario-cliente/formulario-cliente.component';
+import { TablaVeterinarioComponent } from './veterinarios/tabla-veterinario/tabla-veterinario.component';
+import { FormularioVeterinarioComponent } from './veterinarios/formulario-veterinario/formulario-veterinario.component';
+import { ActualizarVeterinarioComponent } from './veterinarios/actualizar-veterinario/actualizar-veterinario.component';
+import { InformacionVeterinarioComponent } from './veterinarios/informacion-veterinario/informacion-veterinario.component';
+
+
+>>>>>>> Stashed changes
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,10 +42,23 @@ import { InformacionClienteComponent } from './clientes/informacion-cliente/info
     LandingComponent,
     EdadPipe,
     ActualizarMascotaComponent,
+    ActualizarVeterinarioComponent,
     MainMenuComponent,
     NavbarAuxComponent,
     TablaClienteComponent,
     InformacionClienteComponent,
+<<<<<<< Updated upstream
+=======
+    InformacionVeterinarioComponent,
+    ActualizarClienteComponent,
+    AdminFooterComponent,
+    AdminHeaderComponent,
+    AdminMainComponent,
+
+    FormularioClienteComponent,
+      TablaVeterinarioComponent,
+      FormularioVeterinarioComponent,
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

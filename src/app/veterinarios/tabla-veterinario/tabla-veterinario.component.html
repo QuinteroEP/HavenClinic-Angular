@@ -1,0 +1,35 @@
+<p class="h4 text-center my-4">Veterinarios Registrados</p>
+<div class="container">
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th class="center"scope="col">Nombre</th>
+        <th class="center"scope="col">Especialidad</th>
+        <th class="center"scope="col">Cedula</th>
+        <th class="center"scope="col">Correo</th>
+        <th class="center"scope="col">Celular</th>
+        <th class="center"scope="col">numAtenciones</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let veterinario of listaVeterinarios">
+        <td class="center">{{ veterinario.nombre }}</td>
+        <td class="center">{{ veterinario.especialidad }}</td>
+        <td class="center">{{ veterinario.cedula }}</td>
+        <td class="center">{{ veterinario.correo }}</td>
+        <td class="center">{{ veterinario.celular }}</td>
+        <td class="center">{{ veterinario.numAtenciones }}</td>
+     
+        <td>
+          <a [routerLink]="['/veterinario/informacion',  veterinario.cedula]" [queryParams]="{userType: userType }" class="btn btn-info btn-sm me-2">Más Información</a>
+          <a  [routerLink]="['/veterinario/actualizar', veterinario.cedula]" [queryParams]="{userType: userType }" class="btn btn-warning btn-sm me-2">Actualizar</a>
+         <button  (click)="eliminarVeterinario(veterinario)" class="btn btn-danger btn-sm">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container text-center mb-4">
+  <a  [routerLink]="['/veterinario/agregar']" class="btn btn-success btn-lg animate-btn">Registrar Nuevo Veterinario</a>
+</div>

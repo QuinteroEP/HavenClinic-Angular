@@ -27,6 +27,7 @@ export class FormularioMascotaComponent {
 
   constructor(private router: Router, private mascotaService: MascotaService ) { }
 
+  //PARA AGREGAR UNA MASCOTA 
   agregarMascota(): void {
     console.log('Agregando mascota:', this.formularioMascota);
     this.mascotaNueva = Object.assign({}, this.formularioMascota);

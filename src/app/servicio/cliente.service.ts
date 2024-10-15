@@ -25,16 +25,10 @@ export class ClienteService {
     this.http.delete( 'http://localhost:8090/cliente/eliminarCliente/'+ cedula).subscribe();
   }
 
-  addCliente(id:number, cliente:Cliente){
-    this.http.post('http://localhost:8090/cliente/agregarCliente'+ id, cliente)
-    .subscribe(
-      response => {
-        console.log('Mascota actualizada con éxito', response);
-      },
-      error => {
-        console.error('Error al actualizar la mascota', error);
-      }
-    );
+  addCliente( cliente:Cliente): Observable<any>{
+    console.log(cliente);
+   return this.http.post('http://localhost:8090/cliente/agregarCliente/', cliente)
+ 
   }
 
   findByEmail(correo:String): Observable<Cliente>{

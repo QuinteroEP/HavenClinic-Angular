@@ -16,19 +16,28 @@ export class VeterinarioService {
   ) { }
 
   findAll(): Observable<Veterinario[]> {
-    return this.http.get<Veterinario[]>(`${this.baseUrl}/all`);
+    console.log("Listando todos los veterinarios");
+    return this.http.get<Veterinario[]>('http://localhost:8090/veterinarios/all');
   }
 
+  
   findById(id: number): Observable<Veterinario> {
     return this.http.get<Veterinario>(`${this.baseUrl}/find/${id}`);
   }
 
-  deleteById(id: number): Observable<void> {
-    return this.http.delete<void>('${this.baseUrl}/delete/${id}');
+  findByCedula(cedula: number): Observable<Veterinario> {
+    console.log("cedula:" + cedula)
+    return this.http.get<Veterinario>('http://localhost:8090/veterinarios/findByCed/'+ cedula);
   }
 
+  deleteByCedula(cedula: number){
+    console.log(cedula);
+    this.http.delete(`${this.baseUrl}/eliminarVeterinario/${cedula}`).subscribe();
+    }
+
   addVeterinario(veterinario: Veterinario): Observable<Veterinario> {
-    return this.http.post<Veterinario>(`${this.baseUrl}/agregarVeterinario`, veterinario);
+    console.log("Agregando veterinario:", veterinario);
+    return this.http.post<Veterinario>('http://localhost:8090/veterinarios/agregarVeterinario', veterinario);
   }
 
   updateVeterinario(id: number, veterinario: Veterinario): Observable<void> {

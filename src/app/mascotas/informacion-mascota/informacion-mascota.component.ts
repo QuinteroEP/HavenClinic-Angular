@@ -14,7 +14,7 @@ export class InformacionMascotaComponent {
   mascota!: Mascota;
 
   constructor(
-    private MascotaService:MascotaService,
+    private mascotaService:MascotaService,
     private route: ActivatedRoute,
     private router: Router,
     
@@ -22,10 +22,10 @@ export class InformacionMascotaComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
       const id = Number(param.get('id'));
-      this.MascotaService.findById(id).subscribe(
-        (MascotaInfo) => {
-          this.mascota = MascotaInfo
-          console.log("Foto: " + MascotaInfo.url);
+      this.mascotaService.findById(id).subscribe(
+        (mascotaInfo) => {
+          this.mascota = mascotaInfo
+          console.log("Foto: " + mascotaInfo.url);
         },
         (error) => {
           console.error('Error fetching Mascota info:', error);

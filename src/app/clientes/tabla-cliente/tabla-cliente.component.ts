@@ -27,6 +27,23 @@ export class TablaClienteComponent {
     }
 
     //metodos
+<<<<<<< Updated upstream
+=======
+    //no se usa
+    mostrarCliente(cliente:Cliente){
+      this.clienteSeleccionado = cliente
+    }
+    //no se usa
+    onAgregarCliente(cliente:Cliente){
+     
+      this.listaClientes.push(cliente);
+      this.clienteService.addCliente( cliente);
+    
+      
+    }
+
+    //funcion para eliminar el cliente
+>>>>>>> Stashed changes
     eliminarCliente(cliente:Cliente){
       var index = this.listaClientes.indexOf(cliente);
       this.listaClientes.splice(index, 1);
