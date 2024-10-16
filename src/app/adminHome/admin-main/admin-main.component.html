@@ -41,14 +41,14 @@
           <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
             <!-- Authentication link with collapse functionality -->
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-              Authentication
+              veterinarios
               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
             <!-- Collapsible authentication section -->
             <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
               <nav class="sb-sidenav-menu-nested nav">
-                <!-- Login link -->
-                <a class="nav-link" routerLink="/login">Login</a>
+                <!-- Ver Veterinario link -->
+                <a class="nav-link" [routerLink]="['/veterinario/all']"[queryParams]="{userType: userType }">VerVeterinarios</a>
                 <!-- Register link -->
                 <a class="nav-link" routerLink="/register">Register</a>
               </nav>
@@ -155,7 +155,7 @@
       <div class="card mb-4">
         <div class="card-header">
           <i class="fas fa-table me-1"></i>
-          DataTable 
+          DataTable Example
         </div>
         <div class="card-body">
           <!-- DataTable -->
