@@ -24,6 +24,7 @@ import { AdminMainComponent } from './adminHome/admin-main/admin-main.component'
 import { FormularioTratamientoComponent } from './tratamientos/formulario-tratamiento/formulario-tratamiento.component';
 import { TablaVeterinarioComponent } from './veterinarios/tabla-veterinario/tabla-veterinario.component';
 import { InformacionVeterinarioComponent } from './veterinarios/informacion-veterinario/informacion-veterinario.component';
+import { FormularioVeterinarioComponent } from './veterinarios/formulario-veterinario/formulario-veterinario.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { InformacionVeterinarioComponent } from './veterinarios/informacion-vete
     FormularioTratamientoComponent,
     TablaVeterinarioComponent,
     InformacionVeterinarioComponent,
+    FormularioVeterinarioComponent,
 
   ],
   imports: [
