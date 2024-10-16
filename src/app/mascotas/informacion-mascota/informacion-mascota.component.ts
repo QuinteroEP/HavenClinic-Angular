@@ -12,13 +12,16 @@ import { mergeMap } from 'rxjs';
 export class InformacionMascotaComponent {
   @Input()
   mascota!: Mascota;
+  userType: string = ' ';
 
   constructor(
     private MascotaService:MascotaService,
     private route: ActivatedRoute,
     private router: Router,
     
-  ){}
+  ){ this.route.queryParams.subscribe(params =>{
+    this.userType = params['userType']})
+  }
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
       const id = Number(param.get('id'));

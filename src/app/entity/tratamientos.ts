@@ -4,5 +4,5 @@ export interface Tratamiento{
     idVeterinario: number;
     idMascota: number;
     idDroga: number;
-    nombreDroga: string;
+    nombredroga: string;
 }

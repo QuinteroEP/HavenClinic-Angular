@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Tratamiento } from 'src/app/entity/tratamientos';
 import { TratamientoService } from 'src/app/servicio/tratamiento.service';
 import { MascotaService } from 'src/app/servicio/mascota.service';
+import { DrogaService } from 'src/app/servicio/droga.service';
 import { Mascota } from '../../entity/mascotas';
+import {Droga} from "../../entity/drogas";
 
 @Component({
   selector: 'app-formulario-tratamiento',
@@ -15,6 +17,7 @@ export class FormularioTratamientoComponent {
   agregarTratamientoEvent = new EventEmitter<Tratamiento>();
 
   tratamientoNuevo!: Tratamiento;
+  drogas: Droga[] = [];
 
   formularioTratamiento: Tratamiento ={
     id: 0,
@@ -22,27 +25,41 @@ export class FormularioTratamientoComponent {
     idVeterinario: 0,
     idMascota: 0,
     idDroga: 0,
-    nombreDroga: ''
+    nombredroga: ''
   }
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
               private TratamientoService: TratamientoService,
               private MascotaService:MascotaService,
+              private DrogaService:DrogaService,
               private route: ActivatedRoute, ) { }
-              
+
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
       const id = Number(param.get('id'));
+
       this.MascotaService.findById(id).subscribe(
         (MascotaInfo) => {
-          this.formularioTratamiento = MascotaInfo.tratamiento ?? {} as Tratamiento;
+          if(MascotaInfo.tratamiento){
+            this.formularioTratamiento = MascotaInfo.tratamiento;
+          }
+          console.log(this.formularioTratamiento.nombredroga);
         },
         (error) => {
           console.error('Error fetching Tratamiento info:', error);
         }
       );
     });
+
+    this.DrogaService.findAll().subscribe(
+      (listaDrogas) => {
+        this.drogas = listaDrogas;
+      },
+      (error: any) => {
+        console.error('Error fetching Droga info:', error);
+      }
+    );
   }
 
   agregarTratamiento(): void {

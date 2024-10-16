@@ -2,19 +2,16 @@
     <div class="form-columns">
       <div class="column">
         <label>
-          <input class="input" type="text" id="name" name="name" [(ngModel)]="formularioTratamiento.nombreDroga" required>
           <span>Medicina</span>
+          <select id="nombreDroga" name="nombreDroga" [(ngModel)]="formularioTratamiento.nombredroga" required>
+            <option *ngFor="let droga of drogas" [value]="droga.nombre">{{ droga.nombre }}</option>
+          </select>
         </label>
         <label>
           <input class="date" type="date" id="date" name="fecha" [(ngModel)]="formularioTratamiento.fecha" required>
           <span>Fecha</span>
         </label>
-        <label>
-          <input class="number" type="text" id="vetId" name="Veterinario" [(ngModel)]="formularioTratamiento.idVeterinario" required>
-          <span>Veterinario Asignado</span>
-        </label>
       </div>
     </div>
     <button class="submit" type="submit">Actualizar</button>
   </form>
-  

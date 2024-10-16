@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Droga } from '../entity/drogas';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {Mascota} from "../entity/mascotas";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DrogaService {
 
-  listaDrogas: Droga[] = [];
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  constructor() { }
-
-  findAll(){
-    return this.listaDrogas;
-  }
-
-  findById(id:number):Droga{
-    const droga:Droga = this.listaDrogas.find(o => o.id === id)!;
-    return droga;
+  findAll(): Observable<Droga[]>{
+    return this.http.get<Droga[]>('http://localhost:8090/drogas/all');
   }
 }
