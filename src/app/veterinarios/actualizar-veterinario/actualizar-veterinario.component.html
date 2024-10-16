@@ -1,0 +1,46 @@
+<section class="container">
+    <div class="main">
+      <div class="detail">
+        <h1>Actualizar Información</h1>
+        <form class="form">
+          <p class="title">Actualizar Veterinario</p>
+          <p class="message">Complete el formulario para actualizar la información del Veterinario.</p>
+          <div class="form-columns">
+            <div class="column">
+              <label>
+                <input class="input" type="text" id="nombre" name="nombre" [(ngModel)]="informacionVetParaActualizar.nombre" required>
+                <span>Nombre</span>
+              </label>
+              <label>
+                <input class="input" type="text" id="especialidad" name="especialidad" [(ngModel)]="informacionVetParaActualizar.especialidad" required>
+                <span>especialidad</span>
+              </label>
+              <label>
+                <input class="input" type="text" id="correo" name="correo" [(ngModel)]="informacionVetParaActualizar.correo" required>
+                <span>Correo</span>
+              </label>
+  
+            </div>
+            <div class="column">
+              <label>
+                <input class="input" type="number" id="celular" name="celular" [(ngModel)]="informacionVetParaActualizar.celular" required>
+                <span>Celular</span>
+              </label>
+              <label>
+                <input class="input" type="text" id="contrasena" name="contrasena" [(ngModel)]="informacionVetParaActualizar.contrasena" required>
+                <span>Contraseña</span>
+              </label>
+
+             
+              
+            </div>
+          </div>
+           
+          <button class="submit" (click)="actualizarVeterinario()">Actualizar Información</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+
+

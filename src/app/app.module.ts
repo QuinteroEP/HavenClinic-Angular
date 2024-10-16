@@ -25,6 +25,7 @@ import { FormularioTratamientoComponent } from './tratamientos/formulario-tratam
 import { TablaVeterinarioComponent } from './veterinarios/tabla-veterinario/tabla-veterinario.component';
 import { InformacionVeterinarioComponent } from './veterinarios/informacion-veterinario/informacion-veterinario.component';
 import { FormularioVeterinarioComponent } from './veterinarios/formulario-veterinario/formulario-veterinario.component';
+import { ActualizarVeterinarioComponent } from './veterinarios/actualizar-veterinario/actualizar-veterinario.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { FormularioVeterinarioComponent } from './veterinarios/formulario-veteri
     TablaVeterinarioComponent,
     InformacionVeterinarioComponent,
     FormularioVeterinarioComponent,
+    ActualizarVeterinarioComponent,
 
   ],
   imports: [
