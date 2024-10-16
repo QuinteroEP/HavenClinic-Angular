@@ -5,7 +5,7 @@ export interface Veterinario{
     nombre: string;
     celular: number;
     especialidad: string;
-    contraseña:string;
+    contrasena:string;
     foto:string;
     numAtenciones: number;
 }
