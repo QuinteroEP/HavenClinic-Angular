@@ -19,8 +19,8 @@
         <td class="center">{{ pet.genero }}</td>
         <td class="center">{{ pet.condicion }}</td>
         <td>
-          <a [routerLink]="['/Mascotas/informacion', pet.id]" class="btn btn-info btn-sm me-2">Más Información</a>
-          <a *ngIf="userType === 'veterinario'" [routerLink]="['/Mascotas/actualizar', pet.id]" class="btn btn-warning btn-sm me-2">Actualizar</a>
+          <a [routerLink]="['/Mascotas/informacion', pet.id]" [queryParams]="{userType: userType }" class="btn btn-info btn-sm me-2">Más Información</a>
+          <a *ngIf="userType === 'veterinario'" [routerLink]="['/Mascotas/actualizar', pet.id]" [queryParams]="{userType: userType }" class="btn btn-warning btn-sm me-2">Actualizar</a>
           <button *ngIf="userType === 'veterinario'" (click)="eliminarMascota(pet)" class="btn btn-danger btn-sm">Eliminar</button>
         </td>
       </tr>
@@ -30,3 +30,4 @@
 <div class="container text-center mb-4">
   <a *ngIf="userType === 'veterinario'" [routerLink]="['/Mascotas/agregar']" class="btn btn-success btn-lg animate-btn">Registrar Nueva Mascota</a>
 </div>
+ 

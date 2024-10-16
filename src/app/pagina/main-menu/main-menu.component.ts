@@ -2,7 +2,7 @@ import {AfterViewInit, ChangeDetectorRef, Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import { Cliente } from 'src/app/entity/clientes';
 import { ClienteService } from 'src/app/servicio/cliente.service';
-import {Veterinario} from "../../veterinarios/veterinarios";
+import { Veterinario } from "../../entity/veterinarios";
 import { VeterinarioService } from 'src/app/servicio/veterinario.service';
 
 @Component({
@@ -33,14 +33,24 @@ export class MainMenuComponent implements AfterViewInit{
     }
 
     ngOnInit(): void{
+      /*
       if(this.userType === 'cliente'){
         console.log("de tipo clinete");
+        this.ClienteService.findByEmail(this.correo).subscribe(cliente =>{
+          console.log("informacion del cliente: ", cliente);
+          this.clienteInfo = cliente;
+        });
       }else if(this.userType === 'veterinario'){
         console.log("de tipo veterianrio");
-      }
+        this.VeterinarioService.findByEmail(this.correo).subscribe(veterinario =>{
+          console.log("informacion del veterinario: ", veterinario);
+          this.vetInfo = veterinario;
+        });
+      }*/
         this.ClienteService.findByEmail(this.correo).subscribe(cliente =>{
           console.log("informacion del cliente: ", cliente);
           this.clienteInfo = cliente;
         })
+
       }
 }

@@ -17,6 +17,11 @@ import { NavbarAuxComponent } from './pagina/navbar-aux/navbar-aux.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TablaClienteComponent } from './clientes/tabla-cliente/tabla-cliente.component';
 import { InformacionClienteComponent } from './clientes/informacion-cliente/informacion-cliente.component';
+import { ActualizarClienteComponent } from './clientes/actualizar-cliente/actualizar-cliente.component';
+import { AdminFooterComponent } from './adminHome/admin-footer/admin-footer.component';
+import { AdminHeaderComponent } from './adminHome/admin-header/admin-header.component';
+import { AdminMainComponent } from './adminHome/admin-main/admin-main.component';
+import { FormularioTratamientoComponent } from './tratamientos/formulario-tratamiento/formulario-tratamiento.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +37,12 @@ import { InformacionClienteComponent } from './clientes/informacion-cliente/info
     NavbarAuxComponent,
     TablaClienteComponent,
     InformacionClienteComponent,
+    ActualizarClienteComponent,
+    AdminFooterComponent,
+    AdminHeaderComponent,
+    AdminMainComponent,
+    FormularioTratamientoComponent,
+
   ],
   imports: [
     BrowserModule,

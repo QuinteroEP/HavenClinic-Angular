@@ -1,0 +1,17 @@
+<form class="form" (ngSubmit)="agregarTratamiento()">
+    <div class="form-columns">
+      <div class="column">
+        <label>
+          <span>Medicina</span>
+          <select id="nombreDroga" name="nombreDroga" [(ngModel)]="formularioTratamiento.nombredroga" required>
+            <option *ngFor="let droga of drogas" [value]="droga.nombre">{{ droga.nombre }}</option>
+          </select>
+        </label>
+        <label>
+          <input class="date" type="date" id="date" name="fecha" [(ngModel)]="formularioTratamiento.fecha" required>
+          <span>Fecha</span>
+        </label>
+      </div>
+    </div>
+    <button class="submit" type="submit">Actualizar</button>
+  </form>

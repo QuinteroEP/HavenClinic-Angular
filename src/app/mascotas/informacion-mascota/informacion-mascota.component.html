@@ -24,6 +24,21 @@
                             <br>
                             <p class="card-text">Descripción:</p>
                             <p class="card-text"><span>{{mascota.descripcion}}</span></p>
+                            <br>
+                        <ng-container *ngIf="userType === 'veterinario'">
+                            <div>
+                                <ng-container *ngIf='mascota.enTratamiento'>
+                                    <p class="center, bold">Estado: En Tratamiento</p>
+                                    <button class="btn btn-success btn-lg animate-btn" (click)="administrarTratamiento(mascota)">Administar Tratamiento</button>
+                                    <a [routerLink]="['/Mascotas/tratamiento/modificar', mascota.id]" [queryParams]="{userType: userType }" class="btn btn-info animate-btn">Modificar Tratamiento</a>
+                                </ng-container>
+
+                                <ng-container *ngIf='!mascota.enTratamiento'>
+                                    <p class="center, bold">Estado: No En Tratamiento</p>
+                                  <a [routerLink]="['/Mascotas/tratamiento/modificar', mascota.id]" class="btn btn-info animate-btn">Generar Tratamiento</a>
+                                </ng-container>
+                            </div>
+                        </ng-container>
                         </ng-container>
                     </div>
                 </div>

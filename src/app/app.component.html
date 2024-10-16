@@ -1,7 +1,13 @@
 <app-navbar *ngIf="isLandingPage()"></app-navbar>
-<app-navbar-aux [clienteInfo]="clienteInfo" *ngIf="!isLandingPage()"></app-navbar-aux>
+<app-navbar-aux [clienteInfo]="clienteInfo" *ngIf="!isLandingPage() && !isAdminPage()"></app-navbar-aux>
+<app-admin-header *ngIf="isAdminPage()"></app-admin-header>
 
-<router-outlet></router-outlet>
+<div *ngIf="isAdminPage(); else normalLayout" id="layoutSidenav">
+  <router-outlet></router-outlet>
+</div>
+<ng-template #normalLayout>
+  <router-outlet></router-outlet>
+</ng-template>
 
 <app-footer *ngIf="isLandingPage()"></app-footer>
 

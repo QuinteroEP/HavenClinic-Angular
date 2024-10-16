@@ -51,3 +51,36 @@ li{
     margin-top: 10.4rem !important;
   margin-bottom: 11rem !important;
 }
+
+.btn-info {
+    background-color: #E3CAA5;
+    border-color: #E3CAA5;
+  }
+  
+  .btn-danger {
+    background-color: #754b36;
+    border-color: #754b36;
+  }
+  .btn-warning {
+    background-color: #d7a68f;
+    border-color: #d7a68f;
+    color: #000;
+  }
+  
+  button {
+    font-size: 20px;
+  }
+
+  .animate-btn {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .btn-lg {
+    background-color: #754b36;
+    border-color: #754b36;
+    margin: 2.4rem;
+  }
+
+  .animate-btn:hover {
+    transform: scale(1.1);
+  }

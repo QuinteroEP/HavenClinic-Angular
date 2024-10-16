@@ -16,13 +16,14 @@ export class ActualizarMascotaComponent {
     raza: '',
     genero: '',
     condicion: '',
-    descripcion: ''
+    descripcion: '',
   };
 
   constructor(
     private MascotaService:MascotaService,
     private route: ActivatedRoute,
     private router: Router){}
+
 
     ngOnInit(): void {
       this.route.paramMap.subscribe(param => {

@@ -113,26 +113,26 @@ export class LandingComponent implements AfterViewInit {
         this.starContainer.nativeElement.appendChild(star);
       }
     }
-     const styleSheet = document.styleSheets[0];
-    styleSheet.insertRule(`
-      @keyframes twinkle {
-        0%, 100% {
-          opacity: 0.5;
-        }
-        50% {
-          opacity: 1;
-        }
+
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.5;
       }
-    `, styleSheet.cssRules.length);
-    styleSheet.insertRule(`
-      @keyframes move-diagonal {
-        0% {
-          transform: translate(0, 0);
-        }
-        100% {
-          transform: translate(100px, 100px);
-        }
+      50% {
+        opacity: 1;
       }
-    `, styleSheet.cssRules.length);
+    }
+    @keyframes move-diagonal {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(100px, 100px);
+      }
+    }
+  `;
+    document.head.appendChild(styleElement);
   }
 }

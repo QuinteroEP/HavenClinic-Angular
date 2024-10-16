@@ -12,13 +12,16 @@ import { mergeMap } from 'rxjs';
 export class InformacionMascotaComponent {
   @Input()
   mascota!: Mascota;
+  userType: string = ' ';
 
   constructor(
     private MascotaService:MascotaService,
     private route: ActivatedRoute,
     private router: Router,
     
-  ){}
+  ){ this.route.queryParams.subscribe(params =>{
+    this.userType = params['userType']})
+  }
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
       const id = Number(param.get('id'));
@@ -26,11 +29,31 @@ export class InformacionMascotaComponent {
         (MascotaInfo) => {
           this.mascota = MascotaInfo
           console.log("Foto: " + MascotaInfo.url);
+          console.log(this.mascota)
         },
         (error) => {
           console.error('Error fetching Mascota info:', error);
         }
       );
     });
+  }
+
+  administrarTratamiento(mascota: Mascota){
+    this.MascotaService.switchTratamiento(mascota.id).subscribe(
+      (updatedMascota: Mascota) => {
+          mascota.enTratamiento = updatedMascota.enTratamiento;
+      },
+      (error) => {
+          console.error('Error updating Mascota:', error);
+      }
+    );
+  }
+
+  modificarTratamiento(mascota: Mascota){
+    console.log("Modificar")
+  }
+
+  generarTratamiento(mascota: Mascota){
+    console.log("Generar")
   }
 }

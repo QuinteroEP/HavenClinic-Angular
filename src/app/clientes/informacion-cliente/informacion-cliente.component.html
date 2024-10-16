@@ -2,9 +2,15 @@
     <div class="container mt-5">
         <div class="card shadow-lg custom-card">
             <div class="row g-0">
-                <div class="col-md-4">
+                <div class="col-md-4 smooth-outline">
                     <ng-container *ngIf="!cliente">
                         <p class="text-center p-3 custom-text">Seleccione un cliente para obtener más información</p>
+                    </ng-container>
+                    <ng-container *ngIf="cliente">
+                        <p class="text-center p-3 custom-text bold">Mascotas del cliente</p>
+                        <ul *ngFor="let mascota of listaMascotas">
+                            <li>{{mascota.nombre}}: {{mascota.raza}}</li>
+                        </ul>
                     </ng-container>
                 </div>
                 <div class="col-md-8">

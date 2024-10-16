@@ -14,16 +14,16 @@ export class NavbarAuxComponent {
   userType: string | null = null;
   correo: string = ' ';
   cliente: Cliente | null = null;
-  
+
   @Input() public clienteInfo: Cliente | null = null;
 
   constructor(
-    private router: Router, 
-    private route: ActivatedRoute, 
+    private router: Router,
+    private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private ClienteService: ClienteService) { this.route.queryParams.subscribe(params => {
-      this.userType = params['userType'], 
-      this.correo = params['correo']}) 
+      this.userType = params['userType'],
+      this.correo = params['correo']})
     }
 
   navigateToMainMenu() {
@@ -31,12 +31,8 @@ export class NavbarAuxComponent {
   }
 
   ngOnChanges(): void{
-    console.log("Navbar: " + this.correo);
-
     this.ClienteService.findByEmail(this.correo!).subscribe(cliente =>{
-      console.log("Navbar - informacion: ", cliente);
       this.cliente = cliente;
     })
-
   }
 }

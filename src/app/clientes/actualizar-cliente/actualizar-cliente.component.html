@@ -1,0 +1,42 @@
+<section class="container">
+    <div class="main">
+      <div class="detail">
+        <h1>Actualizar Información</h1>
+        <form class="form">
+          <p class="title">Actualizar Cliente</p>
+          <p class="message">Complete el formulario para actualizar la información del cliente.</p>
+          <div class="form-columns">
+            <div class="column">
+              <label>
+                <input class="input" type="text" id="nombre" name="nombre" [(ngModel)]="informacionClienteParaActualizar.nombre" required>
+                <span>Nombre del Cliente</span>
+              </label>
+              <label>
+                <input class="input" type="number" id="cedula" name="cedula" [(ngModel)]="informacionClienteParaActualizar.cedula" required>
+                <span>Cedula</span>
+              </label>
+              <label>
+                <input class="input" type="number" id="celular" name="celular" [(ngModel)]="informacionClienteParaActualizar.celular" required>
+                <span>Celular</span>
+              </label>
+  
+            </div>
+            <div class="column">
+              <label>
+                <input class="input" type="text" id="correo" name="correo" [(ngModel)]="informacionClienteParaActualizar.correo" required>
+                <span>Correo</span>
+              </label>
+             
+              <label>
+                <input class="input" type="text" id="contrasena" name="contraseña" [(ngModel)]="pass" required>
+                <span>Contraseña</span>
+              </label>
+            </div>
+          </div>
+           
+          <button class="submit" (click)="actualizarCliente()">Actualizar Información</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
