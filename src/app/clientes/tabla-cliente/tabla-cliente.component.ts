@@ -16,6 +16,7 @@ export class TablaClienteComponent {
   cedula:number = 0;
   userType: string = ' ';
   correo: string = '';
+  cedulaBusqueda: string = '';
 
   clienteSeleccionado!: Cliente
   listaClientes!: Cliente[]
@@ -49,12 +50,30 @@ export class TablaClienteComponent {
       this.clienteService.deleteByCedula(cliente.cedula);
     }
 
-
-
-
-
-
-
+    buscarCliente() {
+      if (this.cedulaBusqueda) {
+        const cedula = parseInt(this.cedulaBusqueda, 10);
+        if (!isNaN(cedula)) {
+          this.clienteService.findByCedula(cedula).subscribe(
+            (cliente) => {
+              this.listaClientes = [cliente];
+            },
+            (error) => {
+              console.error('Error fetching client by cedula', error);
+              this.listaClientes = [];
+            }
+          );
+        } else {
+          console.error('Cédula debe ser un número');
+        }
+      } else {
+        this.clienteService.findAll().subscribe(
+          (clientes) => {
+            this.listaClientes = clientes;
+          }
+        );
+      }
+    }
 
 
 
