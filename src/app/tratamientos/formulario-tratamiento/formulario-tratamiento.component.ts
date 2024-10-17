@@ -70,14 +70,18 @@ export class FormularioTratamientoComponent {
   }
 
   agregarTratamiento(): void {
+    console.log(this.correo);
     this.VeterinarioService.findByEmail(this.correo).subscribe(
       (informacion) => {
+        console.log("informacion del veterinario: ", informacion);
         this.formularioTratamiento.idVeterinario = informacion.vetId;
       }
     )
-
+console.log(this.formularioTratamiento.nombredroga);
     this.DrogaService.findByName(this.formularioTratamiento.nombredroga).subscribe(
       (drogaInfo) => {
+
+        console.log("informacion de la droga: ", drogaInfo);
         this.formularioTratamiento.idDroga = drogaInfo.id;
       }
     )
@@ -94,7 +98,7 @@ export class FormularioTratamientoComponent {
       (response) => {
         console.log('Tratamiento agregado con éxito', response);
         this.agregarTratamientoEvent.emit(this.formularioTratamiento);
-        this.router.navigate(['/Mascotas/all'], { queryParams: { userType: "veterinario" }});
+        this.router.navigate(['/Mascotas/all'], { queryParams: { userType: "veterinario" , correo: this.correo } });
       },
       (error) => {
         console.error('Error al agregar el tratamiento', error);
