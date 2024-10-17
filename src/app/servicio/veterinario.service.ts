@@ -35,13 +35,13 @@ export class VeterinarioService {
   //para buscar por la cedula, se usa este
   findByCedula(cedula: number): Observable<Veterinario> {
     console.log("cedula:" + cedula)
-    return this.http.get<Veterinario>('http://localhost:8090/veterinarios/findByCed/'+ cedula);
+    return this.http.get<Veterinario>('http://localhost:8090/veterinarios/findByCedula/'+ cedula);
   }
 
   //para borrar por la cedula
   deleteByCedula(cedula: number){
     console.log(cedula);
-    this.http.delete(`${this.baseUrl}/eliminarVeterinario/${cedula}`).subscribe();
+    this.http.delete('http://localhost:8090/veterinarios/eliminarVeterinario/' + cedula).subscribe();
     }
 
     //para agregar un nuevo veterinario
@@ -51,8 +51,8 @@ export class VeterinarioService {
   }
 
   //actualiza al veterinario
-  updateVeterinario(id: number, veterinario: Veterinario): Observable<void> {
-    return this.http.put<void>(`${this.baseUrl}/update/${id}`, veterinario);
+  updateVeterinario(veterinario: Veterinario): Observable<void> {
+    return this.http.put<void>('http://localhost:8090/veterinarios/update/'+veterinario.cedula, veterinario);
   }
 
  

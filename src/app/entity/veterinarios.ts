@@ -8,4 +8,5 @@ export interface Veterinario{
     contrasena:string;
     foto:string;
     numAtenciones: number;
+    activo:boolean;
 }

@@ -24,13 +24,15 @@ export class FormularioVeterinarioComponent {
     celular: 0,
     contrasena: '',
     foto: '',
-    numAtenciones: 0
+    numAtenciones: 0,
+    activo: true
   }
 
   constructor(private router:Router, private veterinarioService:VeterinarioService){}
 
   //para agregar una veterinario
   agregarVeterinario():void{
+    
     console.log('Agregando veterinario:', this.formularioVeterinario);
     this.veterinarioNueva = Object.assign({}, this.formularioVeterinario);
     this.veterinarioService.addVeterinario(this.veterinarioNueva).subscribe(

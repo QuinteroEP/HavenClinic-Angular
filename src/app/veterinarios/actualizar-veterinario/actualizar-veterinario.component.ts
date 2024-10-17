@@ -19,7 +19,8 @@ export class ActualizarVeterinarioComponent {
     celular:0,
     contrasena: '',
     foto: '',
-    numAtenciones:0
+    numAtenciones:0,
+    activo: true
   };
   constructor(
     private veterinarioService:VeterinarioService,
@@ -28,8 +29,8 @@ export class ActualizarVeterinarioComponent {
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      const cedula = Number(params['cedula']);
+    this.route.paramMap.subscribe(param => {
+      const cedula = Number(param.get('cedula'));
       this.veterinarioService.findByCedula(cedula).subscribe(
         (veterinarioInfo) => {
           this.informacionVetParaActualizar = veterinarioInfo;
@@ -43,15 +44,14 @@ export class ActualizarVeterinarioComponent {
   }
 
   actualizarVeterinario(): void {
-    console.log('Actualizando informacion:', this.informacionVetParaActualizar);
-    this.veterinarioService.updateVeterinario(this.informacionVetParaActualizar.id, this.informacionVetParaActualizar).subscribe(
+    console.log('Actualizando informacion:', this.informacionVetParaActualizar.cedula);
+    this.veterinarioService.updateVeterinario(this.informacionVetParaActualizar).subscribe(
+      
       (response) => {
         console.log('Veterinario actualizado con exito', response);
         this.router.navigate(['/veterinario/all'], { queryParams: { userType: "admin" } });
       },
-      (error) => {
-        console.error('Error al actualizar el veterinario', error);
-      }
+      
     )
   }
 

@@ -18,10 +18,9 @@ export class TablaVeterinarioComponent {
   //constructor
   constructor(
     private route: ActivatedRoute,
-    private veterinarioService:VeterinarioService){ this.route.queryParams.subscribe(params =>{
-      
-    // this.userType = params['userType']
-    })
+    private veterinarioService:VeterinarioService){ this.route.queryParams.subscribe(
+     // params =>{// this.userType = params['userType']}
+     )
     }
 
   ngOnInit(): void {

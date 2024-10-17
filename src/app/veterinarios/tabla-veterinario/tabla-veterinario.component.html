@@ -9,6 +9,7 @@
         <th class="center"scope="col">Correo</th>
         <th class="center"scope="col">Celular</th>
         <th class="center"scope="col">numAtenciones</th>
+        <th class="center"scope="col">Estado</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
@@ -20,6 +21,7 @@
         <td class="center">{{ veterinario.correo }}</td>
         <td class="center">{{ veterinario.celular }}</td>
         <td class="center">{{ veterinario.numAtenciones }}</td>
+        <td class="center">{{ veterinario.activo ? 'Activado' : 'Desactivado' }}</td>
      
         <td>
           <a [routerLink]="['/veterinario/informacion',  veterinario.cedula]" [queryParams]="{userType: userType }" class="btn btn-info btn-sm me-2">Más Información</a>
