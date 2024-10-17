@@ -8,6 +8,7 @@ import { VeterinarioService } from 'src/app/servicio/veterinario.service';
 import { Mascota } from '../../entity/mascotas';
 import {Droga} from "../../entity/drogas";
 import { Veterinario } from 'src/app/entity/veterinarios';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-formulario-tratamiento',
@@ -70,31 +71,33 @@ export class FormularioTratamientoComponent {
   }
 
   agregarTratamiento(): void {
-    console.log(this.correo);
-    this.VeterinarioService.findByEmail(this.correo).subscribe(
+        console.log(this.correo); //imprimir correo
+        this.tratamientoNuevo = Object.assign({}, this.formularioTratamiento);
+        console.log("revision de formulario: ", this.tratamientoNuevo);
+        this.VeterinarioService.findByEmail(this.correo).subscribe(
       (informacion) => {
         console.log("informacion del veterinario: ", informacion);
-        this.formularioTratamiento.idVeterinario = informacion.vetId;
+        this.tratamientoNuevo.idVeterinario = informacion.vetId;
       }
     )
-console.log(this.formularioTratamiento.nombredroga);
-    this.DrogaService.findByName(this.formularioTratamiento.nombredroga).subscribe(
+console.log(this.tratamientoNuevo.nombredroga);
+    this.DrogaService.findByName(this.tratamientoNuevo.nombredroga).subscribe(
       (drogaInfo) => {
 
         console.log("informacion de la droga: ", drogaInfo);
-        this.formularioTratamiento.idDroga = drogaInfo.id;
+        this.tratamientoNuevo.idDroga = drogaInfo.id;
       }
     )
 
     this.route.paramMap.subscribe(param => {
       const id = Number(param.get('id'));
-      this.formularioTratamiento.idMascota = id;
+      this.tratamientoNuevo.idMascota = id;
     })
 
-    console.log('Agregando tratamiento:', this.formularioTratamiento);    
-    this.tratamientoNuevo = Object.assign({}, this.formularioTratamiento);
+    console.log('Agregando tratamiento:', this.tratamientoNuevo);    
 
-    this.TratamientoService.addTratamiento(this.tratamientoNuevo.id, this.tratamientoNuevo).subscribe(
+
+    this.TratamientoService.addTratamiento(this.tratamientoNuevo.idMascota, this.tratamientoNuevo).subscribe(
       (response) => {
         console.log('Tratamiento agregado con éxito', response);
         this.agregarTratamientoEvent.emit(this.formularioTratamiento);

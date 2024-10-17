@@ -24,6 +24,7 @@ export class ClienteService {
     return this.http.get<Cliente>('http://localhost:8090/cliente/findEmail/' + correo.toString());
     }
 
+    //para buscar todos los clientes con dicho nombre
     findByNombre(nombre: string): Observable<Cliente[]> {
       return this.http.get<Cliente[]>('http://localhost:8090/cliente/findClienteByNombre/'+nombre);
     }

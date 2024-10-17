@@ -17,8 +17,8 @@ export class DrogaService {
     return this.http.get<Droga[]>('http://localhost:8090/drogas/all');
   }
 
-  findById(id: number):Observable<Droga[]>{
-    return this.http.get<Droga[]>('http://localhost:8090/drogas/'+id);
+  findById(id: number):Observable<Droga>{
+    return this.http.get<Droga>('http://localhost:8090/drogas/info/'+id);
   }
 
   findByName(name: string):Observable<Droga>{
