@@ -490,6 +490,17 @@ main {
       -webkit-text-fill-color: transparent;
   }
 
+  .check-container2 {
+
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background: linear-gradient(90deg, var(--color-texto) 0%,var(--color-texto)  100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
   .check {
       position: relative;
       appearance: none;
@@ -505,6 +516,18 @@ main {
       border-radius: 0.25em;
       border: 2px solid #000000;
   }
+  .check-toggle2 {
+    position: relative;
+    left: 4%;
+    top: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    transform: translateX(-150%) translateY(-50%);
+    border-radius: 0.25em;
+    border: 2px solid #000000;
+  }
+
+
 
   .check-toggle + .check-svg {
       position: relative;
@@ -518,8 +541,23 @@ main {
       stroke-dashoffset: 100;
   }
 
+  .check-toggle2 + .check-svg {
+    position: relative;
+    left: 6.5%;
+    top: 50%;
+    height: 2rem;
+    width: 2rem;
+    transform: translateX(-300%) translateY(-38%);
+    transition: stroke-dashoffset 0.5s ease-out;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+
   .check:checked + .check-toggle + .check-svg {
       stroke-dashoffset: 0;
+  }
+  .check:checked + .check-toggle2 + .check-svg {
+    stroke-dashoffset: 0;
   }
 
   .check-label {
