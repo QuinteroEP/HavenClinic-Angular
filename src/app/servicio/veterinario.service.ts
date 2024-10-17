@@ -41,7 +41,7 @@ export class VeterinarioService {
   //para borrar por la cedula
   deleteByCedula(cedula: number){
     console.log(cedula);
-    this.http.delete('http://localhost:8090/veterinarios/eliminarVeterinario/' + cedula).subscribe();
+    this.http.delete(`${this.baseUrl}/eliminarVeterinario/${cedula}`).subscribe();
     }
 
     //para agregar un nuevo veterinario

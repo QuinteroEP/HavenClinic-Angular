@@ -1,3 +1,4 @@
+
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ClienteService } from 'src/app/servicio/cliente.service';
 import { DashboardService } from 'src/app/servicio/dashboard.service';
@@ -168,3 +169,4 @@ export class AdminMainComponent implements OnInit, AfterViewInit {
     }
   }
 }
+
