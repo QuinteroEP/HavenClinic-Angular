@@ -1,13 +1,27 @@
+<!--
+  The main application component template.
+  This template conditionally displays different navigation bars and layouts based on the current page.
+-->
+
+<!-- Display the main navbar if the current page is the landing page -->
 <app-navbar *ngIf="isLandingPage()"></app-navbar>
+
+<!-- Display the auxiliary navbar with client information if the current page is neither the landing page nor the admin page -->
 <app-navbar-aux [clienteInfo]="clienteInfo" *ngIf="!isLandingPage() && !isAdminPage()"></app-navbar-aux>
+
+<!-- Display the admin header if the current page is the admin page -->
 <app-admin-header *ngIf="isAdminPage()"></app-admin-header>
 
+
+<!-- Display the admin layout if the current page is the admin page -->
 <div *ngIf="isAdminPage(); else normalLayout" id="layoutSidenav">
   <router-outlet></router-outlet>
 </div>
+
+<!-- Display the normal layout if the current page is not the admin page -->
 <ng-template #normalLayout>
   <router-outlet></router-outlet>
 </ng-template>
 
+<!-- Display the footer if the current page is the landing page -->
 <app-footer *ngIf="isLandingPage()"></app-footer>
-

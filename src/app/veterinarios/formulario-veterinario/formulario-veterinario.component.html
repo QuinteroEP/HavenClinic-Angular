@@ -1,0 +1,42 @@
+
+<!-- Sidebar navigation layout -->
+<app-sidebar></app-sidebar>
+
+<form class="form" (ngSubmit)="agregarVeterinario()">
+    <p class="title">Añadir Nuevo Veterinario</p>
+    <p class="message">Complete el formulario para añadir un nuevo veterinario</p>
+    <div class="form-columns">
+      <div class="column">
+        <label>
+          <input class="input" type="text" id="name" name="name" [(ngModel)]="formularioVeterinario.nombre" required>
+          <span>Nombre del Veterinario</span>
+        </label>
+        <label>
+          <input class="input" type="text" id="especialidad" name="especialidad" [(ngModel)]="formularioVeterinario.especialidad" required>
+          <span>Especialidad</span>
+        </label>
+        <label>
+          <input class="input" type="text" id="correo" name="correo" [(ngModel)]="formularioVeterinario.correo" required>
+          <span>Correo</span>
+        </label>
+      </div>
+      <div class="column">
+        <label>
+          <input class="input" type="number" id="cedula" name="cedula" [(ngModel)]="formularioVeterinario.cedula" required>
+          <span>Cedula</span>
+        </label>
+        <label>
+          <input class="input" type="number" id="celular" name="celular" [(ngModel)]="formularioVeterinario.celular" required>
+          <span>Celular</span>
+        </label>
+        <label>
+          <input class="input" type="text" id="contrasena" name="contrasena" [(ngModel)]="formularioVeterinario.contrasena">
+          <span>Contraseña</span>
+        </label>
+      </div>
+    </div>
+
+    <button class="submit" type="submit">Añadir</button>
+  </form>
+
+

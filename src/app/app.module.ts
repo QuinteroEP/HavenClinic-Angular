@@ -22,6 +22,12 @@ import { AdminFooterComponent } from './adminHome/admin-footer/admin-footer.comp
 import { AdminHeaderComponent } from './adminHome/admin-header/admin-header.component';
 import { AdminMainComponent } from './adminHome/admin-main/admin-main.component';
 import { FormularioTratamientoComponent } from './tratamientos/formulario-tratamiento/formulario-tratamiento.component';
+import { TablaVeterinarioComponent } from './veterinarios/tabla-veterinario/tabla-veterinario.component';
+import { InformacionVeterinarioComponent } from './veterinarios/informacion-veterinario/informacion-veterinario.component';
+import { FormularioVeterinarioComponent } from './veterinarios/formulario-veterinario/formulario-veterinario.component';
+import { ActualizarVeterinarioComponent } from './veterinarios/actualizar-veterinario/actualizar-veterinario.component';
+import { SidebarComponent } from './adminHome/sidebar/sidebar.component';
+import { FormularioClienteComponent } from './clientes/formulario-cliente/formulario-cliente.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +48,12 @@ import { FormularioTratamientoComponent } from './tratamientos/formulario-tratam
     AdminHeaderComponent,
     AdminMainComponent,
     FormularioTratamientoComponent,
+    TablaVeterinarioComponent,
+    InformacionVeterinarioComponent,
+    FormularioVeterinarioComponent,
+    ActualizarVeterinarioComponent,
+    SidebarComponent,
+    FormularioClienteComponent,
 
   ],
   imports: [

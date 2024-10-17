@@ -13,7 +13,7 @@ export class AdminHeaderComponent implements AfterViewInit {
    * al botón de toggle de la barra lateral para manejar el estado de toggle de la barra lateral.
    */
   ngAfterViewInit() {
-    if (window.location.pathname === '/admin') {
+    if (window.location.pathname.startsWith('/admin')) {
       const sidebarToggle = document.body.querySelector('#sidebarToggle') as HTMLElement;
       if (sidebarToggle) {
         sidebarToggle.addEventListener('click', event => {

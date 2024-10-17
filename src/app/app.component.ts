@@ -17,6 +17,6 @@ export class AppComponent {
     return this.router.url === '/';
   }
   isAdminPage(): boolean {
-    return this.router.url === '/admin';
+    return this.router.url.startsWith('/admin');
   }
 }

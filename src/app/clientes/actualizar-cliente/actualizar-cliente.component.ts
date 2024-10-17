@@ -15,7 +15,7 @@ export class ActualizarClienteComponent {
     cedula: 0,
     celular: 0,
     correo: '',
-    contraseña: '',
+    contrasena: '',
   };
 
   pass: string = '';
@@ -32,7 +32,7 @@ export class ActualizarClienteComponent {
       this.clienteService.findByCedula(cedula).subscribe(
         (ClienteInfo) => {
           this.informacionClienteParaActualizar = ClienteInfo;
-          this.pass = ClienteInfo.contraseña
+          this.pass = ClienteInfo.contrasena
           //Se debe guardar la contraseña en la variable pass porque Angular no reconoce la Ñ
         },
         (error) => {
@@ -44,7 +44,7 @@ export class ActualizarClienteComponent {
 
   actualizarCliente(): void {
     console.log('Actualizando informacion: ' + this.informacionClienteParaActualizar.id);
-    this.informacionClienteParaActualizar.contraseña = this.pass;
+    this.informacionClienteParaActualizar.contrasena = this.pass;
     //se regresa de pass a contraseña
     this.clienteService.actualizarCliente(this.informacionClienteParaActualizar.id ,this.informacionClienteParaActualizar).subscribe(
       (response) => {

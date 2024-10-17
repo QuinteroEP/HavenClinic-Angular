@@ -17,65 +17,7 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 
 <!-- Sidebar navigation layout -->
-<div id="layoutSidenav_nav">
-  <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-    <div class="sb-sidenav-menu">
-      <div class="nav">
-        <!-- Core section heading -->
-        <div class="sb-sidenav-menu-heading">Core</div>
-        <!-- Dashboard link -->
-        <a class="nav-link" href="#">
-          <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-          Dashboard
-        </a>
-        <!-- Interface section heading -->
-        <div class="sb-sidenav-menu-heading">Interface</div>
-        <!-- Pages link with collapse functionality -->
-        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-          <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-          Pages
-          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-        </a>
-        <!-- Collapsible pages section -->
-        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-          <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-            <!-- Authentication link with collapse functionality -->
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-              Authentication
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <!-- Collapsible authentication section -->
-            <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-              <nav class="sb-sidenav-menu-nested nav">
-                <!-- Login link -->
-                <a class="nav-link" routerLink="/login">Login</a>
-                <!-- Register link -->
-                <a class="nav-link" routerLink="/register">Register</a>
-              </nav>
-            </div>
-          </nav>
-        </div>
-        <!-- Addons section heading -->
-        <div class="sb-sidenav-menu-heading">Addons</div>
-        <!-- Charts link -->
-        <a class="nav-link" href="#">
-          <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-          Charts
-        </a>
-        <!-- Tables link -->
-        <a class="nav-link" href="#">
-          <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-          Tables
-        </a>
-      </div>
-    </div>
-    <!-- Sidebar footer with user information -->
-    <div class="sb-sidenav-footer">
-      <div class="small">Logged in as:</div>
-      Admin
-    </div>
-  </nav>
-</div>
+<app-sidebar></app-sidebar>
 
 <!-- Main content layout -->
 <div id="layoutSidenav_content">
@@ -155,7 +97,7 @@
       <div class="card mb-4">
         <div class="card-header">
           <i class="fas fa-table me-1"></i>
-          DataTable 
+          Tabla Drogas
         </div>
         <div class="card-body">
           <!-- DataTable -->
@@ -163,9 +105,8 @@
             <thead>
             <tr>
               <th>Nombre</th>
-              <th>Celular</th>
-              <th>Correo</th>
-              <th>Cedula</th>
+              <th>Cantidad administrada </th>
+
             </tr>
             </thead>
             <tbody>
@@ -174,9 +115,7 @@
             <tfoot>
             <tr>
               <th>Nombre</th>
-              <th>Celular</th>
-              <th>Correo</th>
-              <th>Cedula</th>
+              <th>Cantidad administrada </th>
             </tr>
             </tfoot>
           </table>

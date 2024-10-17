@@ -20,26 +20,28 @@ export class ClienteService {
     return this.http.get<Cliente>('http://localhost:8090/cliente/find/'+ cedula);
   }
 
+  findByEmail(correo:String): Observable<Cliente>{
+    return this.http.get<Cliente>('http://localhost:8090/cliente/findEmail/' + correo.toString());
+    }
+
+    //para buscar todos los clientes con dicho nombre
+    findByNombre(nombre: string): Observable<Cliente[]> {
+      return this.http.get<Cliente[]>('http://localhost:8090/cliente/findClienteByNombre/'+nombre);
+    }
+
   deleteByCedula(cedula:number){
     console.log(cedula);
     this.http.delete( 'http://localhost:8090/cliente/eliminarCliente/'+ cedula).subscribe();
   }
 
-  addCliente(id:number, cliente:Cliente){
-    this.http.post('http://localhost:8090/cliente/agregarCliente'+ id, cliente)
-    .subscribe(
-      response => {
-        console.log('Mascota actualizada con éxito', response);
-      },
-      error => {
-        console.error('Error al actualizar la mascota', error);
-      }
-    );
+  //para agregar un nuevo cliente
+  addCliente(cliente:Cliente): Observable<Cliente>{
+    console.log("Agregando cliente: ",cliente);
+   return this.http.post<Cliente>('http://localhost:8090/cliente/agregarCliente', cliente)
+ 
   }
 
-  findByEmail(correo:String): Observable<Cliente>{
-    return this.http.get<Cliente>('http://localhost:8090/cliente/findEmail/' + correo.toString());
-    }
+
 
     actualizarCliente(id: number, clienteAct: Cliente):Observable<Cliente>{
       return this.http.put<Cliente>('http://localhost:8090/cliente/update/' + id, clienteAct);

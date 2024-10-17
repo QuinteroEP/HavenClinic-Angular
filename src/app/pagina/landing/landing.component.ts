@@ -3,6 +3,7 @@ import * as $ from 'jquery';
 import {Router} from "@angular/router";
 import { Cliente } from 'src/app/entity/clientes';
 import { ClienteService } from 'src/app/servicio/cliente.service';
+import {VeterinarioService} from "../../servicio/veterinario.service";
 
 @Component({
   selector: 'app-landing',
@@ -18,10 +19,13 @@ export class LandingComponent implements AfterViewInit {
   @ViewChild('SignUp') botonSignUp!: ElementRef;
   @ViewChild('cancelRegister') botonCancelRegister!: ElementRef
   @ViewChild('checkBox') checkBox!: ElementRef;
+  @ViewChild('checkBox2') checkBox2!: ElementRef;
+
 
   constructor(
     private router: Router,
-    private ClienteService: ClienteService) { }
+    private ClienteService: ClienteService,
+    private VeterinarioService:VeterinarioService) { }
 
   private darkOverlay: HTMLElement | null = null;
 
@@ -52,12 +56,33 @@ export class LandingComponent implements AfterViewInit {
 
   onSubmit(): void {
     const isVeterinario = this.checkBox.nativeElement.checked;
-    const userType = isVeterinario ? 'veterinario' : 'cliente';
-    this.router.navigate(['/main-menu'], { queryParams: { userType , correo: this.correoUsuario} });
+    const isAdmin = this.checkBox2.nativeElement.checked;
+    const userType = isVeterinario ? 'veterinario' : isAdmin ? 'administrador' : 'cliente';
 
-    this.ClienteService.findByEmail(this.correoUsuario!).subscribe(cliente =>{
-      console.log("Landing - informacion: ", cliente);
-    })
+    if (isAdmin) {
+      this.router.navigate(['/admin'], { queryParams: { userType, correo: this.correoUsuario } });
+    } else {
+      if (userType === 'cliente') {
+        this.ClienteService.findByEmail(this.correoUsuario!).subscribe(cliente => {
+          console.log("Landing - informacion: ", cliente);
+        });
+      }
+      else{
+        this.VeterinarioService.findByEmail(this.correoUsuario!).subscribe(vet => {
+          console.log("Landing - informacion: ", vet);
+        });
+      }
+      this.router.navigate(['/main-menu'], {queryParams: {userType, correo: this.correoUsuario}});
+    }
+
+  }
+
+  onCheckboxChange(event: Event, checkboxType: string): void {
+    if (checkboxType === 'veterinario') {
+      this.checkBox2.nativeElement.checked = false;
+    } else if (checkboxType === 'administrador') {
+      this.checkBox.nativeElement.checked = false;
+    }
   }
 
   loginPopUp() {

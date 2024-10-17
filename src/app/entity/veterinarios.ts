@@ -1,11 +1,12 @@
 export interface Veterinario{
-    id: number;
+    vetId: number;
     correo: string;
     cedula: number;
     nombre: string;
     celular: number;
     especialidad: string;
-    contraseña:string;
+    contrasena:string;
     foto:string;
     numAtenciones: number;
+    activo:boolean;
 }

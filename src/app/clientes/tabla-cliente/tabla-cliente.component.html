@@ -1,4 +1,12 @@
 <p class="h4 text-center my-4">Clientes</p>
+<div  class="container mt-3">
+
+  <form #form="ngForm" (ngSubmit)="buscarCliente()" class="form-inline justify-content-center">
+    <label for="cedula" class="mr-2">Buscar cliente</label>
+    <input type="text" class="form-control mr-2" name="cedula" [(ngModel)]="nombreBusqueda">
+    <button type="submit" class="btn btn-primary">Buscar</button>
+  </form>
+</div>
 <div class="container">
   <table class="table table-striped table-hover">
     <thead class="table-dark">
