@@ -10,12 +10,12 @@
                 <div class="col-md-8">
                     <div class="card-header custom-header">
                         <ng-container *ngIf="veterinario">
-                            <h3>{{veterinario.nombre}}</h3>
+                            <h3>{{veterinario.nombre}} <span>({{ veterinario.activo ? 'Activado' : 'Desactivado' }})</span></h3>
                         </ng-container>
                     </div>
                     <div class="card-body custom-body">
                         <ng-container *ngIf="veterinario">
-                            <p class="card-text">Especialidad: <span>{{veterinario.especialidad}}</span> años</p>
+                            <p class="card-text">Especialidad: <span>{{veterinario.especialidad}}</span></p>
                             <p class="card-text">Correo: <span>{{veterinario.correo}}</span></p>
                             <p class="card-text">Cedula: <span>{{veterinario.cedula}}</span></p>
                             <p class="card-text">Celular: <span>{{veterinario.celular}}</span></p>

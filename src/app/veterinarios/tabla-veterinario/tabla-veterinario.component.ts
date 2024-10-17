@@ -46,10 +46,9 @@ onAgregarVeterinario(veterinario:Veterinario){
 
 //funcion para eliminar el veterinario
 eliminarVeterinario(veterinario:Veterinario){
-  var index = this.listaVeterinarios.indexOf(veterinario)
-  this.listaVeterinarios.splice(index, 1)
+
   console.log("cedula veterinario eliminado: " + veterinario.cedula)
-  this.veterinarioService.deleteByCedula(veterinario.cedula)
+  this.veterinarioService.cambiarEstado(veterinario)
 }
 
 
