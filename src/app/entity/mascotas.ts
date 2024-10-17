@@ -11,4 +11,5 @@ export interface Mascota{
     descripcion?:string;
     enTratamiento?:boolean;
     tratamiento?: Tratamiento;
+    cedulaDueno?:number;
 }
