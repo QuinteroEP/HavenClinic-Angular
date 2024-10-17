@@ -24,6 +24,7 @@ export class FormularioMascotaComponent {
     condicion:"",
     descripcion:"",
     enTratamiento: false,
+    cedulaDueno: 0,
   }
 
   constructor(private router: Router, private mascotaService: MascotaService ) { }
@@ -31,8 +32,9 @@ export class FormularioMascotaComponent {
   agregarMascota(): void {
     console.log('Agregando mascota:', this.formularioMascota);
     this.mascotaNueva = Object.assign({}, this.formularioMascota);
+    const cedulaDueno = this.mascotaNueva.cedulaDueno ?? 0; // Provide a default value if undefined
 
-    this.mascotaService.addMascota(this.mascotaNueva.id, this.mascotaNueva).subscribe(
+    this.mascotaService.addMascota(cedulaDueno, this.mascotaNueva).subscribe(
       (response) => {
         console.log('Mascota agregada con éxito', response);
         this.agregarMascotaEvent.emit(this.formularioMascota);
