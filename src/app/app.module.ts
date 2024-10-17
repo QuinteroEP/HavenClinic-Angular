@@ -26,6 +26,7 @@ import { TablaVeterinarioComponent } from './veterinarios/tabla-veterinario/tabl
 import { InformacionVeterinarioComponent } from './veterinarios/informacion-veterinario/informacion-veterinario.component';
 import { FormularioVeterinarioComponent } from './veterinarios/formulario-veterinario/formulario-veterinario.component';
 import { ActualizarVeterinarioComponent } from './veterinarios/actualizar-veterinario/actualizar-veterinario.component';
+import { SidebarComponent } from './adminHome/sidebar/sidebar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { ActualizarVeterinarioComponent } from './veterinarios/actualizar-veteri
     InformacionVeterinarioComponent,
     FormularioVeterinarioComponent,
     ActualizarVeterinarioComponent,
+    SidebarComponent,
 
   ],
   imports: [

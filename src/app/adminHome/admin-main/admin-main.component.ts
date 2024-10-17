@@ -6,24 +6,36 @@ import { DataTable } from 'simple-datatables';
 import { Chart, registerables } from 'chart.js';
 import { dashboardDTO } from 'src/app/entity/dashboardDTO';
 import { Droga } from "../../entity/drogas";
+import { DrogaService } from "../../servicio/droga.service";
 
+/**
+ * Component representing the main admin view.
+ */
 @Component({
   selector: 'app-admin-main',
   templateUrl: './admin-main.component.html',
   styleUrls: ['./admin-main.component.css']
 })
 export class AdminMainComponent implements OnInit, AfterViewInit {
-  listaClientes!: Cliente[];
-  datatable!: DataTable;
-  kpis: dashboardDTO | null = null;
+  listaDrogas!: Droga[]; // List of drugs
+  datatable!: DataTable; // DataTable instance
+  kpis: dashboardDTO | null = null; // KPIs data
 
-  constructor(private clienteService: ClienteService, private dashboardService: DashboardService) {}
+  /**
+   * Constructor to inject necessary services.
+   * @param drogaService Service to fetch drug data.
+   * @param dashboardService Service to fetch dashboard KPIs.
+   */
+  constructor(private drogaService: DrogaService, private dashboardService: DashboardService) {}
 
+  /**
+   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
+   */
   ngOnInit(): void {
-    this.clienteService.findAll().subscribe({
+    // Fetch all drugs and insert data into the table
+    this.drogaService.findAll().subscribe({
       next: (clientes) => {
-        this.listaClientes = clientes;
-        console.log(this.listaClientes); // Verify data is being fetched
+        this.listaDrogas = clientes;
         this.insertDataIntoTable(); // Insert data into DataTable
       },
       error: (error) => {
@@ -31,10 +43,11 @@ export class AdminMainComponent implements OnInit, AfterViewInit {
       }
     });
 
+    // Fetch KPIs and initialize charts
     this.dashboardService.getKPIs().subscribe({
       next: (data) => {
         this.kpis = data;
-        this.initializeCharts(); // Initialize charts after kpis is loaded
+        this.initializeCharts(); // Initialize charts after KPIs are loaded
       },
       error: (error) => {
         console.error('Error fetching KPIs', error);
@@ -42,11 +55,17 @@ export class AdminMainComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   * Lifecycle hook that is called after a component's view has been fully initialized.
+   */
   ngAfterViewInit() {
-    Chart.register(...registerables);
-    this.initializeDataTable();
+    Chart.register(...registerables); // Register Chart.js components
+    this.initializeDataTable(); // Initialize DataTable
   }
 
+  /**
+   * Initializes the DataTable.
+   */
   private initializeDataTable() {
     const datatablesSimple = document.getElementById('datatablesSimple') as HTMLTableElement;
     if (datatablesSimple) {
@@ -54,18 +73,22 @@ export class AdminMainComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /**
+   * Inserts data into the DataTable.
+   */
   private insertDataIntoTable() {
     if (this.datatable) {
-      const newRows = this.listaClientes.map(cliente => [
-        cliente.nombre,
-        cliente.celular,
-        cliente.correo,
-        cliente.cedula
+      const newRows = this.listaDrogas.map(droga => [
+        droga.nombre,
+        droga.unidadesVendidas
       ]);
       this.datatable.insert({ data: newRows });
     }
   }
 
+  /**
+   * Initializes the charts with the fetched KPIs data.
+   */
   private initializeCharts() {
     const pieChartCanvas = document.getElementById('myAreaChart') as HTMLCanvasElement;
     const barChartCanvas = document.getElementById('myBarChart') as HTMLCanvasElement;
