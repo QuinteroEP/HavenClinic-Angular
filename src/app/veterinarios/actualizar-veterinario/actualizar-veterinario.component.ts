@@ -14,7 +14,7 @@ export class ActualizarVeterinarioComponent {
     vetId: 0,
     nombre: '',
     especialidad: '',
-    correo: '', 
+    correo: '',
     cedula: 0,
     celular:0,
     contrasena: '',
@@ -46,12 +46,12 @@ export class ActualizarVeterinarioComponent {
   actualizarVeterinario(): void {
     console.log('Actualizando informacion:', this.informacionVetParaActualizar.cedula);
     this.veterinarioService.updateVeterinario(this.informacionVetParaActualizar).subscribe(
-      
+
       (response) => {
         console.log('Veterinario actualizado con exito', response);
-        this.router.navigate(['/veterinario/all'], { queryParams: { userType: "admin" } });
+        this.router.navigate(['/admin/veterinario/all'], { queryParams: { userType: "admin" } });
       },
-      
+
     )
   }
 

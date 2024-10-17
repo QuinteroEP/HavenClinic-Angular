@@ -12,6 +12,7 @@
 <!-- Display the admin header if the current page is the admin page -->
 <app-admin-header *ngIf="isAdminPage()"></app-admin-header>
 
+
 <!-- Display the admin layout if the current page is the admin page -->
 <div *ngIf="isAdminPage(); else normalLayout" id="layoutSidenav">
   <router-outlet></router-outlet>

@@ -32,14 +32,14 @@ export class FormularioVeterinarioComponent {
 
   //para agregar una veterinario
   agregarVeterinario():void{
-    
+
     console.log('Agregando veterinario:', this.formularioVeterinario);
     this.veterinarioNueva = Object.assign({}, this.formularioVeterinario);
     this.veterinarioService.addVeterinario(this.veterinarioNueva).subscribe(
       (response) => {
         console.log('Veterinario agregado con exito', response);
         this.agregarVeterinarioEvent.emit(this.formularioVeterinario);
-        this.router.navigate(['/veterinario/all'], { queryParams: { userType: "veterinario" } });
+        this.router.navigate(['/admin/veterinario/all'], { queryParams: { userType: "veterinario" } });
       },
       (error) => {
         console.error('Error al agregar el veterinario', error);

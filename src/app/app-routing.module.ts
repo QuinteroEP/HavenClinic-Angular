@@ -26,18 +26,18 @@ const routes: Routes = [
   {path: 'Mascotas/mis_mascotas', component: TablaMascotaComponent},
   {path: 'Mascotas/all', component: TablaMascotaComponent},
   {path: 'cliente/all', component: TablaClienteComponent},
-  {path: 'veterinario/all', component: TablaVeterinarioComponent},
+  {path: 'admin/veterinario/all', component: TablaVeterinarioComponent},
 
   {path: 'cliente/informacion/:cedula', component: InformacionClienteComponent},
   {path: 'Mascotas/informacion/:id', component: InformacionMascotaComponent},
-  {path: 'veterinario/informacion/:cedula', component: InformacionVeterinarioComponent},
+  {path: 'admin/veterinario/informacion/:cedula', component: InformacionVeterinarioComponent},
 
   {path: 'Mascotas/actualizar/:id', component: ActualizarMascotaComponent},
   {path: 'cliente/actualizar/:cedula', component: ActualizarClienteComponent},
-{path: 'veterinario/actualizar/:cedula', component: ActualizarVeterinarioComponent},
+{path: 'admin/veterinario/actualizar/:cedula', component: ActualizarVeterinarioComponent},
 
   {path: 'Mascotas/agregar', component: FormularioMascotaComponent},
-  {path: 'veterinario/agregar', component: FormularioVeterinarioComponent},
+  {path: 'admin/veterinario/agregar', component: FormularioVeterinarioComponent},
 
   {path: 'Mascotas/tratamiento/modificar/:id', component: FormularioTratamientoComponent},
   {path: 'main-menu', component: MainMenuComponent },
