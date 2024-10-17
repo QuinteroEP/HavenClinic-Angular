@@ -24,7 +24,19 @@ export class TratamientoService {
     return this.http.get<Tratamiento>('http://localhost:8090/tratamientos/info/'+id);
   }
 
-  addTratamiento(id: number, tratamiento: Tratamiento): Observable<any> {
-    return this.http.put('http://localhost:8090/tratamientos/add/'+id, tratamiento);
+  findByPetId(id: number):Observable<Tratamiento>{
+    return this.http.get<Tratamiento>('http://localhost:8090/tratamientos/mascota/'+id);
+  }
+
+  addTratamiento(mascotaId: number, tratamiento: Tratamiento): Observable<any> {
+    return this.http.post('http://localhost:8090/tratamientos/add/'+mascotaId, tratamiento);
+  }
+
+  actualizarTratamiento(mascotaId: number, tratamiento: Tratamiento): Observable<any> {
+    return this.http.put('http://localhost:8090/tratamientos/update/'+mascotaId, tratamiento);
+  }
+
+  getHistorial(id: number): Observable<Tratamiento[]>{
+    return this.http.get<Tratamiento[]>('http://localhost:8090/tratamientos/historial/' +id)
   }
 }

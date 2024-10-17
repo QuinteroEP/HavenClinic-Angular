@@ -16,7 +16,7 @@ export class FormularioVeterinarioComponent {
   veterinarioNueva!:Veterinario;
 
   formularioVeterinario: Veterinario = {
-    id: 0,
+    vetId: 0,
     nombre: '',
     especialidad: '',
     correo: '',

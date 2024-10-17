@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Mascota } from '../entity/mascotas';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Tratamiento } from '../entity/tratamientos';
 
 @Injectable({
   providedIn: 'root'

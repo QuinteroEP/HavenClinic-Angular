@@ -1,5 +1,5 @@
 export interface Veterinario{
-    id: number;
+    vetId: number;
     correo: string;
     cedula: number;
     nombre: string;

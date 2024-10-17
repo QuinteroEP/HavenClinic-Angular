@@ -28,8 +28,8 @@ export class VeterinarioService {
     return this.http.get<Veterinario>(`${this.baseUrl}/find/${id}`);
   }
    //buscar a partir del email
-   findByEmail(correo:String): Observable<Cliente>{
-    return this.http.get<Cliente>('http://localhost:8090/cliente/findEmail/' + encodeURIComponent(correo.toString()))
+   findByEmail(correo:String): Observable<Veterinario>{
+    return this.http.get<Veterinario>('http://localhost:8090/veterinarios/findEmail/' + encodeURIComponent(correo.toString()))
   }
 
   //para buscar por la cedula, se usa este

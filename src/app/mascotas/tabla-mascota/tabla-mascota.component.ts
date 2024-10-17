@@ -14,13 +14,15 @@ export class TablaMascotaComponent {
   mascotaSelec!: Mascota;
   listaMascotas!: Mascota[];
   userType: string = ' ';
+  correo: string = '';
 
   //injecciones
   constructor(
     private route: ActivatedRoute,
     private mascotaService: MascotaService){ this.route.queryParams.subscribe(params =>{
       this.id = params['id'],
-      this.userType = params['userType']})
+      this.userType = params['userType'],
+      this.correo = params['correo']})
     }
 
     ngOnInit(): void{

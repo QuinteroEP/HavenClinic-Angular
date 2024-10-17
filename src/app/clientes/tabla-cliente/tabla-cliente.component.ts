@@ -15,13 +15,16 @@ export class TablaClienteComponent {
 
   cedula:number = 0;
   userType: string = ' ';
+  correo: string = '';
+
   clienteSeleccionado!: Cliente
   listaClientes!: Cliente[]
   constructor(
     private route: ActivatedRoute,
     private clienteService: ClienteService){ this.route.queryParams.subscribe(params =>{
       this.cedula = params['cedula'],
-      this.userType = params['userType']})
+      this.userType = params['userType'],
+      this.correo = params['correo']})
     }
 
     ngOnInit(): void{

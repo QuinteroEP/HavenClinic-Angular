@@ -4,8 +4,10 @@ import { Tratamiento } from 'src/app/entity/tratamientos';
 import { TratamientoService } from 'src/app/servicio/tratamiento.service';
 import { MascotaService } from 'src/app/servicio/mascota.service';
 import { DrogaService } from 'src/app/servicio/droga.service';
+import { VeterinarioService } from 'src/app/servicio/veterinario.service';
 import { Mascota } from '../../entity/mascotas';
 import {Droga} from "../../entity/drogas";
+import { Veterinario } from 'src/app/entity/veterinarios';
 
 @Component({
   selector: 'app-formulario-tratamiento',
@@ -18,6 +20,9 @@ export class FormularioTratamientoComponent {
 
   tratamientoNuevo!: Tratamiento;
   drogas: Droga[] = [];
+  vetInfo!: Veterinario;
+  correo: string = '';
+  petId: number = 0;
 
   formularioTratamiento: Tratamiento ={
     id: 0,
@@ -32,7 +37,10 @@ export class FormularioTratamientoComponent {
               private TratamientoService: TratamientoService,
               private MascotaService:MascotaService,
               private DrogaService:DrogaService,
-              private route: ActivatedRoute, ) { }
+              private VeterinarioService:VeterinarioService,
+              private route: ActivatedRoute, ) { 
+                this.route.queryParams.subscribe(params =>{
+                this.correo = params['correo']})}
 
 
   ngOnInit(): void {
@@ -44,7 +52,6 @@ export class FormularioTratamientoComponent {
           if(MascotaInfo.tratamiento){
             this.formularioTratamiento = MascotaInfo.tratamiento;
           }
-          console.log(this.formularioTratamiento.nombredroga);
         },
         (error) => {
           console.error('Error fetching Tratamiento info:', error);
@@ -63,7 +70,24 @@ export class FormularioTratamientoComponent {
   }
 
   agregarTratamiento(): void {
-    console.log('Agregando tratamiento:', this.formularioTratamiento);
+    this.VeterinarioService.findByEmail(this.correo).subscribe(
+      (informacion) => {
+        this.formularioTratamiento.idVeterinario = informacion.vetId;
+      }
+    )
+
+    this.DrogaService.findByName(this.formularioTratamiento.nombredroga).subscribe(
+      (drogaInfo) => {
+        this.formularioTratamiento.idDroga = drogaInfo.id;
+      }
+    )
+
+    this.route.paramMap.subscribe(param => {
+      const id = Number(param.get('id'));
+      this.formularioTratamiento.idMascota = id;
+    })
+
+    console.log('Agregando tratamiento:', this.formularioTratamiento);    
     this.tratamientoNuevo = Object.assign({}, this.formularioTratamiento);
 
     this.TratamientoService.addTratamiento(this.tratamientoNuevo.id, this.tratamientoNuevo).subscribe(

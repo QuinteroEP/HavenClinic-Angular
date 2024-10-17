@@ -11,10 +11,10 @@ import { VeterinarioService } from 'src/app/servicio/veterinario.service';
 })
 export class ActualizarVeterinarioComponent {
   informacionVetParaActualizar: Veterinario = {
-    id: 0,
+    vetId: 0,
     nombre: '',
     especialidad: '',
-    correo: '',
+    correo: '', 
     cedula: 0,
     celular:0,
     contrasena: '',
