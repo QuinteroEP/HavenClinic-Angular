@@ -41,4 +41,8 @@ export class MascotaService {
   switchTratamiento(id: number): Observable<Mascota>{
     return this.http.put<Mascota>('http://localhost:8090/tratamientos/update/' +id, {});
   }
+
+  findByNombre(nombre: string): Observable<Mascota[]> {
+    return this.http.get<Mascota[]>('http://localhost:8090/mascotas/findByNombre/'+nombre);
+  }
 }

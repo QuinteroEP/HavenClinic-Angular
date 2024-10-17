@@ -31,6 +31,10 @@ export class VeterinarioService {
    findByEmail(correo:String): Observable<Veterinario>{
     return this.http.get<Veterinario>('http://localhost:8090/veterinarios/findEmail/' + encodeURIComponent(correo.toString()))
   }
+  //busca los veterinarios que tengna dicho nombre
+  findByNombre(nombre: string): Observable<Veterinario[]> {
+    return this.http.get<Veterinario[]>('http://localhost:8090/veterinarios/findByNombre/'+nombre);
+  }
 
   //para buscar por la cedula, se usa este
   findByCedula(cedula: number): Observable<Veterinario> {

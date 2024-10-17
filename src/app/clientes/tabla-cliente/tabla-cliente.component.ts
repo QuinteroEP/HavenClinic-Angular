@@ -17,6 +17,7 @@ export class TablaClienteComponent {
   userType: string = ' ';
   correo: string = '';
   cedulaBusqueda: string = '';
+  nombreBusqueda: string = '';
 
   clienteSeleccionado!: Cliente
   listaClientes!: Cliente[]
@@ -51,21 +52,18 @@ export class TablaClienteComponent {
     }
 
     buscarCliente() {
-      if (this.cedulaBusqueda) {
-        const cedula = parseInt(this.cedulaBusqueda, 10);
-        if (!isNaN(cedula)) {
-          this.clienteService.findByCedula(cedula).subscribe(
-            (cliente) => {
-              this.listaClientes = [cliente];
-            },
-            (error) => {
-              console.error('Error fetching client by cedula', error);
-              this.listaClientes = [];
-            }
-          );
-        } else {
-          console.error('Cédula debe ser un número');
-        }
+      if (this.nombreBusqueda) {
+        console.log(this.nombreBusqueda);
+        this.clienteService.findByNombre(this.nombreBusqueda).subscribe(
+          (clientes) => {
+            console.log(clientes);
+            this.listaClientes = clientes;
+          },
+          (error) => {
+            console.error('Error fetching clients by nombre', error);
+            this.listaClientes = [];
+          }
+        );
       } else {
         this.clienteService.findAll().subscribe(
           (clientes) => {
@@ -74,7 +72,4 @@ export class TablaClienteComponent {
         );
       }
     }
-
-
-
-}
+  }

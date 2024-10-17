@@ -15,6 +15,7 @@ export class TablaMascotaComponent {
   listaMascotas!: Mascota[];
   userType: string = ' ';
   correo: string = '';
+  nombreBusqueda: string = '';
 
   //injecciones
   constructor(
@@ -56,4 +57,29 @@ export class TablaMascotaComponent {
       console.log("Id mascota eliminada: " + mascota.id);
       this.mascotaService.deleteById(mascota.id);
     }
-}
+
+    
+
+    buscarMascota() {
+      if (this.nombreBusqueda) {
+        console.log(this.nombreBusqueda);
+        this.mascotaService.findByNombre(this.nombreBusqueda).subscribe(
+          (mascotas) => {
+            console.log(mascotas);
+            this.listaMascotas = mascotas;
+          },
+          (error) => {
+            console.error('Error fetching pets by name', error);
+            this.listaMascotas = [];
+          }
+        );
+      } else {
+        this.mascotaService.findAll().subscribe(
+          (mascotas) => {
+            this.listaMascotas = mascotas;
+          }
+        );
+      }
+    }
+  }
+

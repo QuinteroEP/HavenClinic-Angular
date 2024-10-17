@@ -3,7 +3,7 @@
 
   <form #form="ngForm" (ngSubmit)="buscarCliente()" class="form-inline justify-content-center">
     <label for="cedula" class="mr-2">Buscar cliente</label>
-    <input type="text" class="form-control mr-2" name="cedula" [(ngModel)]="cedulaBusqueda">
+    <input type="text" class="form-control mr-2" name="cedula" [(ngModel)]="nombreBusqueda">
     <button type="submit" class="btn btn-primary">Buscar</button>
   </form>
 </div>

@@ -14,6 +14,7 @@ export class TablaVeterinarioComponent {
   veterinarioSelec!:Veterinario
   listaVeterinarios!:Veterinario[]
   userType: string = ' '
+  nombreBusqueda: string = '';
   
   //constructor
   constructor(
@@ -51,5 +52,26 @@ eliminarVeterinario(veterinario:Veterinario){
   this.veterinarioService.cambiarEstado(veterinario)
 }
 
-
+//se despliega al darle al boton busca por nombre
+buscarVeterinario() {
+  if (this.nombreBusqueda) {
+    console.log(this.nombreBusqueda);
+    this.veterinarioService.findByNombre(this.nombreBusqueda).subscribe(
+      (veterinarios) => {
+        console.log(veterinarios);
+        this.listaVeterinarios = veterinarios;
+      },
+      (error) => {
+        console.error('Error fetching veterinarians by nombre', error);
+        this.listaVeterinarios = [];
+      }
+    );
+  } else {
+    this.veterinarioService.findAll().subscribe(
+      (veterinarios) => {
+        this.listaVeterinarios = veterinarios;
+      }
+    );
+  }
+}
 }
