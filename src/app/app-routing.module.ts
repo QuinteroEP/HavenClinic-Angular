@@ -14,6 +14,7 @@ import { ActualizarClienteComponent } from './clientes/actualizar-cliente/actual
 import { ActualizarVeterinarioComponent } from './veterinarios/actualizar-veterinario/actualizar-veterinario.component';
 
 import { FormularioMascotaComponent } from "./mascotas/formulario-mascota/formulario-mascota.component";
+import { FormularioClienteComponent } from './clientes/formulario-cliente/formulario-cliente.component';
 import { FormularioTratamientoComponent } from './tratamientos/formulario-tratamiento/formulario-tratamiento.component';
 import { FormularioVeterinarioComponent } from './veterinarios/formulario-veterinario/formulario-veterinario.component';
 
@@ -37,6 +38,7 @@ const routes: Routes = [
 {path: 'admin/veterinario/actualizar/:cedula', component: ActualizarVeterinarioComponent},
 
   {path: 'Mascotas/agregar', component: FormularioMascotaComponent},
+  {path: 'cliente/agregar', component: FormularioClienteComponent},
   {path: 'admin/veterinario/agregar', component: FormularioVeterinarioComponent},
 
   {path: 'Mascotas/tratamiento/modificar/:id', component: FormularioTratamientoComponent},

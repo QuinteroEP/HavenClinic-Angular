@@ -1,0 +1,33 @@
+<form class="form" (ngSubmit)="agregarCliente()">
+    <p class="title">Añadir Cliente</p>
+    <p class="message">Complete el formulario para añadir un nuevo cliente</p>
+    <div class="form-columns">
+      <div class="column">
+        <label>
+          <input class="input" type="text" id="name" name="name" [(ngModel)]="formularioCliente.nombre" required>
+          <span>Nombre del cliente</span>
+        </label>
+        <label>
+          <input class="input" type="number" id="cedula" name="cedula" [(ngModel)]="formularioCliente.cedula" required>
+          <span>cedula</span>
+        </label>
+        <label>
+          <input class="input" type="number" id="celular" name="celular" [(ngModel)]="formularioCliente.celular" required>
+          <span>Celular</span>
+        </label>
+      </div>
+      <div class="column">
+        <label>
+          <input class="input" type="text" id="correo" name="correo" [(ngModel)]="formularioCliente.correo" required>
+          <span>Correo</span>
+        </label>
+        <label>
+          <input class="input" type="text" id="contrasena" name="contrasena" [(ngModel)]="formularioCliente.contrasena" required>
+          <span>Contraseña</span>
+        </label>
+       
+      </div>
+    </div>
+
+    <button class="submit" type="submit">Añadir</button>
+  </form>

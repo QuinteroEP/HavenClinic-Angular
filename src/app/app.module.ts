@@ -27,6 +27,7 @@ import { InformacionVeterinarioComponent } from './veterinarios/informacion-vete
 import { FormularioVeterinarioComponent } from './veterinarios/formulario-veterinario/formulario-veterinario.component';
 import { ActualizarVeterinarioComponent } from './veterinarios/actualizar-veterinario/actualizar-veterinario.component';
 import { SidebarComponent } from './adminHome/sidebar/sidebar.component';
+import { FormularioClienteComponent } from './clientes/formulario-cliente/formulario-cliente.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { SidebarComponent } from './adminHome/sidebar/sidebar.component';
     FormularioVeterinarioComponent,
     ActualizarVeterinarioComponent,
     SidebarComponent,
+    FormularioClienteComponent,
 
   ],
   imports: [

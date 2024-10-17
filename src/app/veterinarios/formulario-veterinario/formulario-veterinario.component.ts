@@ -39,7 +39,7 @@ export class FormularioVeterinarioComponent {
       (response) => {
         console.log('Veterinario agregado con exito', response);
         this.agregarVeterinarioEvent.emit(this.formularioVeterinario);
-        this.router.navigate(['/admin/veterinario/all'], { queryParams: { userType: "veterinario" } });
+        this.router.navigate(['/admin/veterinario/all'], { queryParams: { userType: "admin" } });
       },
       (error) => {
         console.error('Error al agregar el veterinario', error);
