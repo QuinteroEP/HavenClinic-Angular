@@ -29,6 +29,7 @@ export class TratamientoService {
   }
 
   addTratamiento(mascotaId: number, tratamiento: Tratamiento): Observable<any> {
+    
     return this.http.post('http://localhost:8090/tratamientos/add/'+mascotaId, tratamiento);
   }
 
