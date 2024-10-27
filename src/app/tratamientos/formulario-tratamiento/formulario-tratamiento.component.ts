@@ -28,10 +28,37 @@ export class FormularioTratamientoComponent {
   formularioTratamiento: Tratamiento ={
     id: 0,
     fecha: new Date,
-    idVeterinario: 0,
-    idMascota: 0,
-    idDroga: 0,
-    nombredroga: ''
+    mascota: {
+      id: 0,
+      nombre: '',
+      edad: 0,
+      raza: '',
+      url: '',
+      genero: '',
+      condicion: '',
+      descripcion: '',
+      enTratamiento: false
+    },
+    veterinario: {
+      vetId: 0,
+      correo: '',
+      cedula: 0,
+      nombre: '',
+      celular: 0,
+      especialidad: '',
+      contrasena: '',
+      foto: '',
+      numAtenciones: 0,
+      activo: false
+    },
+    droga: {
+      id: 0,
+      nombre: '',
+      precioVenta: 0,
+      precioCompra: 0,
+      unidadesDisponibles: 0,
+      unidadesVendidas: 0
+    }
   }
 
   constructor(private router: Router,
@@ -46,9 +73,9 @@ export class FormularioTratamientoComponent {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
-      const id = Number(param.get('id'));
+      this.petId = Number(param.get('id'));
 
-      this.MascotaService.findById(id).subscribe(
+      this.MascotaService.findById(this.petId).subscribe(
         (MascotaInfo) => {
           if(MascotaInfo.tratamiento){
             this.formularioTratamiento = MascotaInfo.tratamiento;
@@ -79,6 +106,27 @@ export class FormularioTratamientoComponent {
     let drogaInfo: any;
     let mascotaId: number;
 
+    
+    this.VeterinarioService.findByEmail(this.correo).subscribe(
+      (vetInfo) => {
+        this.tratamientoNuevo.veterinario.vetId = vetInfo.vetId;
+      }
+    )
+    this.tratamientoNuevo = Object.assign({}, this.formularioTratamiento);
+    
+
+    this.TratamientoService.addTratamiento(this.petId, this.tratamientoNuevo).subscribe(
+      (response) => {
+        console.log('Tratamiento agregado', response);
+        this.agregarTratamientoEvent.emit(this.formularioTratamiento);
+        this.router.navigate(['/Mascotas/all'], { queryParams: { userType: "veterinario" }});
+      },
+      (error) => {
+        console.error('Error al agregar el tratamiento', error);
+      }
+    )
+  
+/*
     this.VeterinarioService.findByEmail(this.correo).subscribe(
         (informacion) => {
             console.log("informacion del veterinario: ", informacion);
@@ -119,6 +167,6 @@ export class FormularioTratamientoComponent {
         (error) => {
             console.error('Error al obtener la información del veterinario', error);
         }
-    );
-}
+    );*/
+  }
 }

@@ -50,7 +50,7 @@
                     <div>
                         <p class="bold">Historial Medico</p>
                         <ol *ngFor="let tratamiento of historial">
-                            <li>Fecha: {{tratamiento.fecha}}; Medicamento: <span class="italic">{{tratamiento.nombredroga}}</span></li>
+                            <li>Fecha: {{tratamiento.fecha | date}}, Veterinario: {{tratamiento.veterinario.nombre}} (medicamento: {{tratamiento.droga.nombre}})</li>
                         </ol>
                     </div>
                 </div>

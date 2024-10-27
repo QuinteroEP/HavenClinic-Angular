@@ -29,7 +29,6 @@ export class TratamientoService {
   }
 
   addTratamiento(mascotaId: number, tratamiento: Tratamiento): Observable<any> {
-    
     return this.http.post('http://localhost:8090/tratamientos/add/'+mascotaId, tratamiento);
   }
 
@@ -39,5 +38,9 @@ export class TratamientoService {
 
   getHistorial(id: number): Observable<Tratamiento[]>{
     return this.http.get<Tratamiento[]>('http://localhost:8090/tratamientos/historial/' +id)
+  }
+
+  getDroga(id: number): Observable<Droga>{
+    return this.http.get<Droga>('http://localhost:8090/tratamientos/droga/' +id)
   }
 }
