@@ -1,4 +1,4 @@
-<form class="form" (ngSubmit)="agregarMascota()">
+ <form class="form" (ngSubmit)="agregarMascota()">
   <p class="title">Añadir Mascota</p>
   <p class="message">Complete el formulario para añadir una nueva mascota.</p>
   <div class="form-columns">
@@ -40,5 +40,5 @@
     <input class="input" type="text" id="url" name="image" [(ngModel)]="formularioMascota.url">
     <span>URL de la Imagen</span>
   </label>
-  <button class="submit" type="submit">Añadir</button>
+  <button class="submit" id="submitMascotaBtn" type="submit">Añadir</button>
 </form>
