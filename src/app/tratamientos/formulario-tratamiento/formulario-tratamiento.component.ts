@@ -9,6 +9,7 @@ import { Mascota } from '../../entity/mascotas';
 import {Droga} from "../../entity/drogas";
 import { Veterinario } from 'src/app/entity/veterinarios';
 import { forkJoin } from 'rxjs';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-formulario-tratamiento',
@@ -22,6 +23,7 @@ export class FormularioTratamientoComponent {
   tratamientoNuevo!: Tratamiento;
   drogas: Droga[] = [];
   correo: string = '';
+  opcion: string = '';
   
   petId: number = 0;
   vetId: number = 0;
@@ -39,7 +41,8 @@ export class FormularioTratamientoComponent {
               private MascotaService:MascotaService,
               private DrogaService:DrogaService,
               private VeterinarioService:VeterinarioService,
-              private route: ActivatedRoute, ) { 
+              private route: ActivatedRoute,
+              private cd: ChangeDetectorRef ) { 
                 this.route.queryParams.subscribe(params =>{
                 this.correo = params['correo']})}
 
@@ -48,12 +51,10 @@ export class FormularioTratamientoComponent {
     this.route.paramMap.subscribe(param => {
       this.petId = Number(param.get('id'));
 
-      this.MascotaService.findById(this.petId).subscribe(
-        (MascotaInfo) => {
-          if(MascotaInfo.tratamiento){
-            this.formularioTratamiento = MascotaInfo.tratamiento;
-          }
-        },
+      this.TratamientoService.findByPetId(this.petId).subscribe(
+        (tratamientoInfo) => {
+            this.formularioTratamiento = tratamientoInfo;
+          },
         (error) => {
           console.error('Error fetching Tratamiento info:', error);
         }
@@ -87,7 +88,7 @@ export class FormularioTratamientoComponent {
           (response) => {
             console.log('Tratamiento agregado', response);
             this.agregarTratamientoEvent.emit(this.formularioTratamiento);
-            this.router.navigate(['/Mascotas/all'], { queryParams: { userType: "veterinario" } });
+            this.router.navigate(['/Mascotas/all'], { queryParams: { userType: "veterinario", correo: this.correo } });
           },
           (error) => {
             console.error('Error al agregar el tratamiento', error);
