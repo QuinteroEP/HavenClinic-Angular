@@ -58,12 +58,4 @@ export class InformacionMascotaComponent {
       }
     );
   }
-
-  modificarTratamiento(mascota: Mascota){
-    console.log("Modificar")
-  }
-
-  generarTratamiento(mascota: Mascota){
-    console.log("Generar")
-  }
 }
