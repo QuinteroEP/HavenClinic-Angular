@@ -3,7 +3,7 @@
       <div class="column">
         <label>
           <span>Medicina</span>
-          <select id="nombreDroga" name="nombreDroga" [(ngModel)]="formularioTratamiento.nombredroga" required>
+          <select id="nombreDroga" name="nombreDroga" [(ngModel)]="drogaNueva" required>
             <option *ngFor="let droga of drogas" [value]="droga.nombre">{{ droga.nombre }}</option>
           </select>
         </label>

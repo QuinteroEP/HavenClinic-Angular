@@ -6,6 +6,7 @@ import { mergeMap } from 'rxjs';
 import { Tratamiento } from 'src/app/entity/tratamientos';
 import { merge } from 'jquery';
 import { TratamientoService } from 'src/app/servicio/tratamiento.service';
+import { Droga } from 'src/app/entity/drogas';
 
 @Component({
   selector: 'app-informacion-mascota',
@@ -16,8 +17,11 @@ export class InformacionMascotaComponent {
   @Input()
   mascota!: Mascota;
   userType: string = ' ';
-  historial: Tratamiento[] | undefined;
   correo: string = '';
+
+  historial: Tratamiento[] | undefined;
+  drogas: Droga[] | undefined;
+  
 
   constructor(
     private MascotaService:MascotaService,
@@ -39,7 +43,7 @@ export class InformacionMascotaComponent {
             this.mascota = mascotaInfo;
             return this.TratamientoService.getHistorial(this.mascota.id)
           }
-        )
+        ),
       ).subscribe(
         (history) => {
           this.historial = history
@@ -57,13 +61,5 @@ export class InformacionMascotaComponent {
           console.error('Error updating Mascota:', error);
       }
     );
-  }
-
-  modificarTratamiento(mascota: Mascota){
-    console.log("Modificar")
-  }
-
-  generarTratamiento(mascota: Mascota){
-    console.log("Generar")
   }
 }
