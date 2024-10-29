@@ -50,7 +50,7 @@
                     <div>
                         <p class="bold">Historial Medico</p>
                         <ol>
-                            <li *ngFor="let tratamiento of historial">Fecha: {{tratamiento.fecha | date}}</li>
+                            <li *ngFor="let tratamiento of historial; ; let i = index">Fecha: {{tratamiento.fecha | date}}, Medicamento: {{nombreDrogas[i]}}</li>
                         </ol>
                     </div>
                 </div>
