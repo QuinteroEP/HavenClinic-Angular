@@ -49,7 +49,7 @@ export class AdminMainComponent implements OnInit, AfterViewInit {
       next: (data) => {
         this.kpis = data;
         this.initializeCharts(); // Initialize charts after KPIs are loaded
-        this.initializeDataTable(); // Initialize DataTable
+
       },
       error: (error) => {
         console.error('Error fetching KPIs', error);
@@ -62,7 +62,7 @@ export class AdminMainComponent implements OnInit, AfterViewInit {
    */
   ngAfterViewInit() {
     Chart.register(...registerables); // Register Chart.js components
-
+    this.initializeDataTable(); // Initialize DataTable
   }
 
   /**
