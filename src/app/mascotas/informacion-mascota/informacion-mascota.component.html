@@ -13,7 +13,7 @@
                 <div class="col-md-8">
                     <div class="card-header custom-header">
                         <ng-container *ngIf="mascota">
-                            <h3>{{mascota.nombre}}</h3>
+                            <h3 id="nombreMascotaInfo">{{mascota.nombre}}</h3>
                         </ng-container>
                     </div>
                     <div class="card-body custom-body">
@@ -30,7 +30,7 @@
                                     <p class="center, bold">Estado: En Tratamiento</p>
 
                                     <ng-container *ngIf="userType === 'veterinario'">
-                                        <button class="btn btn-success btn-lg animate-btn" (click)="administrarTratamiento(mascota)">Administar Tratamiento</button>
+                                        <button class="btn btn-success btn-lg animate-btn" (click)="administrarTratamiento(mascota)" id="ATbutton">Administar Tratamiento</button>
                                     <a [routerLink]="['/Mascotas/tratamiento/modificar', mascota.id]" [queryParams]="{userType: userType, correo: correo }" class="btn btn-info animate-btn">Modificar Tratamiento</a>
                                     </ng-container>
 
@@ -40,7 +40,7 @@
                                     <p class="center, bold">Estado: No En Tratamiento</p>
 
                                     <ng-container *ngIf="userType === 'veterinario'">
-                                       <a [routerLink]="['/Mascotas/tratamiento/modificar', mascota.id]" [queryParams]="{userType: userType, correo: correo }" class="btn btn-info animate-btn">Generar Tratamiento</a>
+                                       <a [routerLink]="['/Mascotas/tratamiento/modificar', mascota.id]" [queryParams]="{userType: userType, correo: correo }" class="btn btn-info animate-btn" id="Gbutton">Generar Tratamiento</a>
                                     </ng-container>
                                    </ng-container>
                             </div>
@@ -49,8 +49,8 @@
 
                     <div>
                         <p class="bold">Historial Medico</p>
-                        <ol *ngFor="let tratamiento of historial">
-                            <li>Fecha: {{tratamiento.fecha}}; Medicamento: <span class="italic">{{tratamiento.nombredroga}}</span></li>
+                        <ol>
+                            <li *ngFor="let tratamiento of historial; ; let i = index">Fecha: {{tratamiento.fecha | date}}, Medicamento: {{nombreDrogas[i]}}</li>
                         </ol>
                     </div>
                 </div>

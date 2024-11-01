@@ -35,7 +35,7 @@ const routes: Routes = [
 
   {path: 'Mascotas/actualizar/:id', component: ActualizarMascotaComponent},
   {path: 'cliente/actualizar/:cedula', component: ActualizarClienteComponent},
-{path: 'admin/veterinario/actualizar/:cedula', component: ActualizarVeterinarioComponent},
+  {path: 'admin/veterinario/actualizar/:cedula', component: ActualizarVeterinarioComponent},
 
   {path: 'Mascotas/agregar', component: FormularioMascotaComponent},
   {path: 'cliente/agregar', component: FormularioClienteComponent},

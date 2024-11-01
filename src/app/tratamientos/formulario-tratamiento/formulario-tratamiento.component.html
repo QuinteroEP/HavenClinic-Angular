@@ -3,15 +3,15 @@
       <div class="column">
         <label>
           <span>Medicina</span>
-          <select id="nombreDroga" name="nombreDroga" [(ngModel)]="formularioTratamiento.nombredroga" required>
+          <select id="nombreDroga" name="nombreDroga" [(ngModel)]="drogaNueva" required>
             <option *ngFor="let droga of drogas" [value]="droga.nombre">{{ droga.nombre }}</option>
           </select>
         </label>
         <label>
           <input class="date" type="date" id="date" name="fecha" [(ngModel)]="formularioTratamiento.fecha" required>
-          <span>Fecha</span>
+          <span id = "fecha">Fecha</span>
         </label>
       </div>
     </div>
-    <button class="submit" type="submit">Actualizar Tratamiento</button>
+    <button class="submit" type="submit" id="AT2button">Actualizar Tratamiento</button>
   </form>

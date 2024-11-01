@@ -11,14 +11,14 @@
     <ul>
       <li><a (click)="navigateToMainMenu()" class="active" style="--navAni:1">Menu Principal</a></li>
 
-        <li *ngIf="userType === 'veterinario'"><a routerLink="/cliente/all" [queryParams]="{userType: userType, correo: correo }" style="--navAni:2">Lista de Clientes</a></li>
-        <li *ngIf="userType === 'veterinario'"><a routerLink="/Mascotas/agregar" [queryParams]="{userType: userType, correo: correo }" style="--navAni:3">Añadir Mascota</a></li>
+        <li *ngIf="userType === 'veterinario'"><a routerLink="/cliente/all" id="btnlistaClientes" [queryParams]="{userType: userType, correo: correo }" style="--navAni:2">Lista de Clientes</a></li>
+        <li *ngIf="userType === 'veterinario'"><a routerLink="/Mascotas/agregar" id="btnAgregarMascota" [queryParams]="{userType: userType, correo: correo }" style="--navAni:3">Añadir Mascota</a></li>
         <li *ngIf="userType === 'veterinario'"><a routerLink="/Mascotas/all" [queryParams]="{userType: userType, correo: correo}" style="--navAni:2">Lista de Mascotas</a></li>
 
-      <li *ngIf="userType === 'cliente'"><a routerLink="/Mascotas/mis_mascotas" [queryParams]="{ id: cliente?.id, userType: userType, correo: cliente?.correo}" style="--navAni:2">Mis Mascotas</a></li>
+      <li *ngIf="userType === 'cliente'"><a routerLink="/Mascotas/mis_mascotas" id="btnVerMisMascotas" [queryParams]="{ id: cliente?.id, userType: userType, correo: cliente?.correo}" style="--navAni:2">Mis Mascotas</a></li>
 
 
-      <li><a routerLink="/" style="--navAni:5">Cerrar Sesion</a></li>
+      <li><a routerLink="/" id="btnCerrarSesion" style="--navAni:5">Cerrar Sesion</a></li>
     </ul>
     <label class="mode">
       <input type="checkbox" id="darkModeToggle">

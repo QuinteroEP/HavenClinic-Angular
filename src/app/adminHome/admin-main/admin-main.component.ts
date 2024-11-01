@@ -49,6 +49,7 @@ export class AdminMainComponent implements OnInit, AfterViewInit {
       next: (data) => {
         this.kpis = data;
         this.initializeCharts(); // Initialize charts after KPIs are loaded
+
       },
       error: (error) => {
         console.error('Error fetching KPIs', error);

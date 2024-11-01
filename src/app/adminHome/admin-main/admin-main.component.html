@@ -33,7 +33,7 @@
         <!-- Primary card example -->
         <div class="col-xl-3 col-md-6">
           <div class="card bg-primary text-white mb-4">
-            <div class="card-body">Tratamientos en el ultimo mes: {{ kpis?.totalTratamientos }} </div>
+            <div class="card-body">Tratamientos en el ultimo mes: <span id="total">{{ kpis?.totalTratamientos }}</span> </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
               <a class="small text-white stretched-link" href="#">View Details</a>
               <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -53,7 +53,7 @@
         <!-- Success card example -->
         <div class="col-xl-3 col-md-6">
           <div class="card bg-success text-white mb-4">
-            <div class="card-body">Ganancias Totales: {{ kpis?.gananciasTotales | currency }}</div>
+            <div class="card-body">Ganancias Totales: <span id="total2">{{ kpis?.gananciasTotales | currency }} </span></div>
             <div class="card-footer d-flex align-items-center justify-content-between">
               <a class="small text-white stretched-link" href="#">View Details</a>
               <div class="small text-white"><i class="fas fa-angle-right"></i></div>
