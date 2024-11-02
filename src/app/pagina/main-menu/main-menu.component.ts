@@ -33,24 +33,9 @@ export class MainMenuComponent implements AfterViewInit{
     }
 
     ngOnInit(): void{
-      /*
-      if(this.userType === 'cliente'){
-        console.log("de tipo clinete");
-        this.ClienteService.findByEmail(this.correo).subscribe(cliente =>{
-          console.log("informacion del cliente: ", cliente);
-          this.clienteInfo = cliente;
-        });
-      }else if(this.userType === 'veterinario'){
-        console.log("de tipo veterianrio");
-        this.VeterinarioService.findByEmail(this.correo).subscribe(veterinario =>{
-          console.log("informacion del veterinario: ", veterinario);
-          this.vetInfo = veterinario;
-        });
-      }*/
         this.ClienteService.findByEmail(this.correo).subscribe(cliente =>{
           console.log("informacion del cliente: ", cliente);
           this.clienteInfo = cliente;
         })
-
       }
 }

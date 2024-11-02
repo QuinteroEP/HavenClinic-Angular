@@ -1,5 +1,5 @@
 export interface Cliente{
-    id: number;
+    clienteId: number;
     nombre:string;
     cedula:number;
     celular:number;

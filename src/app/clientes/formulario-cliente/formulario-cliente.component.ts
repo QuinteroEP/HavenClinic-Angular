@@ -14,7 +14,7 @@ export class FormularioClienteComponent {
   clienteNuevo!: Cliente;
 
   formularioCliente: Cliente = {
-    id: 0,
+    clienteId: 0,
     nombre: '',
     cedula: 0,
     celular: 0,

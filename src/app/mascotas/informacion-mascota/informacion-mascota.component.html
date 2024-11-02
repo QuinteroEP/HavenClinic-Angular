@@ -4,7 +4,7 @@
             <div class="row g-0">
                 <div class="col-md-4">
                     <ng-container *ngIf="mascota">
-                        <img [src]="mascota.url" alt="Pet Image" id={{mascota.url}} class="card-img-top rounded-start custom-img">
+                        <img [src]="fotoUrl" alt="Pet Image" id={{mascota.url}} class="card-img-top rounded-start custom-img">
                     </ng-container>
                     <ng-container *ngIf="!mascota">
                         <p class="text-center p-3 custom-text">Seleccione una mascota para obtener más información</p>
@@ -18,11 +18,11 @@
                     </div>
                     <div class="card-body custom-body">
                         <ng-container *ngIf="mascota">
-                            <p class="card-text">Edad: <span>{{mascota.edad}}</span> años</p>
-                            <p class="card-text">Raza: <span>{{mascota.raza}}</span></p>
-                            <p class="card-text">Condición médica: <span>{{mascota.condicion}}</span></p>
+                            <p class="card-text"><span class="bold">Edad: </span><span>{{mascota.edad}}</span> años</p>
+                            <p class="card-text"><span class="bold">Raza: </span><span>{{mascota.raza}}</span></p>
+                            <p class="card-text"><span class="bold">Condición médica: </span><span>{{mascota.condicion}}</span></p>
                             <br>
-                            <p class="card-text">Descripción:</p>
+                            <p class="card-text"><span class="bold">Descripción:</span></p>
                             <p class="card-text"><span>{{mascota.descripcion}}</span></p>
                             <br>
                             <div>
