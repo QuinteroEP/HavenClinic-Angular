@@ -14,7 +14,7 @@ import { EdadPipe } from './pipes/edad.pipe';
 import { ActualizarMascotaComponent } from './mascotas/actualizar-mascota/actualizar-mascota.component';
 import { MainMenuComponent } from './pagina/main-menu/main-menu.component';
 import { NavbarAuxComponent } from './pagina/navbar-aux/navbar-aux.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TablaClienteComponent } from './clientes/tabla-cliente/tabla-cliente.component';
 import { InformacionClienteComponent } from './clientes/informacion-cliente/informacion-cliente.component';
 import { ActualizarClienteComponent } from './clientes/actualizar-cliente/actualizar-cliente.component';
@@ -28,6 +28,7 @@ import { FormularioVeterinarioComponent } from './veterinarios/formulario-veteri
 import { ActualizarVeterinarioComponent } from './veterinarios/actualizar-veterinario/actualizar-veterinario.component';
 import { SidebarComponent } from './adminHome/sidebar/sidebar.component';
 import { FormularioClienteComponent } from './clientes/formulario-cliente/formulario-cliente.component';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +63,11 @@ import { FormularioClienteComponent } from './clientes/formulario-cliente/formul
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

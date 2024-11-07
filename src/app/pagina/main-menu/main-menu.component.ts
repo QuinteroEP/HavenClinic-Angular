@@ -27,6 +27,9 @@ export class MainMenuComponent implements AfterViewInit{
         this.userType = params['userType'];
         this.cdr.detectChanges(); // para deteccion de cambios
 
+        const token = localStorage.getItem('token');
+        console.log('Token:', token);
+
         console.log("Tipo:" + this.userType);
         console.log("Correo: " + this.correo)
       });

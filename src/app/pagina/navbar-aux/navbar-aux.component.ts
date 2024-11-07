@@ -35,4 +35,10 @@ export class NavbarAuxComponent {
       this.cliente = cliente;
     })
   }
+
+  onLogout(): void {
+    this.ClienteService.logout();
+    this.router.navigate(['/']); // Redirige al usuario a la página de login
+  }
+
 }

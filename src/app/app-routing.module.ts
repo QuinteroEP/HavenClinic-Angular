@@ -33,6 +33,8 @@ const routes: Routes = [
   {path: 'Mascotas/informacion/:id', component: InformacionMascotaComponent},
   {path: 'admin/veterinario/informacion/:cedula', component: InformacionVeterinarioComponent},
 
+  {path: 'cliente/home', component: InformacionClienteComponent},
+
   {path: 'Mascotas/actualizar/:id', component: ActualizarMascotaComponent},
   {path: 'cliente/actualizar/:cedula', component: ActualizarClienteComponent},
   {path: 'admin/veterinario/actualizar/:cedula', component: ActualizarVeterinarioComponent},

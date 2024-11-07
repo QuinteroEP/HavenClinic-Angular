@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import {Cliente} from "../entity/clientes"; // Asegúrate de que la ruta es correcta
 import { Veterinario } from '../entity/veterinarios';
+import { User } from '../entity/user';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +66,8 @@ export class VeterinarioService {
   updateVeterinario(veterinario: Veterinario): Observable<void> {
     return this.http.put<void>('http://localhost:8090/veterinarios/update/'+veterinario.cedula, veterinario);
   }
+
+
 
  
 }

@@ -18,7 +18,7 @@
       <li *ngIf="userType === 'cliente'"><a routerLink="/Mascotas/mis_mascotas" id="btnVerMisMascotas" [queryParams]="{ id: cliente?.clienteId, userType: userType, correo: cliente?.correo}" style="--navAni:2">Mis Mascotas</a></li>
 
 
-      <li><a routerLink="/" id="btnCerrarSesion" style="--navAni:5">Cerrar Sesion</a></li>
+      <li><a (click)="onLogout()" id="btnCerrarSesion" style="--navAni:5">Cerrar Sesion</a></li>
     </ul>
     <label class="mode">
       <input type="checkbox" id="darkModeToggle">
