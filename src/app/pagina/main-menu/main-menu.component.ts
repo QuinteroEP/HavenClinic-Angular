@@ -2,8 +2,11 @@ import {AfterViewInit, ChangeDetectorRef, Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import { Cliente } from 'src/app/entity/clientes';
 import { ClienteService } from 'src/app/servicio/cliente.service';
+import { MascotaService } from 'src/app/servicio/mascota.service';
 import { Veterinario } from "../../entity/veterinarios";
 import { VeterinarioService } from 'src/app/servicio/veterinario.service';
+import { Mascota } from 'src/app/entity/mascotas';
+import { mergeMap } from 'rxjs';
 
 @Component({
   selector: 'app-main-menu',
@@ -11,16 +14,20 @@ import { VeterinarioService } from 'src/app/servicio/veterinario.service';
   styleUrls: ['./main-menu.component.css']
 })
 export class MainMenuComponent implements AfterViewInit{
+    [x: string]: any;
     constructor(
       private route: ActivatedRoute,
       private cdr: ChangeDetectorRef,
       public ClienteService: ClienteService,
+      public mascotaService: MascotaService,
       public VeterinarioService: VeterinarioService) { this.route.queryParams.subscribe(params => this.correo = params['correo']) }
 
     userType: string = '';
     correo: String = ' ';
     public clienteInfo: Cliente | null = null;
     public vetInfo: Veterinario | null = null;
+
+    public pacientes: Mascota[] | null = null;
 
     ngAfterViewInit(): void {
       this.route.queryParams.subscribe(params => {
@@ -40,5 +47,19 @@ export class MainMenuComponent implements AfterViewInit{
           console.log("informacion del cliente: ", cliente);
           this.clienteInfo = cliente;
         })
-      }
+
+        this.VeterinarioService.findByEmail(this.correo).pipe(
+            mergeMap(
+              (vet) => {
+                this.vetInfo = vet;
+                console.log("Veterinario: " + vet)
+                return this.mascotaService.getPacientes(this.vetInfo.vetId)
+              }
+            )
+          ).subscribe(
+            (mascotas) => {
+              this.pacientes = mascotas
+            }
+          )
+  }
 }
