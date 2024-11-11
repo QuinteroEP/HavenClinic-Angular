@@ -40,7 +40,7 @@
                                     <p class="center, bold">Estado: No En Tratamiento</p>
 
                                     <ng-container *ngIf="userType === 'veterinario'">
-                                       <a [routerLink]="['/Mascotas/tratamiento/modificar', mascota.id]" [queryParams]="{userType: userType, correo: correo }" class="btn btn-info animate-btn" id="Gbutton">Generar Tratamiento</a>
+                                       <a [routerLink]="['/Mascotas/tratamiento/crear', mascota.id]" [queryParams]="{userType: userType, correo: correo }" class="btn btn-info animate-btn" id="Gbutton">Generar Tratamiento</a>
                                     </ng-container>
                                    </ng-container>
                             </div>

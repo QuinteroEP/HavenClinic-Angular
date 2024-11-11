@@ -5,18 +5,18 @@ import { TratamientoService } from 'src/app/servicio/tratamiento.service';
 import { MascotaService } from 'src/app/servicio/mascota.service';
 import { DrogaService } from 'src/app/servicio/droga.service';
 import { VeterinarioService } from 'src/app/servicio/veterinario.service';
-import { Mascota } from '../../entity/mascotas';
-import {Droga} from "../../entity/drogas";
+import { Mascota } from '../../../entity/mascotas';
+import {Droga} from "../../../entity/drogas";
 import { Veterinario } from 'src/app/entity/veterinarios';
 import { forkJoin } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-formulario-tratamiento',
-  templateUrl: './formulario-tratamiento.component.html',
-  styleUrls: ['./formulario-tratamiento.component.css']
+  templateUrl: './formulario-tratamiento-crear.component.html',
+  styleUrls: ['./formulario-tratamiento-crear.component.css']
 })
-export class FormularioTratamientoComponent {
+export class FormularioTratamientoCrearComponent {
   @Output()
   agregarTratamientoEvent = new EventEmitter<Tratamiento>();
 
@@ -71,7 +71,8 @@ export class FormularioTratamientoComponent {
     );
   }
 
-  actualizarTratamiento(): void{
+  agregarTratamiento(): void {
+    console.log(this.correo); // imprimir correo
     this.tratamientoNuevo = Object.assign({}, this.formularioTratamiento);
     console.log("revision de formulario: ", this.tratamientoNuevo);
 
@@ -83,15 +84,14 @@ export class FormularioTratamientoComponent {
         this.vetId = vetInfo.vetId;
         this.drugId = droga.id;
         
-        this.TratamientoService.actualizarTratamiento(this.petId, this.drugId, this.tratamientoNuevo).subscribe(
+        this.TratamientoService.addTratamiento(this.petId, this.vetId, this.drugId, this.tratamientoNuevo).subscribe(
           (response) => {
-            console.log('Tratamiento modificado', response);
-            console.log("Droga: " + this.drugId)
+            console.log('Tratamiento agregado', response);
             this.agregarTratamientoEvent.emit(this.formularioTratamiento);
             this.router.navigate(['/Mascotas/all'], { queryParams: { userType: "veterinario", correo: this.correo } });
           },
           (error) => {
-            console.error('Error al modificar el tratamiento', error);
+            console.error('Error al agregar el tratamiento', error);
           }
         );
       },

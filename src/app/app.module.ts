@@ -29,6 +29,7 @@ import { ActualizarVeterinarioComponent } from './veterinarios/actualizar-veteri
 import { SidebarComponent } from './adminHome/sidebar/sidebar.component';
 import { FormularioClienteComponent } from './clientes/formulario-cliente/formulario-cliente.component';
 import { AuthInterceptor } from './helpers/auth.interceptor';
+import { FormularioTratamientoCrearComponent } from './tratamientos/formulario-tratamiento/formulario-tratamiento-crear/formulario-tratamiento-crear.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
     ActualizarVeterinarioComponent,
     SidebarComponent,
     FormularioClienteComponent,
+    FormularioTratamientoCrearComponent,
 
   ],
   imports: [
