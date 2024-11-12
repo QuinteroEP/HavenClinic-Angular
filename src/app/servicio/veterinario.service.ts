@@ -50,10 +50,10 @@ export class VeterinarioService {
     }
 
     //En lugar de borrar directamente al veterinario solo cambia su estado a desactivado:
-    cambiarEstado(veterinario: Veterinario): Observable<Veterinario> {
+    cambiarEstado(veterinario: Veterinario): Observable<void> {
       console.log(veterinario);
-      console.log("Activo: " + veterinario.activo);
-      return this.http.put<Veterinario>('http://localhost:8090/veterinarios/cambiarestado/'+veterinario.cedula, veterinario);
+      console.log("Activo: " + veterinario.activo+" Cedula: "+veterinario.cedula);
+      return this.http.put<void>('http://localhost:8090/veterinarios/cambiarEstado/'+veterinario.cedula, veterinario);
     }
 
     //para agregar un nuevo veterinario

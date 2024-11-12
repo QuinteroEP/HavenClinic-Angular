@@ -34,6 +34,7 @@ export class AdminMainComponent implements OnInit, AfterViewInit {
    */
   ngOnInit(): void {
     // Fetch all drugs and insert data into the table
+  
     this.drogaService.findAll().subscribe({
       next: (clientes) => {
         this.listaDrogas = clientes;
