@@ -62,7 +62,7 @@ export class LandingComponent implements AfterViewInit {
   onSubmit(): void {
     const isVeterinario = this.checkBox.nativeElement.checked;
     const isAdmin = this.checkBox2.nativeElement.checked;
-    const userType = isVeterinario ? 'veterinario' : isAdmin ? 'administrador' : 'cliente';
+    const userType = isVeterinario ? 'veterinario' : isAdmin ? 'admin' : 'cliente';
 
     this.clienteService.login(this.formUser, userType).subscribe(
       (token) => {
@@ -72,7 +72,7 @@ export class LandingComponent implements AfterViewInit {
           this.router.navigate(['/main-menu'], { queryParams: { userType, correo: this.formUser.correo } });
         } else if (userType === 'veterinario') {
           this.router.navigate(['/main-menu'], { queryParams: { userType, correo: this.formUser.correo } });
-        } else {
+        } else  {
           this.router.navigate(['/admin'], { queryParams: { userType, correo: this.formUser.correo } });
         }
         this.closePopUp(); // Close the pop-up after succ essful login
