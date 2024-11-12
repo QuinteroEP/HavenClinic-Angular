@@ -1,4 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ClienteService } from 'src/app/servicio/cliente.service';
 
 @Component({
   selector: 'app-admin-header',
@@ -6,6 +8,15 @@ import { Component, AfterViewInit } from '@angular/core';
   styleUrls: ['./admin-header.component.css']
 })
 export class AdminHeaderComponent implements AfterViewInit {
+
+  constructor(
+    private ClienteService: ClienteService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {
+
+    
+   }
 
   /**
    * Hook del ciclo de vida que se llama después de que la vista de un componente ha sido completamente inicializada.
@@ -23,5 +34,10 @@ export class AdminHeaderComponent implements AfterViewInit {
         });
       }
     }
+  }
+
+  onLogout(): void {
+    this.ClienteService.logout();
+    this.router.navigate(['/']); // Redirige al usuario a la página de login
   }
 }
