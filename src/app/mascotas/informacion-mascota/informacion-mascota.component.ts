@@ -23,7 +23,7 @@ export class InformacionMascotaComponent {
   historial: Tratamiento[] | undefined;
   drogas: Droga[] | undefined;
   nombreDrogas: string[] = [];
-  
+  fotoUrl: string = '';
 
   constructor(
     private MascotaService:MascotaService,
@@ -44,29 +44,25 @@ export class InformacionMascotaComponent {
       this.MascotaService.findById(id).pipe(
         switchMap((mascota) => {
           this.mascota = mascota;
+          this.fotoUrl = "http://localhost:8090" + mascota.url
+          console.log("Foto:" + this.fotoUrl)
     
-          // Fetch the historial for this specific mascota
           return this.TratamientoService.getHistorial(mascota.id);
         }),
         switchMap((historial: Tratamiento[]) => {
-          this.historial = historial; // Store the historial
-    
-          // Map each Tratamiento ID to an observable that fetches its corresponding Droga
+          this.historial = historial;
+
           const drogaObservables = historial.map((tratamiento) =>
-            this.TratamientoService.getDroga(tratamiento.id) // This should return the corresponding drug
+            this.TratamientoService.getDroga(tratamiento.id)
           );
-    
-          // Use forkJoin to wait for all Droga requests to complete
           return forkJoin(drogaObservables).pipe(
             map((drogas: Droga[]) => {
-              // Only keep drug names corresponding to the treatments in the history
-              this.nombreDrogas = drogas.map(droga => droga.nombre); // Ensure you're saving the correct drug names
+              this.nombreDrogas = drogas.map(droga => droga.nombre);
             })
           );
         })
       ).subscribe({
         next: () => {
-          // Successfully fetched and processed data
           console.log('Historial:', this.historial);
           console.log('Drug Names:', this.nombreDrogas);
         },

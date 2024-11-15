@@ -272,4 +272,9 @@ body {
   .main {
     margin-top: 2rem;
   }
+
+  .btn-info {
+    background-color: #E3CAA5;
+    border-color: #E3CAA5;
+  }
 }

@@ -10,7 +10,7 @@ import { ClienteService } from 'src/app/servicio/cliente.service';
 })
 export class ActualizarClienteComponent {
   informacionClienteParaActualizar: Cliente = {
-    id: 0,
+    clienteId: 0,
     nombre: '',
     cedula: 0,
     celular: 0,
@@ -43,10 +43,10 @@ export class ActualizarClienteComponent {
   }
 
   actualizarCliente(): void {
-    console.log('Actualizando informacion: ' + this.informacionClienteParaActualizar.id);
+    console.log('Actualizando informacion: ' + this.informacionClienteParaActualizar.clienteId);
     this.informacionClienteParaActualizar.contrasena = this.pass;
     //se regresa de pass a contraseña
-    this.clienteService.actualizarCliente(this.informacionClienteParaActualizar.id ,this.informacionClienteParaActualizar).subscribe(
+    this.clienteService.actualizarCliente(this.informacionClienteParaActualizar.clienteId ,this.informacionClienteParaActualizar).subscribe(
       (response) => {
         console.log('Cliente actualizado con exito', response);
         this.router.navigate(['/cliente/all'], { queryParams: { userType: 'veterinario' } });

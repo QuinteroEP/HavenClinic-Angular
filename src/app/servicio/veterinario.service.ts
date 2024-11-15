@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import {Cliente} from "../entity/clientes"; // Asegúrate de que la ruta es correcta
 import { Veterinario } from '../entity/veterinarios';
+import { User } from '../entity/user';
 
 @Injectable({
   providedIn: 'root'
@@ -51,8 +52,8 @@ export class VeterinarioService {
     //En lugar de borrar directamente al veterinario solo cambia su estado a desactivado:
     cambiarEstado(veterinario: Veterinario): Observable<void> {
       console.log(veterinario);
-      return this.http.put<void>('http://localhost:8090/veterinarios/cambiarestado/'+veterinario.cedula, veterinario);
-
+      console.log("Activo: " + veterinario.activo+" Cedula: "+veterinario.cedula);
+      return this.http.put<void>('http://localhost:8090/veterinarios/cambiarEstado/'+veterinario.cedula, veterinario);
     }
 
     //para agregar un nuevo veterinario
@@ -65,6 +66,8 @@ export class VeterinarioService {
   updateVeterinario(veterinario: Veterinario): Observable<void> {
     return this.http.put<void>('http://localhost:8090/veterinarios/update/'+veterinario.cedula, veterinario);
   }
+
+
 
  
 }

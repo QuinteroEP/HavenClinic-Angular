@@ -30,7 +30,7 @@ export class InformacionClienteComponent {
         mergeMap(
           (clienteInfo) => {
             this.cliente = clienteInfo;
-            return this.MascotaService.findByDueñoId(this.cliente.id)
+            return this.MascotaService.findByDueñoId(this.cliente.clienteId)
           }
         )
       ).subscribe(

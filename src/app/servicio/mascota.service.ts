@@ -45,4 +45,8 @@ export class MascotaService {
   findByNombre(nombre: string): Observable<Mascota[]> {
     return this.http.get<Mascota[]>('http://localhost:8090/mascotas/findByNombre/'+nombre);
   }
+
+  getPacientes(id: number): Observable<Mascota[]>{
+    return this.http.get<Mascota[]>('http://localhost:8090/mascotas/pacientes/'+id);
+  }
 }

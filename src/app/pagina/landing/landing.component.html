@@ -24,12 +24,12 @@
     <!-- Pop Up de login-->
 
      <div #loginForm class="form-popup" id="loginForm">
-      <form id="popUp" class="form-container" >
+      <form id="popUp" class="form-container" #InicioSesionForm="ngForm" (ngSubmit)="onSubmit()">
         <h1>Iniciar Sesion</h1>
         <label for="Loginemail"><b>Email</b></label>
-        <input type="text" placeholder="Email" name="email" id="Loginemail" [(ngModel)]="correoUsuario" required>
+        <input type="text" placeholder="Email" name="email" id="Loginemail" [(ngModel)]="formUser.correo" required>
         <label for="Loginpsw"><b>Contraseña</b></label>
-        <input type="password" placeholder="Contraseña" name="psw" id="Loginpsw" required>
+        <input type="password" placeholder="Contraseña" name="psw" id="Loginpsw" [(ngModel)]="formUser.password" required>
        <!-- Checkbox para veterinario -->
         <label  class="check-container" for="check-box">
           <input #checkBox class="check" id="check-box" name="check-box" type="checkbox" (change)="onCheckboxChange($event, 'veterinario')" />
@@ -61,8 +61,8 @@
           <p class="check-label">Administrador</p>
         </label>
         <input type="hidden" name="userType" id="userType" value="cliente">
-        <button  type="submit" class="btn" id="btnloginCuenta" (click)="onSubmit()">Iniciar Sesion</button>
-        <button #cancel id="cancel" class="btn cancel" (click)="closePopUp()">Cancelar</button>      </form>
+        <button type="submit" class="btn" id="btnloginCuenta" [disabled]="!InicioSesionForm.form.valid">Iniciar Sesión</button>
+         <button #cancel id="cancel" class="btn cancel" (click)="closePopUp()">Cancelar</button>      </form>
     </div>
 
     <!-- Pop Up Registro -->

@@ -1,9 +1,9 @@
-import { Component, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
-import * as $ from 'jquery';
-import {Router} from "@angular/router";
-import { Cliente } from 'src/app/entity/clientes';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 import { ClienteService } from 'src/app/servicio/cliente.service';
-import {VeterinarioService} from "../../servicio/veterinario.service";
+import { VeterinarioService } from 'src/app/servicio/veterinario.service';
+import { User } from 'src/app/entity/user';
 
 @Component({
   selector: 'app-landing',
@@ -11,25 +11,30 @@ import {VeterinarioService} from "../../servicio/veterinario.service";
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements AfterViewInit {
-  @ViewChild('loginForm') loginForm!: ElementRef;
+  @ViewChild('InicioSesionForm', { static: false }) loginForm!: NgForm;
   @ViewChild('registerForm') registerForm!: ElementRef;
   @ViewChild('starContainer') starContainer!: ElementRef;
   @ViewChild('LogIn') botonLogin!: ElementRef;
   @ViewChild('cancel') botonCancelLogin!: ElementRef;
   @ViewChild('SignUp') botonSignUp!: ElementRef;
-  @ViewChild('cancelRegister') botonCancelRegister!: ElementRef
+  @ViewChild('cancelRegister') botonCancelRegister!: ElementRef;
   @ViewChild('checkBox') checkBox!: ElementRef;
   @ViewChild('checkBox2') checkBox2!: ElementRef;
 
-
   constructor(
     private router: Router,
-    private ClienteService: ClienteService,
-    private VeterinarioService:VeterinarioService) { }
+    private clienteService: ClienteService,
+    private veterinarioService: VeterinarioService
+  ) { }
 
   private darkOverlay: HTMLElement | null = null;
+  public correoUsuario: string | null = null;
 
-  public correoUsuario: String | null = null;
+  // Modelo login
+  formUser: User = {
+    correo: '',
+    password: '',
+  };
 
   ngAfterViewInit() {
     console.log("Script loaded");
@@ -57,24 +62,26 @@ export class LandingComponent implements AfterViewInit {
   onSubmit(): void {
     const isVeterinario = this.checkBox.nativeElement.checked;
     const isAdmin = this.checkBox2.nativeElement.checked;
-    const userType = isVeterinario ? 'veterinario' : isAdmin ? 'administrador' : 'cliente';
+    const userType = isVeterinario ? 'veterinario' : isAdmin ? 'admin' : 'cliente';
 
-    if (isAdmin) {
-      this.router.navigate(['/admin'], { queryParams: { userType, correo: this.correoUsuario } });
-    } else {
-      if (userType === 'cliente') {
-        this.ClienteService.findByEmail(this.correoUsuario!).subscribe(cliente => {
-          console.log("Landing - informacion: ", cliente);
-        });
+    this.clienteService.login(this.formUser, userType).subscribe(
+      (token) => {
+        console.log('Token:', token);
+        localStorage.setItem('token', String(token)); // Almacena el token en localStorage
+        if (userType === 'cliente') {
+          this.router.navigate(['/main-menu'], { queryParams: { userType, correo: this.formUser.correo } });
+        } else if (userType === 'veterinario') {
+          this.router.navigate(['/main-menu'], { queryParams: { userType, correo: this.formUser.correo } });
+        } else  {
+          this.router.navigate(['/admin'], { queryParams: { userType, correo: this.formUser.correo } });
+        }
+        this.closePopUp(); // Close the pop-up after succ essful login
+      },
+      (error) => {
+        console.error('Error during login:', error);
+        alert('Credenciales inválidas, vuelva a intentar');
       }
-      else{
-        this.VeterinarioService.findByEmail(this.correoUsuario!).subscribe(vet => {
-          console.log("Landing - informacion: ", vet);
-        });
-      }
-      this.router.navigate(['/main-menu'], {queryParams: {userType, correo: this.correoUsuario}});
-    }
-
+    );
   }
 
   onCheckboxChange(event: Event, checkboxType: string): void {
@@ -87,7 +94,10 @@ export class LandingComponent implements AfterViewInit {
 
   loginPopUp() {
     console.log("Log in");
-    this.loginForm.nativeElement.style.display = "block";
+    this.loginForm.control.reset(); // Reset the form
+    this.loginForm.control.markAsPristine(); // Mark the form as pristine
+    this.loginForm.control.markAsUntouched(); // Mark the form as untouched
+    document.getElementById('loginForm')!.style.display = "block";
     if (this.darkOverlay) {
       this.darkOverlay.style.display = "block";
     }
@@ -95,8 +105,7 @@ export class LandingComponent implements AfterViewInit {
 
   closePopUp() {
     console.log("cancel");
-
-    this.loginForm.nativeElement.style.display = "none";
+    document.getElementById('loginForm')!.style.display = "none";
     if (this.darkOverlay) {
       this.darkOverlay.style.display = "none";
     }
@@ -117,7 +126,7 @@ export class LandingComponent implements AfterViewInit {
     }
   }
 
-   handleCancel() {
+  handleCancel() {
     window.location.href = '/';
   }
 

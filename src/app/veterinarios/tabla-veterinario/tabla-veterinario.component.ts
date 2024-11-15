@@ -50,6 +50,7 @@ eliminarVeterinario(veterinario:Veterinario){
 
   console.log("cedula veterinario eliminado: " + veterinario.cedula)
   this.veterinarioService.cambiarEstado(veterinario)
+  console.log("Veterinario eliminado, estado del veterinario: " + veterinario.activo)
 }
 
 //se despliega al darle al boton busca por nombre

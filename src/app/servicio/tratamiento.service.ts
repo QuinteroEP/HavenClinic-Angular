@@ -33,7 +33,7 @@ export class TratamientoService {
   }
 
   actualizarTratamiento(mascotaId: number, drogaId: number, tratamiento: Tratamiento): Observable<any> {
-    return this.http.put(`http://localhost:8090/tratamientos/add/${mascotaId}/${drogaId}`, tratamiento);
+    return this.http.put(`http://localhost:8090/tratamientos/update/${mascotaId}/${drogaId}`, tratamiento);
   }
 
   getHistorial(id: number): Observable<Tratamiento[]>{
